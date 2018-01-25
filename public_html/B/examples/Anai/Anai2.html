@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD: A Problem Due to Anai</title>
+   <title>QEPCAD - Basic User Information</title>
+  <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+  <body>
+
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> - A Problem Due to Anai</h1>
+    
+    <p>
+      <b>Simplifying Quantifier-free Formulas with QEPCAD</b>
+    </p>
+
+    This example problem comes from a paper by H. Anai in the on-line proceedings of
+    IMACS-ACA 1998 (H. Anai, <em>Solving LMI and BMI problems by
+      quantifier elimination</em>, Proc. of IMACS-ACA '98, Edited by
+    R. Liska, <a
+      href="http://www-troja.fjfi.cvut.cz/aca98/proceedings.html">http://www-troja.fjfi.cvut.cz/aca98/proceedings.html</a>).  In the last problem from that paper, he ends up with the following formula describing the solution to his problem:
+<pre>
+[
+[s z  + s - 1 >= 0 /\ s = 0 /\  z  + 1 >= 0]
+\/ [s z  + s >= 0 /\ s = 0 /\  z  = 0] \/
+[s^2  + 4 s z  >= 0 /\ [[
+s^2  - 2 s <= 0 /\ s z  + s - 1 <= 0 /\ s = 0 /\ [
+s^2  + 3 s z  - s - 2 z  <= 0
+ \/ [s +  z  - 1 <= 0 /\ [s z  + s - 1 = 0 \/
+z  = 0]]] /\ [s + 2 z  >= 0 \/  z  = 0]] \/
+[s^2  - 2 s <= 0 /\ s + 2 z  >= 0 /\ s = 0 /\ [
+[s^2  + 3 s z  - s - 2 z  <= 0 /\ [s z  + s - 1 <= 0
+\/ z  = 0]] \/ [s +  z  - 1 >= 0 /\
+[s z  + s - 1 >= 0 \/  z  = 0]]]]]] \/
+[s = 0 /\  z  >= 0]
+].
+</pre>
+    This formula is already quantifier-free, but we might try using
+    QEPCAD anyway to see if it can simplify the formula.  In this
+    case, it simplifies it to <code>s = 0 /\ z >= 0</code>.  Here's
+    what the QEPCAD session looks like:
+<pre>
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 0.1, 30 Jul 2002
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robiduex, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[ Anai's Problem ]
+Enter a variable list:
+(s,z)
+Enter the number of free variables:
+2
+Enter a prenex formula:
+[
+[s z  + s - 1 >= 0 /\ s = 0 /\  z  + 1 >= 0]
+\/ [s z  + s >= 0 /\ s = 0 /\  z  = 0] \/
+[s^2  + 4 s z  >= 0 /\ [[
+s^2  - 2 s <= 0 /\ s z  + s - 1 <= 0 /\ s = 0 /\ [
+s^2  + 3 s z  - s - 2 z  <= 0
+ \/ [s +  z  - 1 <= 0 /\ [s z  + s - 1 = 0 \/
+z  = 0]]] /\ [s + 2 z  >= 0 \/  z  = 0]] \/
+[s^2  - 2 s <= 0 /\ s + 2 z  >= 0 /\ s = 0 /\ [
+[s^2  + 3 s z  - s - 2 z  <= 0 /\ [s z  + s - 1 <= 0
+\/ z  = 0]] \/ [s +  z  - 1 >= 0 /\
+[s z  + s - 1 >= 0 \/  z  = 0]]]]]] \/
+[s = 0 /\  z  >= 0]
+].
+
+
+=======================================================
+
+Before Normalization >
+finish
+An equivalent quantifier-free formula:
+
+s = 0 /\ z >= 0
+
+==========================================
+</pre>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Jul 15 07:53:11 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 17:04:20 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

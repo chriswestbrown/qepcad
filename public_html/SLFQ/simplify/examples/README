@@ -1,0 +1,96 @@
+SLFQ Examples
+---------------------------------------------------------
+
+There are four examples of input files for SLFQ.  They are:
+
+Ex1 - This is a very simple formula in QEPCAD B output syntax.
+      A complete run of slfq with this input looks like:
+
+      % ./slfq examples/Ex1 -q
+      [ y < 0 /\ x < 0 ]
+
+      Notice the use of the "-q" option.  This runs slfq in
+      quiet mode.
+
+Ex2 - This example is the same as Ex1, except it's in Redlog
+      output syntax.  Run the program with the command:
+
+      % ./slfq examples/Ex2 -q
+      [ y < 0 /\ x < 0 ]
+
+Ex3 - This is Example 7.3 from H.Anai and V.Weispfenning, 
+      "Reach set computationn using real quantier elimination".
+      Technical Report MIP-0012,FMI,Universitaet Passau,D-94030 
+      Passau, Germany,Oct.2000.  It is the OR of 16 things, 
+      containing 309 atomic formulas, nested to a depth of 9.
+      The file is the output of a Redlog formula.
+
+      % slfq examples/Ex3 -q
+      [ 549755813888 y2 + 61197595913895 >= 0 /\ 3026367 y2 - 
+      14558270 <= 0 /\ 9158897218689 y2 - 44058667905090 y1 + 
+      211943225392900 >= 0 /\ 199824148625235116032000 y2 - 
+      961249547132351111233536 y1 - 107004164161153657150116315 
+      <= 0 /\ [ [ 4398046511104 y2 - 4398046511104 y1 - 
+      101773842498125 <= 0 /\ y2 >= 0 ] \/ [ 4398046511104 y2 - 
+      4398046511104 y1 - 101773842498125 > 0 /\ y2 <= 0 ] \/ [ 
+      4398046511104 y2 - 4398046511104 y1 - 101773842498125 <= 
+      0 /\ y2 - y1 + 1 >= 0 ] ] ]
+
+
+Ex4 - This is a formula that was sent to me by Andreas Weber.  It
+      consists of 35,714 atomic formulas.  Slfq actually fails to
+      simplify this formula, because at some point it calls QEPCAD B
+      with too small of a garbage collected space.  Rather than up
+      that size, however, one notes that the formula is of the form
+      "F /\ beta4 > 0 /\ nu > 0".  Clearly, beta4 > 0 and nu > 0 are
+      assumptions from the original problem.  The file Ex5 contains
+      the formula F.  And if we run slfq on Ex5 with the assumptions
+      "beta4 > 0 /\ nu > 0", slfq simplifies the formula just fine.
+
+Ex5 - See Ex4 description for information.  Here's the slfq run to
+      simplify this formula:
+ 
+      % ./slfq -q -a "beta4 > 0 /\ nu > 0" examples/Ex5
+      511000 beta4 - 60850 nu - 1217 > 0
+
+REMARK:  To understand what's going on in examples 4 and 5, consider
+      the formula F from the Ex4 description.  The simplified version
+      of this formula appears below.  What you see, is that F describes
+      a very complicated set, but that all of the complicated part of
+      the set lies outside of beta4 > 0 /\ nu > 0.  Thus, in Ex4 we
+      spend tons of time and space simplifying sets in a region of the
+      plane which, ultimately, we don't care about at all!  When
+      assumptions are used, the assumption is carried down to every
+      single call to QEPCAD B, so we never waste time simplifying
+      features of sets in an irrelevent part of the space.      
+
+[ beta4 /= 0 /\ 50 nu + 1 /= 0 /\ 60850 nu - 511000 beta4 + 1217 /= 0 /\ [ [
+50 nu + 1 <= 0 /\ 2500 beta4 nu - 182550 nu + 365050 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 3500 beta4 nu - 182550 nu + 511070 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 5000 beta4 nu - 182550 nu + 182600 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 5000 beta4 nu - 182550 nu + 365100 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 5000 beta4 nu - 182550 nu + 620600 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 5000 beta4 nu - 182550 nu + 730100 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 7000 beta4 nu - 182550 nu + 255640 beta4 - 3651 = 0 ] \/ [
+50 nu + 1 <= 0 /\ 10000 beta4 nu - 182550 nu + 365200 beta4 - 3651 = 0 ] \/
+[ 50 nu + 1 <= 0 /\ 10000 beta4 nu - 182550 nu + 730200 beta4 - 3651 = 0 ]
+\/ [ 50 nu + 1 <= 0 /\ 20000 beta4 nu - 182550 nu + 730400 beta4 - 3651 = 0
+] \/ nu  =  _root_1 9127500 nu^2 - 18250000 beta4 nu + 365100 nu - 666490000
+beta4 + 3651 \/ nu  =  _root_1 9127500 nu^2 - 25550000 beta4 nu + 365100 nu
+- 933086000 beta4 + 3651 \/ nu  =  _root_1 9127500 nu^2 - 36500000 beta4 nu
++ 365100 nu - 1332980000 beta4 + 3651 \/ nu  =  _root_1 9127500 nu^2 -
+31025000 beta4 nu + 365100 nu - 1332870500 beta4 + 3651 \/ nu  =  _root_1
+9127500 nu^2 - 18250000 beta4 nu + 365100 nu - 1332615000 beta4 + 3651 \/ nu
+=  _root_1 9127500 nu^2 - 9125000 beta4 nu + 365100 nu - 1332432500 beta4 +
+3651 \/ nu  =  _root_1 9127500 nu^2 - 12775000 beta4 nu + 365100 nu -
+1865405500 beta4 + 3651 \/ nu  =  _root_1 9127500 nu^2 - 36500000 beta4 nu +
+365100 nu - 2665230000 beta4 + 3651 \/ nu  =  _root_1 9127500 nu^2 -
+18250000 beta4 nu + 365100 nu - 2664865000 beta4 + 3651 \/ nu  =  _root_1
+9127500 nu^2 - 36500000 beta4 nu + 365100 nu - 5329730000 beta4 + 3651 \/ [
+50 nu + 1 <= 0 /\ 10000 beta4 nu - 182550 nu + 985700 beta4 - 3651 = 0 ] \/
+[ 50 nu + 1 <= 0 /\ 10000 beta4 nu - 182550 nu + 1095200 beta4 - 3651 = 0 ]
+\/ nu  =  _root_1 9127500 nu^2 - 49275000 beta4 nu + 365100 nu - 2665485500
+beta4 + 3651 \/ 60850 nu - 328500 beta4 + 1217 = 0 \/ nu  =  _root_1 9127500
+nu^2 - 54750000 beta4 nu + 365100 nu - 2665595000 beta4 + 3651 \/ [ 50 nu +
+1 >= 0 /\ 60850 nu - 511000 beta4 + 1217 <= 0 ] \/ [ 50 nu + 1 <= 0 /\ 60850
+nu - 255500 beta4 + 1217 >= 0 ] ] ] ] 

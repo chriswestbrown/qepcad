@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Interface Documentation</title>
+
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - QEPCAD Interface Documentation<hr/></h1>
+    The user interface to QEPCAD is implemented through the files
+    $qe/source/qepcad.help and $qe/source/userint/USERINT.c.
+
+<p>
+    <dl>
+      <dt><b>qepcad.help</b>
+      <dd>
+	Each command has an entree in qepcad.help that looks something
+	like:
+	<pre>
+d-all-cells-in-subtree 48 de d
+@
+d-all-cells-in-subtree C 
+
+Displays the info about all the cells in the subtree
+rooted at the cell with index C.
+@
+	</pre>
+	The first line contains the command's name (d-all-cells-in-subtree 
+	in this case), a unique identifying number for the command (48 in
+	this case), a string that is a substring of "abcde" (de in this
+	case) which defines the phases of the program in which the command 
+	is available, and a string that is one of 
+	pc, d, proj, a, m, cp (d in this case) indicating the type ofthe
+	command. The command types are defined at the end of qepcad.help
+	<pre>
+pc @Program control:@
+d @Displaying information:@
+proj @Modifying the projection set:@
+a @Selecting algorithms:@
+m @Miscellaneous:@
+cp @Chris's Play:@
+	</pre>
+	What appears between the @'s is just documentation that's
+	available to the QEPCAD user via the whatis command.
+<p>
+      <dt><b>USERINT.c</b>
+      <dd>QEPCAD gets input from the user by calling the function
+	USERINT defined in USERINT.c.  This function calls GETCID
+	which reads in a command from the user, matches it with a
+	command definition in qepcad.help, and returns the unique id
+	number for that command.  The remainder of USERINT is a big
+	switch statement that switches on that id and performs the
+	associated action.
+    </dl>
+    <p>
+      Adding a command to QEPCAD thus consists of adding the
+      appropriate entry to qepcad.help, and adding a line for the 
+      new index to the switch statement in USERINT.c.
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Oct 18 17:32:22 EDT 1999 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:26:35 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

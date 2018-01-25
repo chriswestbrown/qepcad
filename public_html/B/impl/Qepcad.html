@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Documentation</title>
+  </head>
+  
+  <body>
+    <h1>QEPCAD Documentation</h1>
+    <hr>
+    <dl>
+
+      <dt><b>Installing QEPCAD</b>
+      <dd>Assuming that you've downloaded the QEPCAD directory
+	tree, the root of which is called <code>qesource</code>,
+	You need to make sure that the following two environment
+	variables are set, <code>saclib</code> and
+	<code>qe</code>.
+	The variable <code>saclib</code> should contain the
+	complete path up to and including <code>saclib2.1</code>, 
+	the root of the saclib directory tree.  The variable
+	<code>qe</code> should contain the
+	complete path up to and including <code>qesource</code>, 
+	the root of the saclib directory tree.  On my machine, for
+	example: 
+<pre>
+valiant[312] [~/]> setenv qe /home/wcbrown/research/qesource
+valiant[313] [~/]> setenv saclib /home/wcbrown/research/saclib2.1
+</pre>
+	... is how I've got my <code>qe</code> and <code>saclib</code>
+	environment variables set.   After you've set these, do the
+	following: 
+	<pre>
+cd $qe
+make
+	</pre>
+	... and QEPCAD will compile ... I hope.  Note that
+	<code>gmake</code>, <code>gcc</code>, and <code>g++</code> 
+	are all required.
+<p>
+	  If the 2D CAD plotting features aren't working, it's because 
+	  the display program <code>$qe/bin/ADJ2D_plot</code> hasn't
+	  been ported.  Just make
+	  <code>$qe/bin/ADJ2D_plot</code> a symbolic link to
+	  <code>/usr/bin/wc</code>, and you'll be able to use the
+	  plotting features to produce postscript (eps) plots of
+	  CAD's, although nothing will show up on the screen.
+	<p>
+	  
+      <dt><b>The Original QEPCAD</b>
+    <p>
+      <dd>
+	<dl>
+	  
+	  <dt><b>User Documentation</b>
+	  <dd>Ideally this would include a desription of how to use
+	    QEPCAD.  No time right now.  I leave you with a few examples.
+	    <ul>
+	      <li><a href="demo1">Example 1</a>, "The generic
+		quadratic"
+	      <li><a href="demo2">Example 2</a>, "The x-axis ellipse"
+	    </ul>
+	     [Note: These examples use my solution formula
+	    extensions. If your QEPCAD is truly "the original",
+	    instead of using <code>sol T</code> to get a solution
+	    formula, you'd simply type <code>go</code>.]<br>
+	    It is worth keeping in mind that QEPCAD has online help.
+	    Type "help" at any time after the input formula has been
+	    entered, and a list of commands is given.  For a given
+	    command, type "whatis" followed by the command name, and
+	    you should get documentation for that command.
+	    <p>   
+	  <dt><b>Implementation Documentation</b>
+	  <dd>Ideally this would include a description of QEPCAD's
+	    implementation, and clues on how to get started on adding
+	    and modifying the program.  No time right now. I leave you 
+	    with this info:
+	    <ul>
+	      <li><a href="Interface.html">Interface documentation</a>
+	      <li><a href="Cell.html">Cell documentation</a>
+	      <li><a href="Samplepoint.html">Sample-Point documentation</a>
+	      <li><a href="Polynomial.html">Polynomial documentation</a>
+	      <li><a href="formula">Formula documentation</a>
+	    </ul>
+	</dl>
+	
+	<p>
+	  
+	  
+	  <dt><b>Extension's to QEPCAD</b>
+	<p>
+	  <dd>Ideally this would give ... well, you know.  Anyway, the 
+	    two main commands my extensions offer are
+	    <code>solution-extension</code> and <code>d-2d-cad</code>.
+	    The <code>whatis</code> documentation for them is given
+	    <a href="excptswhatis">here</a>.
+
+</pre>
+	    <dl>
+	      <dt><b>User Documentation</b>
+	      <dd><dd>Here are the primary commands comprising my
+		QEPCAD extensions:
+		<p>
+		<dl>
+		  <dt><code>solution-extension x</code>
+		    <dd>	
+		    Use an alternative solution formula construction method.  The
+		    parameter x is allowed to be T,E,G, or I.  If x is T, then a
+		    formula in the usual language of Tarski formulas is produced.
+		    If x is E, a formula in the language of Extended Tarski formulas
+		    is produced.  If x is G, then a geometry-based formul is
+		    produced. Finally, if x is I, and "interactive mode" is entered
+		    and the user is queried to determine how the formula is to be
+		    constructed and displayed.
+<p>
+		  <dt><code>simple-cad-info N</code>
+		  <dd>
+		    Simple CAD information.  If N is zero, the usual CAD
+		    simplification is performed.  If it is 1, simplification
+		    is done solely by considering full dimensional cells.
+		    This option simply displays stats.
+<p>
+		  <dt><code>replace-with-simple (0,0)</code>
+		  <dd>This command replaces QEPCAD's CAD with a
+		    simplified CAD.  This messes with the program a
+		    fair bit, so other than printing out a projection
+		    factor list, or plotting with
+		    <code>d-2d-cad</code>, I wouldn't trust any
+		    subsequent commands.  This is here mostly because
+		    I'm often interested in plotting a simplified
+		    CAD.  The command <code>solution-extension
+		      E</code> will also work after using 
+		    <code>replace-with-simple (0,0)</code>.
+<p>
+		  <dt><code>d-2d-cad [ D ] | [ E x1 x2 y1 y2 Sx Sy e ]</code>
+		  <dd>This command displays a 2D CAD.  Ideally,
+		    display will be on the screen, but even if that
+		    doesn't work (it requires a second program called
+		    ADJ2D_plot) this command can still be used to
+		    produce plots in postscript (eps) file format.
+		    Typcially <code>d-2d-cad D</code> is the command
+		    you'd want, and what happens next is fairly self
+		    explanatory.
+
+		    
+		    
+		</dl>
+		<p>   
+	      <dt><b>Implementation Documentation</b>
+	      <dd>
+		<ul>
+		  <li><a href="Sfext.html">sfext</a>
+		  <li><a href="Adj2d.html">adj2d</a>
+		  <li><a href="Rend.html">rend</a>
+		</ul>
+	    </dl>	  
+	  
+	  </dl>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+    <!-- Created: Mon Oct 18 17:25:12 EDT 1999 -->
+    <!-- hhmts start -->
+Last modified: Thu Jul 11 09:40:56 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

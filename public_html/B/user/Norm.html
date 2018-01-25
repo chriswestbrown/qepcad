@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - The Normalization Phase</title>
+
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - The Normalization Phase<hr></h1>
+    <p>
+      In the normalization the formula input by the user is put into a 
+      special form
+    <ul>
+      <li>all atomic formula <em>f op g</em> are put in the form 
+	<em>f - g op 0</em>
+      <li>all polynomials appearing in atomic formula are factored,
+	and when more than one factor is present the atomic formula is broken 
+	up into a boolean combination of several atomic formulas
+	involving irreducible polynomials
+      <li>etc.
+    </ul>
+    From the user presepective this stuff is not all that interesting, 
+    and you'll probably just type <code>go</code> to get through this phase.
+    There are, however, a few commands that can be given here, and
+    some of them are described below.
+    </p>
+    <p>
+      <ul>
+      <li>New with Version 1.6, the user can input
+      <em>assumptions</em> in the normalization phase.  Assumptions
+      take the form of a quantifier-free formula in the free
+      variables, and QEPCAD will ignore any part of free-variable
+      space that does not satisfy the assumptions.  When a solution
+      formula is produced, the formula will also make the same
+      assumptions, meaning that a true solution formula is the
+      conjunction of the assumptions and the formula output by QEPCAD.
+      The main advantage to using assumptions is the solution formula
+      will probably be easier to interpret, since QEPCAD doesn't try
+      to "simplify" the assumptions, and you don't have to wade
+      through the formula and figure out what parts of the formula
+      simply echo your assumptions, and what parts are new results.
+	Example:
+<pre>
+assume [ a > 0 /\ b > 0 ]
+</pre>
+	The command name, as you can see, is <code>assume</code>, and
+	the syntax for the formula itself is the same as for input
+	formulas. 
+      <li>
+	If you are going to use <em>Equational Constraints</em> (which
+	requires some care, and which you at present do "at your own
+	risk") you need to issue the "<code>prop-eqn-const</code>"
+	command, which simply "enables" equational constraints.
+	<a href="EqConst.html"><b>Information on Equational Constraints</b></a>
+      </li>
+      <li>
+	One command that can be issued here (although it could as well 
+	be pushed back later) is "<code>full-cad</code>".  This forces
+	a full CAD of free-variable space to be constructed.  (Note:
+	if the "<code>cell-choice-bound</code>" command is used, the 
+	"<code>full-cad</code>" command has no effect.)
+
+      </li>
+    </p>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Tue Jul 23 12:36:00 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Fri Oct  4 18:26:36 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

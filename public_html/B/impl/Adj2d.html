@@ -1,0 +1,168 @@
+<HTML>
+  <HEAD>	
+    <TITLE>2D Adjacency Documentation</TITLE>
+      <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </HEAD>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - 2D Adjacency Documentation<hr></h1>
+
+<h1><b>THIS IS ALL PRETTY OUT OF DATE!!</b></h1>
+
+I'm trying to build an adjacency algorithm for 2D CAD's which will
+work quickly and be easy to implement.  I won't guarantee a solution,
+but I will guarantee that any solution given is correct.  When
+adjacencies cannot be decided, the algorithm will enumerate the
+possible adjacencies so that a future extension could use other
+methods to make these decisions.
+
+<UL>
+<LI><B>Specifications</B><br>
+I determine adjacencies for amongst cells in 3 successive stacks
+simultaeneously; the second of the three having a section as a base.
+The main function of the method solves this problem.
+<BLOCKQUOTE>L <- <A HREF="ADJ_2D.c">ADJ_2D(c,c_l,c_r,P,J)</A></BLOCKQUOTE>
+c is a section cell in the 1D CAD, c_l is the sector to the left of c,
+and c_r the section to the right.  P is the projection factor set, and
+J the projection polynomial set.  The return value L will be a list
+of elements of the form ((i,j),(k,l)) indicating an adjacency between
+cell (i,j) and cell (k,l).  More exact information is given below.
+</LI>
+
+<LI><B>Data Structures</B><br>
+<UL>
+<LI>The Adj2D_Cell datatype<br>
+The intent is that the adjacency calculations be
+based purely on multiplicity information and cell indices.  Thus, a
+cell in the 2D CAD will be represented as a list: (I,M), where I is
+the cell index, and M is the multiplicity vector; i.e. a list of 
+length = |P_2|, where P_2 is the set of level 2 projection factors,
+such that the ith element of M is the multiplicity of the ith element
+of P_2 in the cell.  I refer to this as the Adj2D_Cell datatype.
+</LI>
+<LI>Adjacency datatype<br>
+A single adjacency A is a list (I,J), where I and J are pairs of
+BETA-digits, so A = ( (i1,i2) , (j1,j2) ), i1,i2,j1,j2 BETA-digits.
+I and J are cell indices ... usually. The one exception has to do with
+asymptotes.  In each stack over a section cell k of the 1-dimensional
+CAD, we've added the cells (k,AD2D_Infy) and (k,AD2D_N_In), where
+AD2D_Infy and AD2D_N_In are constants defined in adj2D.h.  If a
+section is adjacent to (k,AD2D_Infy), then it has a vertical asymptote
+over k where it approaches positive infinity. If a
+section is adjacent to (k,AD2D_N_In), then it has a vertical asymptote
+over k where it approaches negative infinity. Note:  At present, 
+i1 + 1 = j1 holds for every adjacency the algorithm produces.
+</LI>
+</UL>
+</LI>
+
+<LI><B>How It Works</b><br>
+Suppose we start with c_{i-1}, c_i, and c_{i+1} - where c_i is a
+section cell.  Basically I just try to enumerate all possible
+"solutions" to this adjacency problem, where a "solution" is a list of
+all adjacencies between sections over c_i and sections over c_{i-1},
+and between sections over c_i and sections over c_{i+1}.  I have rules
+about these solutions though, and I throw out all "solutions" which
+violate these rules.  If a unique "solution" is left, then I know I
+have THE solution.  Otherwise, I have to find another method for
+deciding which of the many solutions is THE solution.<p>
+Naturally, I try to be clever, and I don't generate all possible
+solutions and then weed out the bad ones.  I generate only those
+solutions which don't violate my rules.
+
+
+<LI><B>Header file</b><br>
+<A HREF="adj2D.h">adj2D.h</A>
+</LI>
+
+<LI><B>Functions</B>
+  <UL>
+
+  <LI>Functions for operating on the Adj2D_Cell datatype.
+    <UL>
+    <LI><A HREF="AD2DC_CONS.c">AD2DC_CONS(c,P)</A>
+    </LI>
+    <LI><A HREF="AD2DS_CONS.c">AD2DS_CONS(c,P)</A>
+    </LI>
+    <LI><A HREF="ADD_2_SOL.c">ADD_2_SOL(a,S)</A>
+    </LI>
+    </UL>
+  </LI>
+
+  <LI>Misc functions
+    <UL>
+    <LI><A HREF="LDCOEFMASK.c">LDCOEFMASK(c,P,J)</A>
+    </LI>
+    <LI><A HREF="Mystery_f.c">Mystery_f(L,R,M)</A>
+    </LI>
+    </UL>
+  </LI>
+
+  <LI>Vector functions
+    <UL>
+    <LI><A HREF="VECTOR_LTEQ.c">VECTOR_LTEQ(u,v)</A>
+    </LI>
+    <LI><A HREF="VECTOR_SUM.c">VECTOR_SUM(u,v)</A>
+    </LI>
+    <LI><A HREF="SUM_NORM_SP.c">SUM_NORM_SP(v)</A>
+    </LI>
+    <LI><A HREF="CWD_VECTOR_Q.c">CWD_VECTOR_Q(u,v)</A>
+    </LI>
+    <LI><A HREF="ZERO_VECTOR.c">ZERO_VECTOR(n)</A>
+    </LI>
+    <LI><A HREF="VECTOR_S_PROD.c">VECTOR_S_PROD(s,v)</A>
+    </LI>
+    <LI><A HREF="VECTOR_SEMI_COMP.c">VECTOR_SEMI_COMP(u,v)</A>
+    </LI>
+    <LI><A HREF="EQUAL_ON_ONES.c">EQUAL_ON_ONES(u,v)</A>
+    </LI>
+    <LI><A HREF="VECTOR_NEG.c">VECTOR_NEG(u)</A>
+    </LI>
+    </UL>
+  </LI>
+
+  <LI>The functions that do the work
+    <UL>
+    <LI><A HREF="P1.c">P1(U,V,W,v_l,B)</A>
+    </LI>
+    <LI><A HREF="P2.c">P2(x_l,x_r,U,V,W,v_l,B)</A>
+    </LI>
+    <LI><A HREF="P3.c">P3(U,V,W,v_l,B)</A>
+    </LI>
+    <LI><A HREF="P4.c">P4(J,U,V,W,v_l,B)</A>
+    </LI>
+    </UL>
+  </LI>
+
+  </UL>
+</LI>
+
+</UL>
+<p>
+<h2>The real world -- Partial CAD's and Infallible adjacency</h2>
+There are two problems that my adjacency method can encounter:  in a
+partial CAD we might not have constructed all of the three adjacent
+stacks we need for my adjacency method, and in some situations this
+method fails to provide a unique adjacency assignment, and a decision
+muct somehow be made between the several alternatives it returns.
+<p>
+In the case of a "missing" stack, i.e. a stack which has not been
+constructed but which is needed by my adjacency method, I take the
+easy way out:  I simply construct the stack.  The missing stack will
+always be a stack over an open interval, so the time required for
+constructing that stack should b pretty small.  Another alternative
+would be a modified algorithm which deals with two adjacent stacks and
+not three.   The function which determines adjacencies in any
+situation is:
+<BLOCKQUOTE>L <- <A
+HREF="ADJ_2D_PART.c">ADJ_2D(_PARTc,c_l,c_r,P,J)</A></BLOCKQUOTE>
+It calls:
+<BLOCKQUOTE>
+<A HREF="ADJ_2D_CONSTRUCT.c">ADJ_2D_CONSTRUCT(c,P2)</A></BLOCKQUOTE>
+to construct missing stacks.  To decide between multiple possible
+adjacency assignments it uses:
+<BLOCKQUOTE>
+<A HREF="infallible/ADJ_2D_DECIDE.c">ADJ_2D_DECIDE(Sol,c,c_l,c_r,P,J)</A></BLOCKQUOTE>
+</BODY>
+</HTML>
+

@@ -1,0 +1,28 @@
+[
+This input file simply forms the disjunction of the
+two output formulas produced from BetterInput3b.qe
+and BetterInput3a.qe and simplifies the result.
+0.1 seconds reported
+]
+(c,d)
+2
+[
+[
+  d > 0 /\ 3 d^4 + 6 c^2 d^2 - 18 c d^2 + 11 d^2 + 3 c^4 - 18 c^3 + 39 c^2 - 36 c + 12 /= 0 /\ 
+  [ 2 d^2 + 2 c^2 - 5 c + 3 < 0 \/ 
+  11 d^4 + 22 c^2 d^2 - 54 c d^2 + 31 d^2 + 11 c^4 - 54 c^3 + 99 c^2 - 80 c + 24 < 0 ]
+]
+\/
+[
+ d >= 0 /\ 2 d^2 + 2 c^2 - 5 c + 3 < 0 /\ 
+ 3 d^4 + 6 c^2 d^2 - 18 c d^2 + 11 d^2 + 3 c^4 - 18 c^3 + 39 c^2 - 36 c + 12 = 0
+]
+].
+prop
+go
+go
+fast
+go
+sol T
+d-stat
+quit

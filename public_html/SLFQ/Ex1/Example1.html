@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>A simplification problem with SLFQ</title>
+<LINK REL="STYLESHEET" HREF="../../B/QEPCAD.css"></head>
+<body>
+<h1><a href="../Home.html">SLFQ</a> - <small>An example simplification problem</small></h1>
+The file <a href="Ex1.in">examples/Ex5</a> from the SLFQ installation
+contains a formula that was sent to me by Andreas Weber.  It was the
+output of a session with the 
+<a href="http://www.fmi.uni-passau.de/~redlog">Redlog</a> system.  The
+formula is quite large but, as we'll see, it actually defines a very
+simple set.  The following is a session with SLFQ:
+    <blockquote>
+<pre>
+<b>% time ./slfq examples/Ex5 -q -a "beta4 > 0 /\ nu > 0"</b>
+511000 beta4 - 60850 nu - 1217 > 0
+316.020u 3.010s 10:43.80 49.5%  0+0k 0+0io 276pf+0w
+<b>%</b>
+</pre>
+    </blockquote>
+The <code>-a</code> option has been used to add the assumptions that
+<code>beta4</code> and <code>nu</code> are both positive.  Thus, the
+equivalent formula is really:
+<pre>
+beta4 &gt; 0 /\ nu &gt; 0 /\ 60850 nu - 511000 beta4 + 1217 &lt; 0
+</pre>
+In the original formula as I recieved it, the contents of 
+<a href="Ex1.in">examples/Ex5</a> were actually conjoined with 
+<code>beta4 &gt; 0 /\ nu &gt; 0</code>.  The user, not the system,
+must recognize that such constraints are actually fundamental to the problem
+and should be made explicit assumptions.  Without this assumption,
+SLFQ spends a lot of time trying to find a simple way of expressing
+sets in the plane that are outside of <code>beta4 &gt; 0 /\ nu &gt; 0</code>,
+which is wasted effort.
+<p>
+The <code>-q</code> option asks the program to run in a "quiet" mode,
+where intermediate information is not printed out.
+</body>
+</html>

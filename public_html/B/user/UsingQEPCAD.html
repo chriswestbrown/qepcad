@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - Basic User Information</title>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Basic User Information<hr></h1>
+
+    <div class="screen">
+      <pre>
+prompt% qepcad
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 0.1, 30 Jul 2002
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robiduex, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[ This is the ever-popular "X Axis Ellipse" problem ]
+Enter a variable list:
+(a,b,c,x,y)
+Enter the number of free variables:
+3
+Enter a prenex formula:
+(A x)(A y)[ a > 0 /\ b > 0 /\ [
+  [ b^2 (x - c)^2 + a^2 y^2 - a^2 b^2 = 0] ==>
+  x^2 + y^2 - 1 <= 0
+] ].
+
+=======================================================
+
+Before Normalization >
+finish
+An equivalent quantifier-free formula:
+
+a > 0 /\ b > 0 /\ c - a + 1 >= 0 /\ c + a - 1 <= 0 /\ [ 
+b^2 - a <= 0 \/ b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0 ]
+
+=======================================================
+prompt%
+      </pre>
+    </div>
+    <p>
+      <b>Starting QEPCAD</b>
+      QEPCAD is a command-line program, so you launch it at the command
+      prompt.  Assuming that the <em>qe</em> environment variable in
+      your shell has been set to the root directory of your QEPCAD
+      installation (<em>Example: </em> <code>setenv qe ${HOME}/qesource</code>)
+      you run QEPCAD with the command "<b><code>$qe/bin/qepcad</code></b>".
+    A somewhat unfortunate feature of the SACLIB library on which
+    QEPCAD is based is that it initializes itself with a fixed-size
+    piece of memory and simply fails if that gets filled up.  A larger 
+    size piece of memory can be requested with the command-line
+    argument <code><b>+N</b></code>.  The "+N" is followed by a number 
+    - the number of cells in the garbage collected space.  the default 
+    value is 2000000.  So to run QEPCAD with more memory you might
+    give the command "<b><code>$qe/bin/qepcad +N8000000</code></b>".
+    If you attempt a problem and get a failure message that
+    QEPCAD/SACLIB ran out of memory, try upping the space with "+N".
+  </p>
+    <p>
+      <b>Basic Quantifier Elimination with QEPCAD</b>
+      QEPCAD is an inherently iteractive program, and I will describe it 
+      as such.  There are five basic steps in a QEPCAD session, though
+      all but the first may be by-passed by the user simply by typing
+      "<code>finish</code>". 
+    <ol>
+      <li><a href="EnterForm.html"><b>Entering the quantified input formula</b></a>
+      <li><a href="Norm.html"><b>The normalization phase</b></a>
+      <li><a href="Projection.html"><b>The projection phase</b></a>
+      <li><a href="Lifting.html"><b>The stack constuction (or lifting) phase</b></a>
+      <li><a href="Solution.html"><b>Solution formula construction</b></a>
+    </ol>
+    These five steps (or fewer if you choose to ignore them with a
+    "<code>finish</code>" command) are enough to use QEPCAD to naively 
+    solve quantifier-elimination problems.  Please follow the above
+    links to the documentation on the individual steps to see how to
+    use QEPCAD less naively and more effetively.
+    </p>
+
+    <p>
+      <b>Beyond Basic Quantifier Elimination</b>
+      Basic quantifier elimination takes a quantified Tarski formula
+      as input and produces a quantifier-free Tarski formula as
+      output.  QEPCAD does more than just this, however, and using its 
+      other capabilities often allows you to solve problems more
+      efficiently.
+    <ul>
+      <li><b>Simplification of Quantifier-free Formulas</b>.  One of
+	QEPCAD's most important features is its ability to produce simple
+	quantifier-free equivalent formulas (see the above link for 
+	<a href="Solution.html">Solution formula construction</a>).  However,
+	QEPCAD produces simple equivalent formulas even when the input 
+	formula is already quantifier-free.  Thus, QEPCAD can be used
+	to do formula simplification ... perhaps for formulas that
+	generated by other quantifier elimination programs.  For very
+	large formulas, repeated applications of QEPCAD	for
+	simplification  of subformulas may succeed when applying
+	QEPCAD directly to the entire formula fails.  I have some
+	software for this, so please e-mail me if you're interested.
+      <li><b>Beyond "there exists" and "for all"</b>.  Cylindrical
+	Algebraic Decomposition (CAD) is essentially nothing more than a
+	representation for <em>semi-algebraic sets</em>, which are
+	precisely the sets that can be defined by Tarski formulas.
+	Their importance for quantifier elimination lies in the fact
+	that the projections implied by "there exists" and "for all"
+	are trivial to carry out with the CAD representation.
+	However, there are many other "quantifiers" that can be
+	carried out just as easily with CADs, and QEPCAD offers
+	several (see the above link for 
+	<a href="EnterForm.html">Entering the quantified input formula</a>).
+	Using these quantifiers in phrasing problems can drastically
+	decrease the number of variables needed, which in turn can
+	reduce computing time.
+      <li><b>Plotting 2-dimensional CADs</b>.
+	QEPCAD can generate "adjacency information" for 2-dimensional
+	CADs, which allows it to generate topologically correct
+	plots.  <a href="Plot.html"><b>More Information ...</b></a>
+      <li><b>Beyond Tarski Formulas</b>.
+	Both the input formula and the solution formula in the
+	quantifier elimination problem are assumed to be Tarski
+	formulas, meaning that each atomic formula is an equality or
+	inequality in the free and bound variables.  QEPCAD is
+	actually a quantifier elimination procedure for an extended
+	language that includes "indexed root expressions". For
+	example, we can use the input formula<br>
+	<center><code>(E x)[ x = _root_3 x^3 + a x^2 + b x + c /\ x &gt; c ].</code></center>
+	to express that there exist at least three distinct roots of
+	the polynomial 
+	<em>x<sup>3</sup> + a x<sup>2</sup> + b x + c</em>
+	and that the third root (smallest to largest) is greater than
+	<em>c</em>, the polynomials's trailing coefficient.  QEPCAD
+	accepts input and produces output in this extended language.
+    </ul>
+
+    </p>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Fri Jul 12 14:34:24 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 31 15:07:09 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

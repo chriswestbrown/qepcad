@@ -1,0 +1,216 @@
+valiant[16] [~/]> qepcad
+=======================================================
+                                                       
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version 19 (Interactive)                
+                       January 11, 2001                
+                                                       
+                          by                           
+                       Hoon Hong                       
+              (hhong@risc.uni-linz.ac.at)              
+      Research Institute for Symbolic Computation      
+                                                       
+                 with contributions by                 
+                   George E. Collins                   
+                   Jeremy R. Johnson                   
+                  Mark J. Encarnacion                  
+                                                       
+=======================================================
+Enter an informal description  between '[' and ']':
+[ The positive-definite quartic problem ]
+Enter a variable list:
+(a,b,c,d,x)
+Enter the number of free variables:
+4
+Enter a prenex formula:
+(Ax)[ x^4 + a x^3 + b x^2 + c x + d > 0 ].
+
+
+=======================================================
+
+Before Normalization >
+prop
+
+Before Normalization >
+go
+
+Before Projection (x) >
+go
+
+Before Choice >
+fast
+
+Before Choice >
+go
+
+Before Solution >
+pdq
+CAD is not projection definable.
+DOPFSUFF took 0 ms
+
+Before Solution >
+sol E
+--SCADDSCON  : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+--PPFLPROJ   : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+--PPFLPROJ   : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+--PPFLPROJ   : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+
+NECCONDS: t1 = 0 t2 = 0 t3 = 0
+
+An equivalent quantifier-free formula:
+
+d > _root_1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 /\ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 \/ d > _root_-1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 ]
+
+
+Before Solution >
+sol T
+
+
+Iteration #: 1
+Level 1 : 0 projection factors.
+Level 2 : 1 projection factors.
+Level 3 : 2 projection factors.
+Level 4 : 1 projection factors.
+
+Level 1 : 1 cells.
+Level 2 : 3 cells.
+Level 3 : 13 cells.
+Level 4 : 55 cells.
+
+There are 55 cells with determined truth value.
+
+
+Step2: 0
+
+Step3: 0
+
+Step4: 0
+
+|Gb| = 1
+
+
+
+P_4,1  = fac(J_4,1) = fac(dis(A_5,1))
+       = 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2
+
+
+Step6: 0
+
+Step8: 0
+Gonna introduce ... P_4,2 = 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3
+
+
+Step9: 650
+
+Step10: 20
+
+
+Iteration #: 2
+Level 1 : 0 projection factors.
+Level 2 : 1 projection factors.
+Level 3 : 3 projection factors.
+Level 4 : 2 projection factors.
+
+Level 1 : 1 cells.
+Level 2 : 3 cells.
+Level 3 : 17 cells.
+Level 4 : 107 cells.
+
+There are 107 cells with determined truth value.
+
+
+Step2: 0
+
+Step3: 0
+
+Step4: 0
+
+|Gb| = 1
+
+
+
+P_4,1  = fac(J_4,1) = fac(dis(A_5,1))
+       = 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2
+
+
+Step6: 0
+
+Step8: 0
+Gonna introduce ... P_4,3 = 768 d - 192 a c - 128 b^2 + 144 a^2 b - 27 a^4
+
+
+Step9: 1920
+
+Step10: 40
+
+
+Iteration #: 3
+Level 1 : 0 projection factors.
+Level 2 : 1 projection factors.
+Level 3 : 4 projection factors.
+Level 4 : 3 projection factors.
+
+Level 1 : 1 cells.
+Level 2 : 3 cells.
+Level 3 : 25 cells.
+Level 4 : 195 cells.
+
+There are 195 cells with determined truth value.
+
+
+Step2: 0
+The whole thing took: 2630 miliseconds!
+
+--SCADDSCON  : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+--PPFLPROJ   : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+--PPFLPROJ   : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+--PPFLPROJ   : 0
+--BODY       : 0
+RSFHSP alone sufficed.
+--MINHIT     : 0
+--REFINE CAD : 0
+
+NECCONDS: t1 = 0 t2 = 20 t3 = 0
+
+An equivalent quantifier-free formula:
+
+256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 >= 0 /\ [ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 <= 0 ] \/ [ 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 >= 0 /\ 768 d - 192 a c - 128 b^2 + 144 a^2 b - 27 a^4 >= 0 ] \/ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 >= 0 /\ 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 ] ]
+
+
+Before Solution >
+quit
+Quitting the QEPCAD system... Bye!
+valiant[17] [~/]> 

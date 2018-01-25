@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Sample Point Documentation</title>
+
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - QEPCAD Sample Point Documentation<hr/></h1>
+
+    <hr>
+    <a href="sample_points">George'sFile</a><br>
+    A polynomial in Q(alpha) is represented as a pair (q,P), where q is a
+    rational number, and P is a primitive univariate integral
+    polynomial of degree less than that of the minimal polynomial for alpha.
+    
+    <hr>
+    <DT><B>Primitive sample point : a qepcad structure</B> </DT>
+    <DD>A list (C,K,c):
+      <OL>
+	<LI>C - an element of Z[x], primitive & irreducible.</LI>
+	<LI>K - an isolating interval for a root of C, call it alpha.</LI>
+	<LI>c - a list (c_1,...,c_n) of coordinates in Q(alpha).</LI>
+      </OL>
+    </DD>
+    <P>
+      
+      <DT><B>Not primitive sample point : a qepcad structure</B></DT>
+      <DD>A list (B,J,A,I,c):
+	<OL>
+	  <LI>B - element of Q(alpha)[y], primitive & squarefree.</LI>
+	  <LI>J - an isolating interval for a root of B, call it beta.</LI>
+	  <LI>A - element of Z[x], primitive and irreducible.</LI>
+	  <LI>I - an isolating interval for a root of A, call it alpha.</LI>
+	  <LI>c - a list (c_1,...,c_n) of coordinates in Q(alpha).</LI>
+	</OL>
+	The structure represents a list of n+1 coordinates, 
+	the n+1st being beta.
+      </DD>
+    </DL>
+      
+      
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+    <!-- Created: Mon Oct 18 17:18:23 EDT 1999 -->
+    <!-- hhmts start -->
+Last modified: Tue Jul 30 15:30:45 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

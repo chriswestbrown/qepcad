@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - Quantifier Elimination by Cylindrical Algebraic
+      Decomposition</title>
+    <meta name="keywords" content="cylindrical algebraic decomposition, quantifier elimination, formula simplification, semi-algebraic sets, qepcad, saclib, computer algebra">
+    <meta name="description" content="The homepage for QEPCAD - a system for real quantifier elimination and formula simplification based on cylindrical algebraic decomposition.">
+    <LINK REL="STYLESHEET" HREF="QEPCAD.css">
+  </head>
+
+  <body>
+
+    <!-- TITLE STUFF  -->
+    <h1>Q E P C A D -
+      <small>Quantifier Elimination by Partial Cylindrical Algebraic 
+	Decomposition</small><hr></h1>
+    <p>
+      <table width="100%"><tr>
+	  <td align="center"><span class="caption">
+	      <a href="WhatsNew.html">What's New</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a href="WhatisQEPCAD.html">About QEPCAD</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a href="QE.html">Quantifier Elimination</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a href="user/UsingQEPCAD.html">User Documentation</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a href="impl/Implementation.html">Implementation Documentation</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a href="examples/Examples.html">Examples</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a
+		 href="../INSTALL/IQ.html">Install QEPCAD</a></span></td>
+	  <td align="center"><span class="caption">
+	      <a href="../SLFQ/Home.html">SLFQ</a></span></td>
+      </tr></table>
+    </p>
+
+    <dl>
+
+      <dt><b>What is the latest?</b></dt>
+      <dd>
+	The current version of QEPCADB is Version B 1.69, 16 March 2012.
+	See <a href="LOG">LOG</a> of recent important changes.
+      </dd>
+
+      <dt><b>What is QEPCAD?</b></dt>
+      <dd>QEPCAD is an implementation of quantifier elimination by
+	partial cylindrical algebraic decomposition due orginally to
+	Hoon Hong, and subsequently added on to by many others.  It is 
+	an interactive command-line program written in C, and based on 
+	the SACLIB library of computer algebra functions.  Presented here is 
+	<!-- $Format: "QEPCAD B version $ProjectMajorVersion$,"$ -->
+QEPCAD B version 1,
+	the "B"
+	designating a substantial departure from the original QEPCAD
+	and distinguishing it from any development of the original
+	that may proceed in a different direction.
+	<a href="WhatisQEPCAD.html"><b>More Information ...</b></a>
+      </dd>
+
+      <dt><b>What is Quantifier Elimination?</b></dt>
+      <dd>Quantifier elimination algorithms allow us to answer
+	questions about <em>semi-algebraic sets</em>, which are
+	subsets of real <em>n</em>-dimensional space
+	whose boundaries are defined by polynomial equations.
+	<b><a href="QE.html">More Information ...</a></b>
+      </dd>
+
+      <dt><b>How do I use QEPCAD?</b></dt>
+      <dd>QEPCAD is an interactive command-line driven program.  At
+	its simplest you enter a formula like "there exists an <code>x</code>
+	such that <code>[ x^2 + b x + c = 0 ]</code>"
+	and QEPCAD returns a formula like "<code>[ b^2 - 4 c >= 0]</code>",
+	which is equivalent to the input when <code>x</code>,
+	<code>b</code> and <code>c</code> are assumed to range over
+	the real numbers.
+	However, QEPCAD's interactive interface allows the user
+	control of how problems are solved and what kinds of answers 
+	are given, and making good use of this interface can
+	drastically reduce the time and space required to solve problems
+	and improve the quality of QEPCAD's results.
+	<a href="user/UsingQEPCAD.html"><b>More Information ...</b></a>
+      </dd>
+      
+      <dt><b>How do I get/install QEPCAD?</b></dt>
+      <dd>
+	We have QEPCAD available for Sun Solaris and Linux.  What we
+	provide is the source code for the SACLIB library and QEPCAD.
+	If you have the gcc compiler and a few other standard tools
+	available, you should be able to compile and run QEPCAD
+	without too much trouble ... I hope!
+	<a href="../INSTALL/IQ.html"><b>More Information ...</b></a>
+      </dd>
+    </dl>
+  </p>
+
+<p><center><b>ISSAC 2004 Cylindrical Algebraic Decompostion Tutorial,
+	  click on "Research" at 
+	  <a href="http://www.usna.edu/Users/cs/wcbrown/">this
+	    page</a>.</b></center></p> 
+
+    <p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Fri Jul 12 09:51:13 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Apr 15 14:02:46 EDT 2010
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - Entering Formulas</title>
+  </head>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Entering Formulas<hr></h1>
+<p>
+      Entering formulas in QEPCAD requires a little bit of thought.
+      There are some decisions to made that can have a considerable
+      impact on the time required for your problem.
+</p>
+
+    <div class="screen">
+<pre>
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 0.1, 30 Jul 2002
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robiduex, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[ Finds x-coordinates of circle-line intersections ]
+Enter a variable list:
+(x,y)
+Enter the number of free variables:
+1
+Enter a prenex formula:
+(Ey)[ x^2 + y^2 = 1 /\ 3 x - 5 y + 1 = 0 ].
+</pre>
+    </div>
+    <p>
+    <b>General Information</b> 
+    QEPCAD fist asks for a problem description, which is really quite
+    nice if you store a list of commands in a file that then gets sent 
+    to QEPCAD by indirection.  Next you need to specify the variables
+    that you use.  Ordering of variables is very important in
+    quantifier elimination by CAD, and the variable list you give
+    specifies not only the variables themselves, but also their
+    ordering.  Free variables must appear before quantified variables,
+    and the quantified variables must appear in the same order in 
+    which they will appear in the prenex input formula (which is
+    entered later).  Be forewarned that different variable
+    orderings often produce wildly different running times!
+    Finally, you must tell QEPCAD how many variables are free in the
+    problem.  If you enter <em>k</em> for this value, then QEPCAD
+    assumes that the first <em>k</em> variables in the given variable
+    list are free.
+    </p>
+    <p>
+      <b>The Formula</b>
+      The formula you enter must be in prenex form.  Each
+      quantified variable is introduced in parentheses by the
+      quantifier followed by the variable name.  Quantifiers are:
+    <ul>
+      <li><code>E</code> = "there exists"
+      <li><code>A</code> = "for all"
+      <li><code>F</code> = "for infinitely many"
+      <li><code>G</code> = "for all but finitely many"
+      <li><code>C</code> = "for a connected subset"
+      <li><code>X</code><em>k</em> = "for exactly <em>k</em> distinct values"
+    </ul>
+
+    Thus, "there exists an x such that for all y ..." would
+    be written as <code>(E x)(A y)</code>.   The quantifier-free 
+    part of the input must appear in brackets, and throughout
+    the formula brackets are used for groupings of formulas, and 
+    parentheses are used for algebraic expressions.
+    The boolean operators are: 
+    <code>/\ , \/ , ~ , ==&gt; , &lt;== , &lt;==&gt;</code>.
+    The relational operators are: <code>= , /= , &lt; , &gt; , &lt;= , &gt;=</code>.
+    Hopefully these are all self explanatory.  Qepcad doesn't
+    understand precedence for boolean operators, so you must
+    use brackets to remove ambiguity.  Atomic formulas can be
+    equalities or inequalities of polynomials in the variables you've
+    entered with rational coefficients, <em>or</em> they may
+    <em>proper indexed root expressions</em> - please see
+    <a href="ETF.html"><b>Extended Tarski Formulas</b></a> for more information.
+    Finally, the input formula
+    must be terminated by a period.
+</p>
+
+    <p>
+      <b>Phrasing Problems in the Best Way for QEPCAD</b>
+      You can affect QEPCAD's performance quite drastically by how you 
+      happen to translate a problem into an input formula.  Here are a 
+      few things to keep in mind:
+    <ol>
+      <li>The fewer variables the better!  Use the extended language
+	if you can as an alternative to introducing new variables.
+      <li>Keep degrees low if possible!  For example, if a variable
+	<em>x</em> always appears to an even power in a formula,
+	replace <em>x</em> with <em>sqrt(x)</em> and add the
+	restriction <em>x &gt;= 0</em> to the formula.
+      <li>If you can use the quantifiers F = "for infintely many" or 
+	G = "for all but finitely many" in place of E = "there exists"
+	and A = "for all", definitely do it!!  QEPCAD can get rid of
+	some algebraic number computations this way, and that can make 
+	a huge difference!
+      <li>Split formulas up into small independent pieces if possible!
+      <li>If you can eliminate some variables on your own, do it!
+	Remember, the fewer variables QEPCAD sees the better.
+    </ol>
+    </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Fri Jul 12 13:18:24 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 17:02:57 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

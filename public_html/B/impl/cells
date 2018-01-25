@@ -1,0 +1,28 @@
+                                Cells
+
+A cell is represented by a list of length 10.  Each list element
+has a name to which is assigned as constant value its position
+in the list.  Following are the names, list positions and brief
+descriptions of the elements.  (The names and their values
+can be found in the file qepcad.h in the source directory.)
+
+LEVEL      1   The level of the cell.
+CHILD      2   List of the children cells of the cell.
+ASSIGNED   3   Assignment flag (for parallel execution only).
+TRUTH      4   Truth value of the cell.
+SAMPLE     5   Sample point for the cell.
+INDX       6   Cell index (represented as a list).
+SIGNPF     7   Signature of the projection factors in the cell.
+HOWTV      8   How the truth value of the cell was determined.
+DEGSUB     9   List of degrees of substituted projection factors.
+MULSUB     10  List of multiplicities of substituted projection factors.
+
+The signature of the projection factors in a cell of level k is a
+list whose i-th element is the (constant) sign of the i-th
+level k projection factor (P_k,i) in the cell.  The list of
+multiplicities of substituted projection factors is a list
+((i_1,e_1),...,(i_n,e_n)), n >= 0, with i_1 < i_2 < ... < i_n
+and each e_j > 0 where the i_j are the second indices of all
+k-level projection factors which are zero in the cell and e_j
+is the multiplicity of the zero.  This is a null list for
+each sector, a non-null list for each section.

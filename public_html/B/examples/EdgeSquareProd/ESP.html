@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - Edge Square Product Example</title>
+  <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+
+  <body>
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> - Edge Square Product
+      Example</h1>
+
+    <b>
+      Using easy eliminations before calling QEPCAD, declaring an
+      equational contraint, using topological information in 2D.
+    </b>
+    <hr>
+    <p>
+      <div class="screenleft">
+<pre>
+(E x1)(E x2)(E y2)[
+x = x1 x2 - y2 /\ 
+y = x1 y2 + x2 /\ 
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= y2 /\ y2 <= 1
+].
+</pre>
+      </div>
+      This example is due to George E. Collins.  It asks for the
+      "complex product" of a square and a segment in the complex
+      plane.  The segment is [0,2]x{1} and the square is [2,4]x[-1,1].
+      Probably the obvious way to phrase this as a QE problem is what
+      you see in the first screen: x and y are set to the real and
+      imaginary parts of the complex product of x1 + i and x2 + i y2,
+      x1 + i being a point on the segment and x2 + i y2 being a point
+      in the square.  However, with this formulation of the problem
+      QEPCAD takes a prohibative amount of memory, and with enough
+      memory the time would be prohibative.
+    </p>
+    <p>
+      <div class="screen">
+	<pre>
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 0.1, 30 Jul 2002
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robiduex, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[
+Edge-square product problem with equational constaints
+]
+Enter a variable list:
+(x,y,x1,x2)
+Enter the number of free variables:
+2
+Enter a prenex formula:
+(E x1)(E x2)[
+y = x1 (x1 x2 - x) + x2 /\
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= (x1 x2 - x) /\ (x1 x2 - x) <= 1
+].
+
+
+=======================================================
+
+Before Normalization >
+prop-eqn-const
+
+Before Normalization >
+go
+
+Before Projection (x2) >
+d-level-f 4
+A_4,1  = input
+       = x1^2 x2 + x2 - x x1 - y
+A_4,2  = input
+       = x2 - 2
+A_4,3  = input
+       = x2 - 4
+A_4,4  = input
+       = x1 x2 - x + 1
+A_4,5  = input
+       = x1 x2 - x - 1
+
+
+Before Projection (x2) >
+eqn-const-l (A_4,1)
+
+Before Projection (x2) >
+finish
+An equivalent quantifier-free formula:
+
+x + 1 >= 0 /\ y + 2 x - 20 <= 0 /\ 2 y - x + 5 >= 0 /\ 
+8 y + x^2 - 16 >= 0 /\ 4 y - x - 17 <= 0 /\ 
+[ 2 y + x - 5 >= 0 \/ y - 2 >= 0 \/ [ x - 1 >= 0 /\ 
+x - 2 <= 0 ] \/ [ x - 1 <= 0 /\ x >= 0 ] ]
+=======================================================
+	</pre>
+      </div>
+      However, it's easy to see from the first equality that 
+      y2 = x1 x2 - x, so we can substitute x1 x2 - x for y in the
+      formula and eliminate one variable before we even start.  This 
+      yields a second input formula, which is quite a bit better for
+      QEPCAD than the first.  
+      We can solve for x2 using the second equation, but doing so gives
+      us the substitution x2 = (y + x)/(x1^2 + 1), which has a
+      denominator.   We could still make the substitution and then
+      clear denominators, but there is another more general solution
+      using QEPCAD:  the remaining equation may be declared as an
+      equational constraint 
+      (<a href="../../user/EqConst.html"><b>documentation on equational constraints</b></a>).
+      Equational constraints must be used with care, but if there is a 
+      polynomial of the higest level that must be zero for the
+      quantifier-free part of the input formula to be true, it may 
+      be declared an equational contraint.  The second screen shows
+      the QEPCAD session that realizes this input formulation.  In
+      general, only one projection factor may be declared an
+      equational constraint, although QEPCAD does not enforce this.
+    </p>
+
+    <p>
+      In this form, QEPCAD solves the Edge-Square Product in 80
+      seconds on my Sun Ultra 60.  There is, however, an even fast way 
+      to arrive at the solution.  It can be proven that the answer to
+      this problem must be a set that is the closure of an open set.
+      QEPCAD is able to take a partial assignment of truth values to
+      cells in a CAD of 2-space and deduce other truth values given
+      that the set to be represeted is the closure of an open set.
+      Here's what the input to QEPCAD would look like:
+<pre>
+[]
+(x,y,x1,x2)
+2
+(E x1)(E x2)[
+y = x1 (x1 x2 - x) + x2 /\
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= x1 x2 - x /\ x1 x2 - x <= 1
+].
+prop-eqn-const
+go
+eqn-const-l (A_4,1)
+go
+sel [level = dimension \/ level > 2 ]
+go
+sel [level < 2 ]
+go
+tvc2d
+use-sel n
+go
+sol T
+d-stat
+</pre>
+    </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Jul 15 12:04:56 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 17:29:21 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

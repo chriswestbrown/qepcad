@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>An example from a paper by Hirokazu Anai</title>
+  </head>
+
+  <body>
+    <h1>An example from a paper by Hirokazu Anai</h1>
+<pre>
+<b>valiant[120] [~/research/exqe/]></b> <font color="red">qepcad</font>
+=======================================================
+                                                       
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version 19 (Interactive)                
+                       January 11, 2001                
+                                                       
+                          by                           
+                       Hoon Hong                       
+              (hhong@risc.uni-linz.ac.at)              
+      Research Institute for Symbolic Computation      
+                                                       
+                 with contributions by                 
+                   George E. Collins                   
+                   Jeremy R. Johnson                   
+                  Mark J. Encarnacion                  
+                                                       
+=======================================================
+Enter an informal description  between '[' and ']':
+<font color="red">[ 
+ In this problem I am simplifying the answer given to the last
+ example problem from the following paper:
+
+ @InProceedings{Anai:98,
+  author = 	 {H. Anai},
+  title = 	 {Solving {LMI} and {BMI} problems by quantifier elimination},
+  booktitle = 	 {Proc. of IMACS-ACA'98},
+  year = 	 {1998},
+  editor = 	 {R. Liska},
+  address = 	 {http://www-troja.fjfi.cvut.cz/aca98/proceedings.html},
+  note = 	 {Electronic Proceedings}}
+]</font>
+Enter a variable list:
+<font color="red">(s,z)</font>
+Enter the number of free variables:
+<font color="red">2</font>
+Enter a prenex formula:
+<font color="red">[
+[s z  + s - 1 >= 0 /\ s = 0 /\  z  + 1 >= 0]
+\/ [s z  + s >= 0 /\ s = 0 /\  z  = 0] \/ [s^2  + 4 s z  >= 0 /\ [[
+s^2  - 2 s &lt;= 0 /\ s z  + s - 1 &lt;= 0 /\ s = 0 /\ [
+s^2  + 3 s z  - s - 2 z  &lt;= 0
+ \/ [s +  z  - 1 &lt;= 0 /\ [s z  + s - 1 = 0 \/  z  = 0]]]
+ /\ [s + 2 z  >= 0 \/  z  = 0]] \/ [s^2  - 2 s &lt;= 0 /\ s + 2 z  >= 0
+ /\ s = 0 /\ [
+[s^2  + 3 s z  - s - 2 z  &lt;= 0 /\ [s z  + s - 1 &lt;= 0 \/  z  = 0]]
+ \/ [s +  z  - 1 >= 0 /\ [s z  + s - 1 >= 0 \/  z  = 0]]]]]]
+ \/ [s = 0 /\  z  >= 0]
+].</font>
+
+
+=======================================================
+
+Before Normalization >
+<font color="red">prop</font>
+
+Before Normalization >
+<font color="red">go</font>
+
+Before Projection (z) >
+<font color="red">go</font>
+
+Before Choice >
+<font color="red">fast</font>
+
+Before Choice >
+<font color="red">go</font>
+
+Before Solution >
+<font color="red">sol T</font>
+
+An equivalent quantifier-free formula:
+
+s = 0 /\ z >= 0
+
+
+Before Solution >
+
+</pre>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Fri Aug 31 09:17:26 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Fri Aug 31 09:27:49 EDT 2001
+<!-- hhmts end -->
+  </body>
+</html>

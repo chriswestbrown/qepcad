@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Showing that B vanishes identically, and where!</title>
+  </head>
+
+  <body>
+    <h1>Showing that B vanishes identically, and where!</h1>
+<pre>
+B = 6 a b d^2 - 9 b d^2 - 9 a d^2 + 13 d^2 + 6 a b c^2 - 9 b c^2
+    - 9 a c^2 + 13 c^2 - 18 a b c + 26 b c + 26 a c - 36 c + 13 a b 
+    - 18 b - 18 a + 24
+</pre>
+<hr>
+<pre>
+[ 
+This shows that B *does* vanish identically ... over a portion
+of the variety:
+3 c^4 - 18 c^3 + 6 d^2 c^2 + 39 c^2 - 18 d^2 c - 36 c + 3 d^4 + 11 d^2 + 12 = 0
+Which is just the resultant of B's coefficients.  This takes 90 milliseconds.
+]
+(c,d,a)
+2
+(Ea)[
+6 d^2 a + 6 c^2 a - 18 c a + 13 a - 9 d^2 - 9 c^2 + 26 c - 18 = 0 <font color="red">&lt;-- this becomes A_3,1</font>
+/\
+-9 d^2 a - 9 c^2 a + 26 c a - 18 a + 13 d^2 + 13 c^2 - 36 c + 24 = 0
+/\
+d > 0
+/\
+[
+2 c - 3 = 0 \/ 2 c - 3 /= 0 <font color="red">&lt;-- "adds" polynomial to the projection factor set</font>
+]
+].
+prop
+go
+eqn-const-l (A_3,1)
+eqn-const-l (A_3,2)
+st 1
+rem-pj 2,2 <font color="red">&lt;-- Although A_3,1 vanishes identically, we ensure</font>
+y          <font color="red">    that the points where it does vanish identically</font>
+go         <font color="red">    are individual cells in the CAD</font>
+fast
+go
+sol T
+d-stat
+quit
+</pre>
+<hr>
+<pre>
+[ 
+This shows that A_3,1 does vanish identically over
+2 c - 3 = 0
+10 milliseconds reported
+]
+(c,d)
+1
+(Ed)[
+6 c^2 - 18 c + 6 d^2 + 13 = 0
+/\
+-9 c^2 + 26 c - 9 d^2 - 18 = 0
+/\
+d > 0
+].
+prop
+go
+eqn-const-l(A_2,1)
+eqn-const-l(A_2,2)
+go
+fast
+go
+sol T
+</pre>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Jul 16 15:49:56 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Mon Jul 16 17:32:15 EDT 2001
+<!-- hhmts end -->
+  </body>
+</html>

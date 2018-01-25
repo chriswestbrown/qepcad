@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>RCAD</title>
+  </head>
+
+  <body>
+    <h1>RCAD</h1>
+<h2>RCell : a new data structure, a refined CAD</h2>
+<p>
+      An RCAD is a list 
+      (LEVEL, CHILD, ASSIGNED, TRUTH, SAMPLE, INDX, SIGNPF, HOWTV, DEGSUB,
+      MULSUB, INCELL), with the following meanings:
+
+<p>
+ <OL>
+ <LI>LEVEL - the level of the cell.</LI>
+ <LI>CHILD - a list of RCell data structures, the children.</LI>
+ <LI>ASSIGNED - Assignment flag (for parallel execution only).</LI>
+ <LI>TRUTH - the truth value of the cell: TRUE, FALSE, or UNDET.</LI>
+ <LI>SAMPLE - a sample point data structure.</LI>
+ <LI>INDX - the index of the cell as a list.</LI>
+ <LI>SIGNPF - a list (S_1,...,S_k), where k is the LEVEL of the cell.
+     S_i is a list (s_1,...,s_n) where n is the number of k-i+1 level
+     projection factors, and s_j is the sign of ... well here I change
+     things.  The n projection factors at some level m are
+     (P_m,i_1, P_m,i_2, ... , P_m,i_n), where i_1 < i_2 < ... < i_n.
+     So s_j is the sign of P_i,i_{k-i+1} in the cell.
+
+</LI>
+ <LI>HOWTV - how the truth value was assigned, the possibilities
+     are BYTEV = trial evaluation, BYPRP = propogation, 
+     BYEQC = equational constraint, and NOTDET = not determined.</LI>
+ <LI>DEGSUB - List of degrees of substituted projection factors.</LI>
+ <LI>MULSUB - List of multiplicities of substituted projection factors.</LI>
+ <LI>INCELL - the cell in the qepcad CAD which contains this RCELL.</LI>
+ <LI>OSPFLAG - a flag that equals 1 if this cell's sample point was a
+               sample point from the original CAD.</LI>
+ </OL>
+
+
+    <hr>
+<!-- Created: Tue Jan 19 10:31:36 EST 1999 -->
+<!-- hhmts start -->
+Last modified: Tue Jan 19 10:33:19 EST 1999
+<!-- hhmts end -->
+  </body>
+</html>

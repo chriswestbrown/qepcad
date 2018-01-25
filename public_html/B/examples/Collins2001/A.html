@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Proving A nowhere identically zero</title>
+  </head>
+
+  <body>
+    <h1>Proving A nowhere identically zero</h1>
+<pre>
+A = 4 a b d^2 - 5 b d^2 - 5 a d^2 + 6 d^2 + 4 a b c^2 - 5 b c^2
+    - 5 a c^2 + 6 c^2 - 10 a b c + 12 b c + 12 a c - 14 c + 6 a b - 7 b
+    - 7 a + 8</pre>
+<hr>
+<pre>
+[ 
+Show that A does not vanish identically anywhere
+returns FALSE, 10 milliseconds reported
+]
+(c,d,a)
+3
+(E c)(E d)(E a)
+[
+d > 0
+/\
+4 d^2 a + 4 c^2 a - 10 c a + 6 a - 5 d^2 - 5 c^2 + 12 c - 7 = 0 <font color="red">&lt;-- this becomes A_3,1</font>
+/\
+-5 d^2 a - 5 c^2 a + 12 c a - 7 a + 6 d^2 + 6 c^2 - 14 c + 8 = 0
+].
+prop
+go
+eqn-const-l (A_3,1)
+eqn-const-l (A_3,2)
+st 1
+rem-pj 2,2 <font color="red">&lt;-- This is only justified if A_3,1 never vanishes identically</font>
+y
+go
+fast
+go
+sol T
+</pre>
+<hr>
+<pre>
+[ 
+This shows that A_3,1 does not vanish identically anywhere
+Returns FALSE in 10 milliseconds 
+]
+(c,d)
+0
+(Ec)(Ed)[
+4 c^2 - 10 c + 4 d^2 + 6 = 0
+/\
+-5 c^2 + 12 c - 5 d^2 - 7 = 0
+/\
+d > 0
+].
+prop
+go
+eqn-const-l(A_2,1)
+eqn-const-l(A_2,2)
+go
+fast
+go
+sol T
+</pre>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Jul 16 15:43:29 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Mon Jul 16 17:45:32 EDT 2001
+<!-- hhmts end -->
+  </body>
+</html>

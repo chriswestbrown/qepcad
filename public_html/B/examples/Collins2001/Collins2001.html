@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Example: Collins 2001</title>
+  </head>
+
+  <body>
+    <h1>QEPCAD Example: Collins 2001</h1>
+    This example came to me from George Collins.  It arose as part of
+    some investigations of his into the Descartes Method of real root
+    isolation.
+<p>
+<h2>The Problem</h2>
+<pre>
+(E a)(E b)[0 &lt; a /\ a &lt; 1 /\ 1 &lt; b /\ b &lt; 2 /\ d &gt; 0 /\ A &gt; 0 /\ B &lt; 0]</pre>
+where
+<pre>
+A = 4 a b d^2 - 5 b d^2 - 5 a d^2 + 6 d^2 + 4 a b c^2 - 5 b c^2
+    - 5 a c^2 + 6 c^2 - 10 a b c + 12 b c + 12 a c - 14 c + 6 a b - 7 b
+    - 7 a + 8
+
+B = 6 a b d^2 - 9 b d^2 - 9 a d^2 + 13 d^2 + 6 a b c^2 - 9 b c^2
+    - 9 a c^2 + 13 c^2 - 18 a b c + 26 b c + 26 a c - 36 c + 13 a b 
+    - 18 b - 18 a + 24</pre>
+    <a href="C2001.pdf">Here's a pdf-file picture</a> of the solution
+    space for the problem.  You're seeing [0.25,2.75] x [-1.5,1.5],
+    and the blue and green portion is the actually solution set.
+    <p>
+    <h2>The Solution</h2>
+      Using <a href="BasicInput.qe">this basic input file</a>, QEPCAD
+      takes a fairly long time to run.  The only special command given 
+      in this file is "prop-eqn-const", which means "propogate
+      equational constraints".  There are, of course, no equational
+      constraints here, so the only effect of this command is that
+      QEPCAD uses the McCallum projection operator.  QEPCAD quickly
+      runs out of memory for this problem with its default amount of
+      garbage collected space.  So to run QEPCAD on this example it
+      should be invoked with the "+N" option, eg:
+<pre>
+qepcad +N8000000
+</pre>
+    Running qepcad without any +N value is equivalent to 
+    <code>qepcad +N2000000</code>.  It takes QEPCAD 128 seconds to
+    come up with the solution:
+<pre>d &gt; 0 /\ [ 2 d^2 + 2 c^2 - 5 c + 3 &lt; 0 \/ 11 d^4 + 22 c^2 d^2 - 54 c d^2 + 31 d^2 + 11 c^4 - 54 c^3 + 99 c^2 - 80 c + 24 &lt; 0 ]</pre>
+    Can we do better? [<b>Note:</b> Because QEPCAD does not implement
+    the lifting method for the McCallum Projection, and because two
+    3-level projection factors do vanish identically at a point,
+    there is the possiblity that our answer is invalid.  That's not
+    the case here, however, as the below shows. ]
+    <p>
+    <ol>
+      <li>Using the option <code>res-alg S</code> tells QEPCAD to
+	compute its resultants and discrimintants using the
+	subresultant PRS method instead of the modular method.  This
+	tends to work better for sparse polynomials, and in this case
+	the time for the projection phase is more than halved
+	... which saves about 0.3 seconds.
+	<p>
+      <li>
+	Another improvement is to use the Improved McCallum Projection
+	defined in [Brown, accepted for publication, JSC 2001].  The
+	McCallum projection includes all discriminants, pairwise
+	resultants and coefficients of projection factors in its
+	projection.  The Improved McCallum Projection includes only the
+	leading coefficients of projection factors.  As long as the
+	polynomial being projected does not vanish identically, this is
+	guaranteed to be valid.  In the first projection (eliminating
+	b), we only need worry about whether A or B vanish identically 
+	anywhere.  Since both polynomials are linear, they may only
+	vanish identically over the resultant of their coefficients.
+	So, we add Res_a(ldcoeff_b(A),trcoeff_b(A)) to the projection
+	factor set, and Res_a(ldcoeff_b(B),trcoeff_b(B)) to the
+	projection factor set.  This ensures that we will will lift
+	over regions where A and B are either identically zero or not
+	identically zero, and never regions where both may hold.  A
+	simple calculation shows that none of the 3-level polynomials
+	vanish identically over the region d &gt; 0.  So,
+	<a href="BetterInput1.qe">here is a better input file</a> for
+	solving the same problem.  This takes 42.6 seconds on my
+	machine.  It's worth noting that in truth no new polynomials
+	are "added" to the projection factor set, since the two
+	resultants from the above appear as projection factors anyway
+	from other parts of the projection.
+	<p>
+      <li>Assigning a truth value to a specific cell in in the CAD of
+	free variable space (i.e. the d-c plane here) means solving
+	the decision problem obtained by substituting the sample-point 
+	value into the original formula.  Thus, assigning a truth
+	value to a specific cell in in the CAD of free-variable space
+	is an instance of the decision problem for a set of strict
+	polynomial inequalities ... and McCallum 1993 tells us that we 
+	only need to look at full dimensional cells to answer that
+	question.   Therefore ... we don't need to worry about whether 
+	or not A and B vanish identically anywhere, becuase they
+	vanish identically over some subset of the zero-set of their
+	leading coefficients, and now we know that there is no need to 
+	lift over their leading coefficients.  It's a little difficult 
+	to actually take advantage of this with QEPCAD in its current
+	configuration.
+	<p>
+      <li>Finally, we note that the set defined by the quantifier-free 
+	part of the input formula is bounded in both a and b.  As
+	described in [Brown, accepted for publication, JSC 2001], this 
+	means that even the leading coefficients need not be included
+	when projecting to eliminate a and b.  The same requirement,
+	however, that the polynoimials we project not vanish
+	identically anywhere remains.  
+	The only place that this might happen is above the zeros of
+	R = Res_a(ldcoeff_b(B),trcoeff_b(B)).
+	Thus, we divy our problem into
+	two pieces:
+	<p>
+	<dl>
+	  <dt><b>R /= 0</b>
+	  <dd>In <a href="BetterInput2a.qe">this input file</a> we
+	    restrict to R not equal to zero, and thus we do not need
+	    to include any leading coefficients. This takes about 2.3
+	    seconds.
+	  <dt><b>R = 0</b>
+	  <dd>In <a href="BetterInput2b.qe">this input file</a> we
+	    ristrict to R equal to zero, and we inlude the leading
+	    coefficient of B.  However, now R is an equational
+	    constraint, and we take advantage of this in the
+	    projection and lifting!   This takes about 0.3 seconds.
+	</dl>
+	Finally, we take the disjunction of the two results (<a
+	  href="BetterInput2c.qe">in this input file</a>) and simplify 
+	to get the same final answer as before. This takes about 0.1
+	seconds. Thus, the total time to solve the problem drops to
+	about 2.7 seconds.  I've played a little loosely here, because 
+	I haven't checked whether any 3-level polynomials vanish
+	identically.  In fact this input is perfectly valid, because
+	only one 3-level projection factor vanishes identically
+	<p>
+<li>
+	Let's consider putting this all together into an "automatic"
+	process, i.e. what the computer would do if it followed the
+	approach advocated in [Brown, to appear JSC].  The tree below
+	shows all the computations, and here the question of whether
+	or not a polynomial vanishes identically is simply solved by
+	creating a new qepcad problem which looks for solutions to the 
+	system of coefficients .
+	<pre>
+
+                                             Do any of the
+                                           3-level proj. fac.s
+                                          vanish identically?
+                                                <a href="L31.html">NO!</a>
+                                                 |
+                                                 |
+                       ____--> R /= 0 /\ F ----> ? ----> <a href="BetterInput3b.qe">Sol S1</a>-
+                      /                                          \       Combine
+                     /                                            -----> <a href="BetterInput3c.qe">  &   </a>  ----> Solution
+                    /                                            /       Simplify
+F ---> ? --------> ? --------> R = 0 /\ F -----> ? ----> <a href="BetterInput3a.qe">Sol S2</a> -        
+       |           |                             |
+       |           |                             |
+     Does A     Does B                         Do any of
+     vanish     vanish                        the 3-level
+  identically? identically?                   proj. fac.s
+       <a href="A.html">NO!</a>       <a href="B.html">YES!</a> at                     vanish identically?
+               some points                      <a href="L32.html">YES!</a>, P_3,6
+                 over                        over (3/2,+sqrt(1/12))
+           R = Res_a(ldcoeff(B),trcoeff(B))
+	</pre>
+	The total amount of time required to solve this problem, given 
+	as the sums of the times for all subproblems, is 3 seconds,
+	and the final solution formula is exactly what we got in 128
+	seconds using the basic input file.
+	<p>
+	  <b>Note 1:</b> When lifting over c = 3/2 in <a
+	    href="BetterInput3a.qe">Sol S2</a>, we have to "add" the
+	  point (3/2,+sqrt(1/12)) to the CAD according to [Brown, to
+	  appear JSC]. However, this point is an individual cell
+	  anyway, due to other projection factors, so we don't need
+	  to do anything.
+	<p>
+	  <b>Note 2:</b> According to the McCallum projection, we have
+	  to add a "delineating polynomial" when lifting over points
+	  where the projection factor P_3,6 vanishes identically.
+	  However, as noted in [Brown, to appear JSC], this is not
+	  necessary, since the only derivation of the polynomial P_3,6 
+	  is as a leading coefficient - thus, it only needs to be
+	  sign-invariant (as opposed to order invariant) for lifting
+	  into 4-space to be valid.
+    </ol>
+	<p>
+    <b>Note:</b> Since a and b appear linearly in this problem, I
+      tried using <a
+	href="http://www.fmi.uni-passau.de/~redlog/">REDLOG</a> to
+      solve it. <a href="REDLOG.screen">Here is the session</a> and <a 
+	href="REDLOG.out">here is the output formula</a>.  Redlog
+      solves the problem in 54 seconds, and returns a formula which
+      when stored results in a 233Kb file.
+	<p>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Jul 16 10:03:18 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Tue Jun 18 16:12:21 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

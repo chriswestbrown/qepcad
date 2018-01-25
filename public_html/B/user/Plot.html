@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - Plotting of 2D CADs</title>
+
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Plotting of 2D CADs<hr></h1>
+
+    <p>
+      <div class="screen">
+	<img src="cad1.gif"/>
+      </div>
+      Although currently not developed in a way that's easy to use or
+      fast, QEPCAD is able to produce eps-file plots of CADs of
+      2-dimensional space.  It seems like something people might like
+      to have, so I offer it "as is".
+    </p>
+    <p>
+      <b>The Basic Command</b>  Once QEPCAD has constructed a CAD of
+      2-space (usually you'd see the <em>solution</em> prompt, though 
+      possibly still the <em>choice</em> prompt) you can produce an
+      eps-file plot with the command
+<p>
+<code>p-2d-cad</code> <em>xmin</em> <em>xmax</em> <em>ymin</em> <em>ymax</em>
+      <em>stride</em> <em>filename</em> <em>[z|Z|c|C]</em>
+</p>
+    The result is that a file named <em>filename</em> is created,
+    which gives a plot in eps-format of the region 
+    [<em>xmin</em>,<em>xmax</em>]x[<em>ymin</em>,<em>ymax</em>].
+    The plot is produced by analyzing the topology of the CAD, then
+    sweeping through from left to right and in increments of
+    <em>stride</em> adding points to the model of the CAD.  This
+    doesn't change the topology of the model, it just makes the
+    picture look prettier.  In these plots where the view is
+    [-2,2]x[-2,2], the <em>stride</em> varies from
+    2.5 to 0.25 to 0.025:
+    <p> <center>
+      <img src="plot1.gif"/> <img src="plot2.gif"/> <img src="plot3.gif"/>
+    </center></p>
+    There are some optional paramters:
+    <ul>
+      <li>z turns off the display of dots at 0-dimensional cells, Z
+	turns it on (which is the default)
+      <li>c turns off color display, using grayscale instead, C turns
+	it on (which is the default).
+    </ul>
+    </p>
+
+    <p>
+      <b>What to Do With the eps-file</b>
+      If you're not familiar with eps-files, you may not know what to
+      do or how, so:
+    <ul>
+      <li>View the file using, for example,the <code>gv</code>
+	utility.
+      <li>Convert to a gif-file using the <code>pstogif</code>
+	utility.
+      <li>Convert to a pdf-file using the <code>epstopdf</code>utility.
+      <li>Include in, for example, a latex document.
+    </ul>
+    While it may be pretty unappetizing to some people, you can open
+    up the eps file in any text editor and make some changes if you
+    don't like what I did.  For example, if you don't like the colors, 
+    you can edit the block:
+<pre>
+%% This defines some default colors.
+/DarkTrue { 0.2 0.4 1.0 setrgbcolor } def
+/LightTrue { 0.2 1.0 1.0 setrgbcolor } def
+/DarkFalse { 0.8667 0 0 setrgbcolor } def
+/LightFalse { 0.8667 0.8667 0.8667 setrgbcolor } def
+</pre>
+    that appears near the top of the eps-file.  Just stick in your own 
+    rgb values (I chose these randomly!).
+    </p>
+    <hr>
+    <address><a href="mailto:qepcad@csb.cs.usna.edu">QEPCAD account {Prof. Brown}</a></address>
+<!-- Created: Tue Jul 30 09:42:10 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 10:30:40 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

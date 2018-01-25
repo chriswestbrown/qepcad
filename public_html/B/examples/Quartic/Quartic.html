@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Problem:  The Positive-Definite Quartic Problem</title>
+  <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+
+  <body>
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> - The Positive-Definite Quartic Problem</h1>
+<div class="screen">
+<pre>
+valiant[16] [~/]> <b>qepcad</b>
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 0.1, 30 Jul 2002
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robiduex, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+<b>[ The positive-definite quartic problem ]</b>
+Enter a variable list:
+<b>(a,b,c,d,x)</b>
+Enter the number of free variables:
+<b>4</b>
+Enter a prenex formula:
+<b>(Ax)[ x^4 + a x^3 + b x^2 + c x + d > 0 ].</b>
+
+=======================================================
+
+Before Normalization >
+<b>go</b>
+
+Before Projection (x) >
+<b>go</b>
+
+Before Choice >
+<b>go</b>
+
+Before Solution >
+<b>pdq</b>
+
+CAD is not projection definable.
+
+Before Solution >
+<b>sol E</b>
+
+An equivalent quantifier-free formula:
+
+d > _root_1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 
+a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 
+80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 
+27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 
+c^2 /\ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 
+b^2 > 0 \/ d > _root_-1 256 d^3 - 192 a c d^2 - 128 b^2 
+d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 
+c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 
+b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + 
+a^2 b^2 c^2 ]
+
+
+Before Solution >
+<b>sol T</b>
+An equivalent quantifier-free formula:
+
+256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 
+27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 
+18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b 
+c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 >= 0 /\ [ [ 
+108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 
+/\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 
+a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 
+8 b^4 - 2 a^2 b^3 <= 0 ] \/ [ 256 d^3 - 192 a c d^2 - 
+128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 
+6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 
+4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 
+c^2 + a^2 b^2 c^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 
+d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a 
+b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 >= 0 /\ 768 d - 192 
+a c - 128 b^2 + 144 a^2 b - 27 a^4 >= 0 ] \/ [ 108 c^2 - 
+108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 >= 0 /\ 256 
+d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 
+d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b 
+c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 
+c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 ] ]
+
+
+Before Solution >
+quit
+Quitting the QEPCAD system... Bye!
+valiant[17] [~/]> 
+</pre>
+</div>
+    <p>
+      This is a classic quantifier elimination benchmark problem.  It
+      asks for a characterization of all monic polynomials in x of
+      degree 4 that are positive for all x values.  As a Q.E. problem,
+      this is: <b><code>(Ax)[ x^4 + a x^3 + b x^2 + c x + d > 0 ]</code></b>.
+    One interesting thing about this problem is that when the McCallum 
+    Projection is used, the resulting CAD is not <em>projection
+      definable</em>, meaning that a solution formula in the usual
+    sense (Tarski Formula) cannot be constructed using only those
+    polynomials appearing in the projection factor set.  Since
+    the only polynomials we know anything about are those in the
+    projection factor set, this is a problem. There are two solutions.
+    <ol>
+      <li>Expand the language in which solution formulas may be
+	expressed.
+      <li>Add polynomials to the projection factor set.
+    </ol>
+      Both of these are available with the
+      <code>solution-extension</code> command.  For a formula in an
+      expanded language give:
+<pre>
+solution-extension E
+</pre>
+    The extended language includes references to "indexed roots" of
+    polynomial.  The expression  "_root_k P(x)" means the |k|th root (not 
+    counting multiplicities) of P(x) counting left-to-right if k &gt; 0
+    and right-to-left if k &lt; 0.
+    (more on <b><a href="../../user/ETF.html">the extended language</a></b>)
+    If you really want a solution in the language of Taski Formulas,
+    give the command:
+<pre>
+solution-extension T
+</pre>
+    This will add polynomials to the projection factor set (which may
+    be an expensive operation!) and construct a solution formula as
+    soon as it is able.
+</p>
+    <p>	
+      The command <code>pdq</code>, for "projection definability
+      query" will tell you if the CAD of free-variable space is
+      projection definable.
+    </p>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Wed Aug  1 16:02:29 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 31 15:27:36 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

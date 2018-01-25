@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Example: Hong, Liska, Steinberg 5.14</title>
+
+  <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+  <body>
+
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> - Example: Hong, Liska, Steinberg 5.14</h1>
+    <p>
+    This example problem is formula 5.14 from Hong, Liska, Steinberg,
+    "Testing Stability by Quantifier Elimination", Journal of Symbolic
+    Computation, Vol. 24, No. 2, August 1997.  They report that QEPCAD
+    was unable to prove 5.14 true (meaning the time or space resources 
+    were prohibitive).  Here we show how we used the
+    current version of QEPCAD and some tricks to prove formula 5.14
+    true in 7.4 seconds (Sun Ultra60, 360MHz,256 MB).  It is important to note
+    that all we did was break the problem up into smaller pieces that
+    we could solve independently.  Moreover, this kind of splitting
+    into subproblems could be performed automatically without too much 
+    trouble.
+    </p>
+    <p>
+      <h2>The Problem</h2>
+      The problem we consider here is:
+    <pre>
+F1 (formula 5.14 from the article) = 
+(A a)(A b)(A c2)[ [0 &lt;= a &lt;= 1 /\ 0 &lt;= b &lt;= 1] == &gt; A &lt;= 0 /\ C &lt;= 0 /\ [D &lt;= 0 \/ B &lt;= 0] ]
+    </pre>
+    where A, B, C, and D are polynomials in a,b, and c2.
+    <pre>
+A = c2^4 (a - b + 1) ( a - b - 1) (a - b)^2
+B = 2 c2^4 b ( 3 a^2 b - 2 a^2 - 2 a b^2 + a + b^3 - b) 
+    +  4 c2^3 a b ( a^2 - a + b^2 - b) 
+    + 2 c2^2 a ( a^3 - 2 a^2b + 3 a b^2 - a - 2 b^2 + b )
+C = c2^4 b^2 (b^2 - 1) + 4 c2^3 a b^2 (b - 1)
+    + 2 c2^2 a b (3 a b - 2 a - 2 b + 1)
+    + 4 c2 a^2 b (a - 1) + a^2 (a^2 - 1)
+D = c2^2 ( 8 a^2 b^2 - 12 a^2 b + 5 a^2 - 8 a b^3 + 8 a b^2 
+    + 2 a b - 4 a + 4 b^4 - 4 b^3  - 3 b^2 + 4 b  ) 
+    + 2 c2 ( 4 a^3 b  - 2 a^3 - 4 a^2 b^2 - 2 a^2 b + a^2 
+    + 4 a b^3 - 2 a b^2 + 2 a b - 2 b^3 + b^2  )  
+    + 4 a^4 - 8 a^3 b - 4 a^3 + 8 a^2 b^2 + 8 a^2 b - 3 a^2 
+    - 12 a b^2 + 2 a b + 4 a + 5 b^2 - 4 b
+    </pre>
+  </p>
+    <p>
+    <h2>The Solution</h2>
+    Formula F1 is equivalent to the NOT of
+<pre>
+F2 =
+(E a)(E b)(E c2)[ 0 &lt;= a &lt;= 1 /\ 0 &lt;= b &lt;= 1 /\ [A &gt; 0 \/ C &gt; 0 \/ [D &gt; 0 /\ B &gt; 0] ]
+</pre>
+    It will be a bit easier to discuss <code>F2</code> instead of
+    <code>F1</code>, which is the only reason I make the translation. 
+    Now, if you enter this formula directly into QEPCAD on my
+    UltraSPARC, the computation runs for 1,136 seconds before exiting
+    with failure
+    for a technical reason (the SACLIB library has a limited list of
+    prime numbers available for modular routines, and this list of
+    primes was exhausted during one modular algorithm call).  However,
+    this is not the best way to input the problem to QEPCAD.  
+    We're
+    better off breaking it into several pieces.  Here's an equivalent
+    formulation: 
+
+    <table border="1" cellpadding="5">
+      <tr align="center"><td>b = 0</td><td>or</td><td>b in the open
+	  interval (0,1)</td><td>or</td><td>b = 1</td></tr>
+	    <tr><td><pre>
+F2'' =
+(E a)(E b)(E c2)[ 
+0 &lt;= a &lt;= 1 /\ b = 0 /\
+[ A &gt; 0 \/ C &gt; 0 \/ 
+  [ D &gt; 0 /\ B &gt; 0] 
+] ]
+</pre></td>
+<td><code>\/</code></td>
+<td><pre>
+F2' =
+(E a)(E b)(E c2)[ 
+0 &lt;= a &lt;= 1 /\ 0 &lt; b &lt; 0 /\ 
+[ A &gt; 0 \/ C &gt; 0 \/ 
+  [ D &gt; 0 /\ B &gt; 0] 
+] ]
+</pre></td>
+<td><code>\/</code></td>
+	    <td><pre>
+F2'' = 
+(E a)(E b)(E c2)[ 
+0 &lt;= a &lt;= 1 /\ b = 1 /\
+[ A &gt; 0 \/ C &gt; 0 \/ 
+  [ D &gt; 0 /\ B &gt; 0]
+] ]
+</pre></td></tr>
+
+<tr align="center"><td colspan="5">Simplify by evaluating at b = 0 or
+	    b = 1
+	    (We denote "A evaluated at 0" by "A_0", for example)
+</td></tr>
+
+	    <tr><td><pre>
+F2' =
+(E a)(E c2)[ 
+0 &lt;= a &lt;= 1 /\ 
+[ A_0 &gt; 0 \/ C_0 &gt; 0 \/ 
+  [ D_0 &gt; 0 /\ B_0 &gt; 0] 
+] ]
+</pre></td>
+<td><code>\/</code></td>
+<td><pre>
+F2'' =
+(E a)(F b)(F c2)[ 
+0 &lt;= a &lt;= 1 /\ 0 &lt; b &lt; 0 /\ 
+[ A &gt; 0 \/ C &gt; 0 \/ 
+  [ D &gt; 0 /\ B &gt; 0] 
+] ]
+</pre></td>
+<td><code>\/</code></td>
+	    <td><pre>
+F2''' = 
+(E a)(E c2)[ 
+0 &lt;= a &lt;= 1 /\
+[ A_1 &gt; 0 \/ C_1 &gt; 0 \/ 
+  [ D_1 &gt; 0 /\ B_1 &gt; 0]
+] ]
+</pre></td></tr>
+<tr>
+	<td><a href="In.1">Input file for F2'</a></td>
+	<td></td>
+	<td><a href="In.2">Input file for F2''</a></td>
+	<td></td>
+	<td><a href="In.3">Input file for F2'''</a></td>
+	</tr>
+      </table>
+      Now, we've broken the input up into 3 pieces.  Fp' and Fp''' are
+      clearly easier for qepcad because we've replaced a variable with a 
+      constant.  It is perhaps less obvious that Formula Fp'' can be
+      dealt with more efficiently by QEPCAD.  However, for any value of
+      <code>a</code>, Fp'' becomes a formula in strict inequalities.
+      This, there exists a <code>b</code> if and only if there exists
+      <em>infinitely many</em> <code>b</code>'s, and for each
+      <code>b</code> there exists a <code>c2</code> if and only if there exists
+      <em>infinitely many</em> <code>c2</code>'s.  Thus, we may replace
+      "<code>(E b)(E c2)</code>" with "<code>(F b)(F c2)</code>".
+      QEPCAD is able to compute especially efficiently with this
+      formulation.  In fact, on my machine QEPCAD takes 11.8 seconds to
+      solve these three problems.  All three are equivalent to FALSE,
+      so their or is equivalent to FALSE, meaning that the original
+      formula is equivalent to TRUE.
+    </p>    
+    <p>
+    <h2>A Better Solution</h2>
+    We can even improve on the above slightly by (quite logically)
+    breaking our formulas up still further!  Formula F2' and F2''' can 
+    be solved so quickly by QEPCAD that there's no particular point in 
+    breaking them up.  On the other hand, F2'' takes a while, and we
+    can break it up trivially into three pieces using the distributive rule:
+    <pre>
+aF2'' = (E a)(E b)(E c2)[ 0 &lt;= a &lt;= 1 /\ 0 &lt; b &lt; 0 /\ A &gt; 0 ]
+
+bF2'' = (E a)(E b)(E c2)[ 0 &lt;= a &lt;= 1 /\ 0 &lt; b &lt; 0 /\ C &gt; 0 ]
+
+cF2'' = (E a)(E b)(E c2)[ 0 &lt;= a &lt;= 1 /\ 0 &lt; b &lt; 0 /\ D &gt; 0 /\ B &gt; 0 ] 
+    </pre>
+    Thus, the solution to our original problem is the NOT of
+    <p><b>
+      <a href="In.1">Fp'</a> <span class="caption">OR</span> <a href="In.2.1">aFp''</a>
+      <span class="caption">OR</span> <a href="In.2.2">bFp''</a> <span class="caption">OR</span> <a href="In.2.3">cFp''</a>
+      <span class="caption">OR</span> <a href="In.3">Fp'''</a>
+    </b></p>
+    On my machine QEPCAD takes 7.4 seconds to do all 5 of these.
+  </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+    <!-- Created: Fri Jul 13 16:10:11 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Mon Aug  5 16:07:58 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,96 @@
+10/15/02:  Found a bug in the sendneg function of class negop, which
+           was accidently "delete"-ing it's "operand" member when it
+           was also returning that operand member to the callsite!
+           Suffice it to say, that's been fixed!
+
+           Cleaned up the way sendneg was used in all the binop
+           derived classes.  Now, hopefully, it makes sense!
+
+           Classes andop and orop had the statement "delete p2" in
+           the body of a loop instead of after, with the result that
+           I was trying to "delete" the same pointer over and over.
+           Fixed that!
+
+           The "Get rid of holes" step had a memory leak, which I
+           fixed.  This actually fixed a segfault that showed up
+           with example/Ex3 running under linux.  Pure coincidence
+           that a segfault hadn't ocurred for the same problem
+           under Solaris!
+
+10/15/02:  Added the -A flag, which allows the user to take advantage
+           of QEPCAD B's "assume" command from within SLFQ.  Ex3 from
+           the examples illustrates why this can be desireable!
+
+01/14/03:  Fixed some code that didn't conform to the ANSI C++ 
+           standard.  Fixed a slip in main.cc that caused the temp
+           files to sometimes not be deleted.  Fixed an error in
+           search.cc - special_search was missing the "return 0" for
+           the non-error case!
+
+01/21/03:  Fixed bug in the set function from irootexp.  It wasn't
+           actually returning a value, despite the fact that the
+           assumed it did!
+
+01/21/03:  Major change (which fixed a mysterious memory bug!) in
+           the way simplify works.  The semantics of simplify are
+           now this:  simplify does not alter the formula it is
+           passed, it returns a new, equivalent and (hopefully!)
+           simpler equivalent formula, which is totally distinct
+           as a data structure.  Part of this change included adding
+           a copy function to fpart.
+
+01/22/03:  Stupidly, qecallslen was not initialized to zero by the
+           Context constructor.  This is fixed.  Of course the bug
+	   only exhibits itself on certain platforms. *ugh*
+
+01/27/03:  Serious bug fixed!  The "simplify" function had a reference
+           to the pointer that hadn't been switched from Root to p.
+           Previous version simply produced incorrect results!  The
+           bug has been fixed, and answers verified (to some extent).
+
+02/26/03:  Added the ability to give assumptions on the command line
+           via the "-a <formula>" option.  This included changes to
+           the parse part of the project to allow for parsing formulas
+           in strings as well as in files. Yeah!
+
+03/04/03:  Added ability to parse atomic formulas TRUE and FALSE to
+           poly.l and poly.y.
+
+03/10/03:  Broke program into modules to some extent.  Removed the
+           "search" functions, replaced with piped calls to tail &
+           head, which means slfq now requires QEPCAD version 1.9
+           or higher (at least to use the -F option).  Several new
+           options have been added as well.
+
+12/31/03:  I haven't been too good at keeping up with this log! At
+           any rate, this is a very different program now!  The user
+	   interface is much more rational.  It's logged with prcs
+	   now.  There are no shift/reduce conflicts in poly.y.
+	   But most importantly, QEPCADB is not launched each time
+	   a simplification is required.  Instead, it is launched
+	   once, and called each time through its primitive API.
+	   QEPCADB 1.29 or higher required!
+
+	   I'm performing expreiments to see whether combining
+	   simplified subformulas into chunks up to the cutoff is
+	   a good idea.  Preliminary tests seem to indicate that
+	   it sometimes is and sometimes is not!  This surprises 
+	   me.  It seemed like it'd always be a good idea!
+
+03/10/04:  Changed system in a few ways:
+           1) It attempts to determine a good variable ordering
+              using a relatively simple heuristic.  This i overridden
+              of course if an explicit order is given.  Right now
+              it won't be guaranteed to choose an order that respects
+              any _root_ expressions.  One order is chosen for the
+              whole computation.
+           2) Added the -i command line switch, which causes SLFQ to
+              catch SIGINT signals and, instead of exiting, print out
+              the formula QEPCAD is currently trying to simplify.
+              Two SIGINT's within a second of one another causes the
+              program to terminate.
+           3) Fixed a bug so that SLFQ really uses the -F option!
+           4) For better or for worse, this version may return
+              answers with _root_ expressions!  I might make this
+              a user switch in the future.
+

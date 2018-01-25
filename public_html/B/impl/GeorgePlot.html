@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Plotting Instructions</title>
+  </head>
+
+  <body>
+    <h1>Plotting Instructions</h1>
+    George,  This should give you an idea of how plotting works with the
+    new "interactive" postscript file option.  The following shows an
+    example session in which all sections of 2-level projection
+    factors are printed in pink (I'm not saying this is tastefull!)
+    over a red grid that is centered at the origin, and which has a
+    mesh of 1.5 units in <em>x</em> and 0.25 units in <em>y</em>.
+    Superimposed on top of this is a coordinate axis, centered at the
+    origin, in sienna.  User input appears in bold.
+<p>
+    <hr>
+<pre>
+Before Solution &gt; <b>d-2d-cad D</b>
+
+Window shows (-3835/2^11,3835/2^11) x (-146743/2^17,377545/2^17).
+I.e. window shows (-1.872559-,1.872559-) x (-1.119561-,2.880440-).
+
+Num. Points (n), View Win. Coords (c), Print Postscript (p)
+New Plot Win (w), Quit (q)
+: <b>i</b>
+File name for postscript output? <b>temp.eps</b>
+Precision k (means precise to within 2^k) for x values: (Currently -11) <b>-12</b>
+Precision k (means precise to within 2^k) for y values: (Currently -11) <b>-14</b>
+
+Enter command [q:quit, g:gridlines, a:axes, c:cells]: <b>g</b>
+Provide an origin: <b>0 0</b>
+x offset : y offset : <b>1.5 0.25</b>
+Color: red
+
+Enter command [q:quit, g:gridlines, a:axes, c:cells]: <b>c</b>
+Which cells: a -- sections over sections
+             b -- sections over sectors
+             c -- sectors over sections
+             d -- sectors over sectors
+?: <b>b</b>
+True, false, undet, or all? (t|f|u|a): <b>a</b>
+Color: <b>mauve</b>
+Color not found!
+Color: <b>pink</b>
+
+Enter command [q:quit, g:gridlines, a:axes, c:cells]: <b>a</b>
+Provide an origin: <b>0 0</b>
+Color: <b>sienna</b>
+
+Enter command [q:quit, g:gridlines, a:axes, c:cells]: <b>q</b>
+</pre>
+<hr>
+<p>
+      <dl>
+      <dt><b>Precision</b>
+      <dd>This controls how precisely sample point coordinates are
+	approximated.  If you type in "-12" for the x-precision, then
+	x-coordinates will be computed to within 2^(-12).  If you
+	enter a precision less than the "Current" value, the current
+	value is simply used.
+<p>
+      <dt><b>Colors</b>
+      <dd>The colors available to you are given in <a
+	  href="COLORS.txt">COLORS.txt</a> (ignore the numbers and
+	just look at the names).  If you type a name not in 
+	this file, an error message is simply returned.  This is one
+	of the few example of typo-tolerence in this program! :-)
+<p>
+      <dt><b>Complex Plots</b>
+      <dd>The basic idea here is that each element you plot is layered 
+	upon the others, so you can have a grid be superimposed on the 
+	other elements by plotting it last, for example.  This gives
+	you a lot of control.
+    </dl>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Wed Jun 14 14:23:48 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Wed Jun 14 14:44:23 EDT 2000
+<!-- hhmts end -->
+  </body>
+</html>

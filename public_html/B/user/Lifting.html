@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - The Lifting Phase</title>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - The Lifting Phase<hr></h1>
+
+    <p>
+      In the Lifting (or Stack Construction) Phase, which is indicated 
+      in QEPCAD by the "<code>Before Choice &gt;</code>" prompt, 
+      QEPCAD explicitly constructs a CAD of free
+      variable space in which each cell is marked either <em>true</em> 
+      or <em>false</em>.  The union of all <em>true</em> cells is
+      exactly the set of points satisfying the input formula.
+      This is done by explicitly constructing some or all of the CAD
+      defined by the projection factor set produced by the
+      <a href="Projection.html">projection phase</a> and propagating
+      truth-values of cells in this CAD down to cells in free-variable 
+      space according to the quantifiers appearing in the input formula.
+    </p>
+    <p>
+      The lifting phase is almost always the most expensive phase of
+      quantifer elimination by CAD both in terms of time and of space.
+      First of all there is often many, many cells to be constructed.
+      More often, however, the real bottleneck arises from
+      computations with algebraic numbers.  Happily, there is a lot of 
+      room for improvement in how QEPCAD deals with lifting, so there
+      is hope that things may improve in future releases.
+    </p>
+    <p>
+      There are some nifty things you can do here, especially when
+      there are exactly 2 free variables, because you can use
+      topological information here.  I'll add more later!
+    </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Tue Jul 23 18:02:27 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:24:23 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

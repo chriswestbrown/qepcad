@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>SLFQ - Simplifying Large Formulas with QEPCAD B</title>
+    <LINK REL="STYLESHEET" HREF="../B/QEPCAD.css">
+  </head>
+
+  <body>
+    <h1>SLFQ - <small>Simplifying Large Formulas 
+      with <a href="../B/QEPCAD.html">QEPCAD B</a></small><hr></h1>
+
+    <p>
+    <dl>
+      <dt><b>What's the latest?</b></dt>
+      <dd>
+	The current version of SLFQ is 1.20.  This version should
+	compile without trouble on 32 or 64 bit linux and MacOS boxes.
+      </dd>
+
+      <dt><b>What is SLFQ?</b></dt>
+      <dd>
+	SLFQ is a program for simplifying very large quantifier-free
+	formulas.  It is a command-line program with a small degree of
+	user interaction.  SLFQ simplifies formulas by repeated calls
+	to <a href="../B/QEPCAD.html">QEPCAD B</a>,
+	essentially using QEPCAD B as a "black box" for simplification
+	in a naive divide-and-conquer approach.
+      </dd>
+
+      <dt><b>How do I use SLFQ?</b></dt>
+      <dd>
+	More documentation should appear at this site soon.  For the
+	moment, please consult the documentation in the README file
+	contained in the SLFQ installation, or take a look at
+	<a href="Ex1/Example1.html">this example</a>.
+      </dd>
+
+      <dt><b>How do I get/install SLFQ?</b></dt>
+      <dd>
+	SLFQ itself is a tiny program, most of its work being really
+	done by QEPCAD B.  So, if you can get QEPCAD B installed, SLFQ
+	should be no problem.  This means that under Solaris and Linux
+	and MacOS
+	things should be OK.
+	<ol>
+	  <li>Download and install QEPCAD B version 1.69 or higher.
+	    (<a href="../INSTALL/IQ.html"><small>Instructions &amp; Download</a></small>)
+	  </li>
+	  <li>Download SLFQ: <a href="simplify-1.20.tar.gz">simplify-1.20.tar.gz</a></li>
+	  <li>Unzip and untar simplify-1.20.tar.gz.</li>
+	  <li>Change to the <code>simplify</code> directory and type "<code>make</code>".</li>
+	  <li>Hopefully the executable <code>./slfq</code> is sitting
+	    in your <code>simplify</code> directory waiting to be used!</li>
+	</ol>
+	The <code>README</code> file contains directions on using and installing
+	SLFQ.  There is a directory called <code>examples</code>
+	which, appropriately enough, contains some examples
+	illustrating the use of the program.
+      </dd>
+
+    </dl>
+    </p>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">QEPCAD account {Prof. Brown}</a></address>
+  </body>
+</html>

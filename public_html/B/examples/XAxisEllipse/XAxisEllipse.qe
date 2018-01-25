@@ -1,0 +1,95 @@
+valiant[15] [~/]> qepcad
+=======================================================
+                                                       
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version 19 (Interactive)                
+                       January 11, 2001                
+                                                       
+                          by                           
+                       Hoon Hong                       
+              (hhong@risc.uni-linz.ac.at)              
+      Research Institute for Symbolic Computation      
+                                                       
+                 with contributions by                 
+                   George E. Collins                   
+                   Jeremy R. Johnson                   
+                  Mark J. Encarnacion                  
+                                                       
+=======================================================
+Enter an informal description  between '[' and ']':
+[ The X Axis Ellipse Problem 
+Enter a variable list:
+(a,b,c,x,y)
+Enter the number of free variables:
+3
+Enter a prenex formula:
+(A x)(A y)[ a > 0 /\ b > 0 /\
+[ [ b^2 (x - c)^2 + a^2 y^2 - a^2 b^2 = 0] ==> x^2 + y^2 - 1 <= 0 ] ].
+
+
+=======================================================
+
+Before Normalization >
+prop
+
+Before Normalization >
+go
+
+Before Projection (y) >
+go
+
+Before Choice >
+fast
+
+Before Choice >
+go
+
+Before Solution >
+sol T
+
+An equivalent quantifier-free formula:
+
+a > 0 /\ b > 0 /\ c - a + 1 >= 0 /\ c + a - 1 <= 0 /\ [ b^2 - a <= 0 \/ b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0 ]
+
+
+Before Solution >
+sol G
+
+An equivalent quantifier-free formula:
+
+[
+  a > 0
+  /\
+  a - 1 <= 0
+  /\
+  b > 0
+  /\
+  b^2 - a <= 0
+  /\
+  c - a + 1 >= 0
+  /\
+  c + a - 1 <= 0
+]
+\/
+[
+  a > 0
+  /\
+  a - 1 < 0
+  /\
+  b > _root_-1 b^2 - a
+  /\
+  b - 1 <= 0
+  /\
+  b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0
+]
+
+
+Before Solution >
+quit
+Quitting the QEPCAD system... Bye!
+valiant[16] [~/]> 

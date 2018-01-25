@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Quartic Problem QEPCAD Session</title>
+  </head>
+
+  <body>
+    <h1>Quartic Problem QEPCAD Session</h1>
+<pre>
+valiant[16] [~/]> <b>qepcad</b>
+=======================================================
+                                                       
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version 19 (Interactive)                
+                       January 11, 2001                
+                                                       
+                          by                           
+                       Hoon Hong                       
+              (hhong@risc.uni-linz.ac.at)              
+      Research Institute for Symbolic Computation      
+                                                       
+                 with contributions by                 
+                   George E. Collins                   
+                   Jeremy R. Johnson                   
+                  Mark J. Encarnacion                  
+                                                       
+=======================================================
+Enter an informal description  between '[' and ']':
+<b>[ The positive-definite quartic problem ]</b>
+Enter a variable list:
+<b>(a,b,c,d,x)</b>
+Enter the number of free variables:
+<b>4</b>
+Enter a prenex formula:
+<b>(Ax)[ x^4 + a x^3 + b x^2 + c x + d > 0 ].</b>
+
+=======================================================
+
+Before Normalization >
+<b>go</b>
+
+Before Projection (x) >
+<b>go</b>
+
+Before Choice >
+<b>go</b>
+
+Before Solution >
+<b>pdq</b>
+
+CAD is not projection definable.
+
+Before Solution >
+<b>sol E</b>
+
+An equivalent quantifier-free formula:
+
+d > _root_1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 /\ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 \/ d > _root_-1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 ]
+
+
+Before Solution >
+<b>sol T</b>
+An equivalent quantifier-free formula:
+
+256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 >= 0 /\ [ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 <= 0 ] \/ [ 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 >= 0 /\ 768 d - 192 a c - 128 b^2 + 144 a^2 b - 27 a^4 >= 0 ] \/ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 >= 0 /\ 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 ] ]
+
+
+Before Solution >
+quit
+Quitting the QEPCAD system... Bye!
+valiant[17] [~/]> 
+</pre>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Wed Aug  1 15:56:22 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 24 16:11:07 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD: A Triangles Problem</title>
+  <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+  <body>
+
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> - A Triangles Problem</h1>
+    
+    <p>
+    More information will eventually appear here!  What I want to say
+    about things is this: The problem below is essentially a simple
+    theorem about triangles.  The algebraic conditions on the side
+    lengths a,b,c come from applying the law of cosines on a simple
+    condition on two of the angles of this triangle, namely that the
+    angle of the vertex opposite side c is greater than half the
+      external 
+      angle of
+    the vertex opposite side b.  The input below gives that algebraic
+    condition along with the assumption that a,b,c really are side
+    lengths of some non-degenerate triangle.  We simplify the result,
+    and we get a nice clean characterization in sides of what was
+    originally specified in angles, namely that c > a.
+    </p>
+    <p>
+      This problem is a nice example of why declaring
+      <em>assumptions</em> in QEPCAD B can be a very good thing.
+      Since the assumptions are, naturally enough, assumed by the
+      solution formula rather than appearing in the solution formula,
+      the formula that returns is <em>very</em> easy to interpret.
+    </p>
+<pre>
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 1.4, 05 Sep 2002
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robidoux, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[ A Triangles Problem ]
+Enter a variable list:
+(c,b,a)
+Enter the number of free variables:
+3
+Enter a prenex formula:
+[ 
+b^2 + a^2 - c^2 <= 0 \/ 
+c (b^2 + a^2 - c^2)^2 < a b^2 (2 a c - (c^2 + a^2 - b^2)) 
+].
+
+
+=======================================================
+
+Before Normalization >
+assume [ a > 0 /\ b > 0 /\ c > 0 /\ a < b + c /\ b < a + c /\ c < a + b ]
+
+Before Normalization >
+finish
+
+An equivalent quantifier-free formula:
+
+a - c < 0
+
+====================================================
+</pre>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Jul 15 07:53:11 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Fri Oct  4 18:25:10 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

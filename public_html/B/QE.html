@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - What is Quantifier Elimination?</title>
+  </head>
+
+  <LINK REL="STYLESHEET" HREF="QEPCAD.css">
+  <body>
+    
+    <h1><a href="QEPCAD.html">Q E P C A D</a> - What is Quantifier Elimination?<hr></h1>
+        
+    <p>
+      <b>An Informal Description</b><br>
+      Informally, the quantifier elimination problem is this:  Given a boolean combination of
+	equalities and inequalities of polynomials with integer coefficients in which some
+	variables appear quantified, produce an equivalent formula in
+	which no quantified variables appear (all variables are
+	assumed to be real).
+	For example, if the input formula is
+      <center><em>there exists an <b>x</b> such that <b>a x<sup>2</sup> + b x + c = 0 and a /= 0</b></em></center>
+	quantifier elimination should produce an equivalent formula like
+      <center><em><b>a /= 0 and 4 a c - b<sup>2</sup> &lt;= 0</b></em></center>
+      The quantified variable <em>x</em> has been eliminated.  
+      In essence, the quantified input formula is a question, "When
+      does there exist an <em>x</em> such that ...?", and the
+      quantifier-free equivalent formula is an answer, "There exists
+      sich an <em>x</em> when ...".
+      Lots of 
+      interesting problems in a wide variety of disciplines can be
+      phrased as quantifier elimination problems.  Now, how many of
+      the really interesting problems can be solved in a reasonable
+      amount of time by todays software is another question ...
+    </p>
+
+    <p>
+      <b>Quantifier Elimination Algorithms</b><br>
+      Quantifier elimination by CAD is one algorithm for QE.  There
+      are others, and in the future this section will describe some of 
+      them and point you to other systems for QE.
+    </p>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Tue Jul 23 19:20:38 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 31 09:48:51 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

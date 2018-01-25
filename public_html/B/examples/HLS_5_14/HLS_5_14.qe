@@ -1,0 +1,59 @@
+[ 
+  The input verifies formula 5.14 of Hong, Liska, Steinberg
+
+  Note 1: the projection factors that are removed are leading
+  coefficients of reducta of projection factors.  Removing
+  these is justified by either Strzebonski (JSC 200) or
+  Brown (JSC to appear).
+
+  Note 2: since b is bounded, leading coefficients could be
+  left out when projecting to eliminate b (Brown, JSC to
+  appear).  However, the impact on computing time would
+  probably be negligable in this example.
+
+  Note 3: the command "sel [level = dimension]" tells QEPCAD
+  to only construct stacks over cells of full dimension.
+  Thus, when finished, we have sample points for all the
+  full-dimensional cells plus a few others ... all with
+  no computations over algebraic extensions!
+]
+(a,b,c2)
+0
+(E a)(E b)(E c2)[
+0 <= a /\ a <= 1 /\ 0 <= b /\ b <= 1 /\
+[
+  c2^4 (a - b + 1) ( a - b - 1) (a - b)^2 > 0
+  \/
+  c2^4 b^2 (b^2 - 1) + 4 c2^3 a b^2 (b - 1)
+  + 2 c2^2 a b (3 a b - 2 a - 2 b + 1)
+  + 4 c2 a^2 b (a - 1) + a^2 (a^2 - 1) > 0
+  \/
+  [
+    c2^2 ( 8 a^2 b^2 - 12 a^2 b + 5 a^2 - 8 a b^3 + 8 a b^2 
+    + 2 a b - 4 a + 4 b^4 - 4 b^3  - 3 b^2 + 4 b  ) 
+    + 2 c2 ( 4 a^3 b  - 2 a^3 - 4 a^2 b^2 - 2 a^2 b + a^2 
+    + 4 a b^3 - 2 a b^2 + 2 a b - 2 b^3 + b^2  )  
+    + 4 a^4 - 8 a^3 b - 4 a^3 + 8 a^2 b^2 + 8 a^2 b - 3 a^2 
+    - 12 a b^2 + 2 a b + 4 a + 5 b^2 - 4 b > 0
+   /\
+    2 c2^4 b ( 3 a^2 b - 2 a^2 - 2 a b^2 + a + b^3 - b) 
+    +  4 c2^3 a b ( a^2 - a + b^2 - b) 
+    + 2 c2^2 a ( a^3 - 2 a^2b + 3 a b^2 - a - 2 b^2 + b ) > 0
+  ]
+]
+].
+prop
+go
+st 1
+rem-pj 2,5
+y
+rem-pj 2,10
+y
+rem-pj 2,14
+y
+go
+fast
+sel [level = dimension]
+go
+d-true
+d-stat

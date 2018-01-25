@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>PCAD</title>
+  </head>
+
+  <body>
+      <h1>PCAD</h1>
+    A PCAD (or "Pruned CAD") is a data-structure representing a
+    simplification of an existing QEPCAD CAD structure.
+<p>
+
+      A PCAD cell <b>C</b> is a list of 4 objects,
+      <b>(c,P,I,T)</b>, defined as follows:
+    <ol>
+      <li><b>c</b> is a QEPCAD cell structure.  The cell represented
+	by <b>c</b> is
+	contained in the cell represented by <b>C</b>, and <b>c</b> is a section if and only if
+	<b>C</b> is a section.
+<p>
+      <li><b>P</b> is NULL if <b>C</b> is the root cell, and the
+	parent PCAD cell of <b>C</b> otherwise.
+<p>
+      <li><b>I</b> is defined as follows: <b>I</b> = 0 if <b>C</b> is
+	the root, and otherwise <b>C</b> is the <b>I</b>th cell in the
+	stack over <b>P</b>, i.e. the stack index of <b>C</b>.
+<p>
+      <li><b>T</b> if <b>C</b> is a leaf cell, then <b>T</b> is
+	<b>C</b>'s truth value.  Otherwise, <b>T</b> is a list of
+	<b>C</b>'s children.
+    </ol>
+    <p>
+      
+      This structure is "defined" in the file <code>pcad.h</code>
+      (<code>coarsecad.h</code> in my private copy), which defines the
+      constants: <code>SC_REP</code>, 
+      <code>SC_PAR</code>, <code>SC_INX</code>, and
+      <code>SC_CDTV</code>, used with <code>LELTI</code> to access <b>c</b>, <b>P</b>,
+      <b>I</b>, and <b>T</b> respectively.
+    <hr>
+    <address><a href="mailto:brown@ren.eecis.udel.edu">Christopher W. Brown</a></address>
+    <!-- Created: Fri Jun 26 13:50:00 EDT 1998 -->
+    <!-- hhmts start -->
+Last modified: Fri Jan 22 16:19:25 EST 1999
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Downloading and Installing QEPCAD</title>
+    <LINK REL="STYLESHEET" HREF="../B/QEPCAD.css">
+  </head>
+
+  <body>
+    <h1>Downloading and Installing <a href="../B/QEPCAD.html">QEPCAD</a><hr></h1>
+    <p>
+    <b>Download Instructions:</b>
+      You must download the SACLIB library as well as QEPCAD.<br>
+      Download <a href="qepcad-B.1.69.tar.gz"><code>QEPCAD B
+	  version 1.69</code></a> 
+    (see <a href="../B/LOG">LOG</a> of recent important changes )
+    and
+	<a href="saclib2.2.6.tar.gz"><code>saclib2.2.6</code></a>.
+    </p>
+    <p>
+      <b>Installation instructions:</b>
+      Assuming that you've un-gzipped and un-tared qepcad and saclib,
+      you need to:
+    <ol>
+      <li>Make SACLIB:
+	<ol>
+	  <li>Create an environment variable <code>saclib</code> that
+	    points to the root of your saclib installation.<br>
+	    <em>Example:</em> <b><code>setenv saclib
+		${HOME}/saclib2.2.6</code></b>
+	  <li>Set the environment variable CC to gcc.<br>
+	    <em>Example:</em> <b><code>setenv CC gcc</code></b>
+	  <li>Give the following commands:<br>
+<b><code>cd $saclib/bin</code></b><br>
+<b><code>./sconf</code></b><br>
+<b><code>./mkproto</code></b><br>
+<b><code>./mkmake</code></b><br>
+<b><code>./mklib all</code></b><br>
+	</ol>
+	Assuming you haven't seen any error messages, saclib is now 
+	successfully installed!
+      <li>Make QEPCAD:
+	<ol>
+	  <li>Create an environment variable <code>qe</code> that
+	    points to the root of your qepcad installation.<br>
+	    <em>Example:</em> <b><code>setenv qe ${HOME}/qesource</code></b>
+	  <li>Give the following commands:<br>
+<b><code>cd $qe</code></b><br>
+<b><code>gmake</code></b><br>
+    </ol>
+	Assuming you haven't seen any error messages, QEPCAD is now 
+	successfully installed!  It might be nice to add
+	<code>$qe/bin</code> to your path now, so that
+	<code>qepcad</code> gets found without requiring a full path.
+      <li>Make plotting program (Required only if the "display 2D CAD"
+	command (<code>d-2d-cad</code>) will be used.)	
+	Give the following commands:<br>
+	<b><code>cd $qe/plot2d</code></b><br>
+	<b><code>make</code></b><br>
+	<b>NOTE:</b> This program relies on the OpenGL and Glut
+	libraries.  If you don't have these libraries on your system,
+	you'll need to install them!  
+	<a href="http://www.mesa3d.org/"><b>MesaGL</b></a> is
+	free and will do the trick, just make sure to get the Glut
+	library that's packaged along with the "demos".
+	Whether you already have OpenGL/Glut or have to go out and get
+	it, you may have to change some entries in plot2d/Makefile 
+	to reflect the locations of these libraries and the X
+	libraries on your system.  Email me if you don't know how to
+	do this.<br>
+      <li>
+	Allow QEPCADB to use <a href="http://www.singular.uni-kl.de/">Singular</a>.
+	Note the file <code>${qe}/default.qepcadrc</code>.  If
+	you have the computer algebra system 
+	<a href="http://www.singular.uni-kl.de/">Singular</a>
+	installed, or if you install it in the future, you should edit
+	this file to define the SINGULAR variable to be the full path
+	up to, but not including, the Singular executable.  For example:
+<pre>
+#####################################################
+# QEPCAD rc file.
+# This file allows for some customization of QEPCADB.
+# Right now, the ability to give a path to Singular,
+# so that it gets used for some computer algebra
+# computations is the only feature.
+#####################################################
+SINGULAR /usr/lib/Singular/3-0-0/ix86-Linux
+</pre>
+	With this in place, QEPCADB farms out some computations to
+	Singular and, more importantly, can use Singular to compute
+	Grobner Bases, which allows for a correct implementation of
+	"equational constraints".
+      </li>
+      <li>Make CAD2D: (Optional)
+	Give the following commands:<br>
+<b><code>cd $qe/cad2d</code></b><br>
+<b><code>gmake</code></b><br>
+    </ol>
+    </p>
+    <p>
+      <b>Hints for troubleshooting the install:</b>  
+    <ul>
+      <li><b>Qepcad makefile trouble</b>
+	<ul>
+	  <li>The $qe/Makefile references "make", but it really needs
+	    <em>gmake</em>.
+	    If your system's "make" is not "gmake", install "gmake"
+	    and change the calls to "make" in Qepcad's Makefile to
+	    "gmake", and calkl "gmake" explicitly when you make Qepcad.
+	  </li>
+	  <li>
+	Qepcad uses the "readline" library.  On Ubuntu, it was not
+	installed by default for me ... like so many things.  I had to
+	get it with <code>sudo apt-get install
+	      libreadline5-dev</code>. (The current version is <code>libreadline6-dev</code>.)</li>
+	</ul>
+      </li>
+    </ul>
+    </p>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Chris Brown</a></address>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+Original Unnormalized QEPCAD formula data structure
+--------------------------------------
+An unnormalized formula is (NOTOP F_1), (RIGHTOP F_1 F_2),
+(LEFTOP F_1 F_2), (EQUIOP F_1 F_2), (ANDOP F_1 F_2 ... F_s), 
+(OROP  F_1 F_2 ... F_s), or an unnormalized atomic formula, 
+where NOTOP, LEFTOP, RIGHTOP, EQUIOP, ANDOP and OROP are macro 
+constants defined in qepcad.h.
+
+A unnormalized atomic formula is of the form (T,P,k,nil) where
+
+  T : is the relational operator, one of the macro constants
+      LTOP, EQOP, GTOP, GEOP, NEOP, LEOP defined in qepcad.h
+  P : is an r-variate saclib polynomial
+  r : a positive integer
+
+
+Original Normalized QEPCAD formula data structure
+--------------------------------------
+A normalized formula is (ANDOP F_1 F_2 ... F_s), 
+(OROP  F_1 F_2 ... F_s), or a normalized atomic formula, where
+ANDOP and OROP are macro constants defined in qepcad.h.
+
+
+A normalized atomic formula is of the form (T,P,k,I) where
+
+  T : is the relational operator, one of the macro constants
+      LTOP, EQOP, GTOP, GEOP, NEOP, LEOP defined in qepcad.h
+  P : is a primitive irreducible saclib polynomial in k
+      variables of positive degree in it's main variable (i.e.
+      a k-level polynomial in the CAD problem)
+  k : the level
+  I : a pair (i,j) giving the index of P in the qepcad 
+      projection factor set data structure
+
+
+Extensions to QEPCAD's formula data structure
+---------------------------------------------
+July 2002 introduced a normalized atomic formula for indexed
+root expressions: (IROOT,T,j,(P_1, ..., P_s),k,(I_1, ..., I_s)) 
+where
+
+  IROOT: a macro constant defined in qepcad.h
+  T    : is the relational operator, one of the macro constants
+         LTOP, EQOP, GTOP, GEOP, NEOP, LEOP defined in qepcad.h
+  j    : the index of the indexed root expression
+  P_i  : primitive irreducible k-level polynomials
+  k    : the level
+  I_i  : pairs (i,j) giving the index of P_i in the qepcad
+         projection factor set data structure.
+  
+Non-normalized - i.e. after being read-in by QFFTEV but before
+going through the normalization process the format of this atomic
+formula is (IROOT,T,j,P,k,NIL), where P is a k-variate saclib
+polynomial of positive degree in x_k.

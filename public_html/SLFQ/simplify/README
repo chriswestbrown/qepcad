@@ -1,0 +1,117 @@
+##########################################################
+## SLFQ: Simplifying Large Formulas with QEPCAD
+##########################################################
+
+
+Using the Program
+----------------------------------------------------------
+
+slfq [ options ]
+
+Input formula syntax:
+The input for slqf is a quantifier-free formula in either 
+QEPCAD B or Redlog format.  Formulas are restricted to
+and's and or's of atomic formulas with right-hand-side
+of zero (or an acceptable indexed root expression in
+QEPCAD B's input format.).  Polynomials in atomic 
+formula *must* be in expanded form - i.e. no ()'s
+allowed.  Rational numbers, e.g. 3/4, are allowed, as
+well as division within a term by a positive constant,
+e.g. 3 x/10 y + 1 > 0. Both [ ]'s and ( )'s can be used
+for grouping.
+   
+See the "examples" directory for ... examples!
+
+-h
+   Prints information on options.
+-F
+   This flag tells the program to do all its computations with full
+   dimensional cells, meaning that the simplified formula agrees
+   with the original on all but a measure-zero subset of the parameter
+   space.
+-L "<var1>,<var2>,..."
+   This option allows the user to specify a variable ordering to
+   be used in simplification.  CAD construction is very sensitive
+   to the variable ordering. SLFQ tries to choose a good order for
+   you, but you may be able to find a better order by hand.  The
+   first variable in the given list will correspond to the lowest
+   level, the last to the highest level.
+-c <num>
+   Sets the cutoff - the number of atomic formulas at which QEPCAD
+   will simply be called as opposed to going through further subdivisions.
+-S <file>
+   This flag tells the program to print out the original formula
+   in QEPCAD syntax to the given file.
+-v
+   Prints the SLFQ version number.
+-q
+   Runs program in "quiet" mode - i.e. without diagnostic info.
+-o <file>
+   This flag tells slfq to write its output to the given file. 
+   In the absence of this switch, slfq's output goes to standard
+   out.
+-a <formula>
+   This tells the program to use QEPCAD B's "assume" command with
+   the assumption formula given as command line argument.  Example:
+   
+      slfq example/Ex3 -a "beta4 > 0 /\ nu > 0"
+   
+   This assumption will get passed along to each black box call
+   to QEPCAD B for simplification..
+-A <file>
+   This file tells the program to use QEPCAD B's "assume" command
+   with the assumption formula simply printed verbatim from the
+   given file.
+-N <num>
+   Set the number of words in SACLIB's garbage collected array to
+   <num>*1,000,000. The default value of num is 5, i.e. 5,000,000
+   words.
+-P <num>
+   Set the number of primes in SACLIB's long primes list.  It is
+   equivalent to SACLIB's +L option.  The default is 2000.
+-n
+   Normalize the input formula with QEPCAD's initializer.  SLFQ
+   already requires a formula in a somewhat normalized form (e.g.
+   and/or/not the only operators "f relop 0"the only inequalities
+   allowed, input polynomials must appear in fully distributed form),
+   but this rewrites so that all pol's occurring are irreducible.
+-i
+   On signal SIGINT (e.g. ctrl-c from keyboard) information is displayed.
+   If two signals are recieved within 1 second slfq terminates.
+   The information displayed relates to the current state of slfq's
+   computation.
+<file>
+   Set the file from which slfq reads its input.  If no file is
+   given, input is read from standard in.
+
+Compiling the Program
+----------------------------------------------------------
+Compiling this program should be as easy as typing "make"
+in the program's root directory.
+
+
+Implementation Documentation
+----------------------------------------------------------
+Basically, this program parses input files and creates a
+nice C++, object-oriented parse tree structure, and moves
+from the leaves of the tree up, calling QEPCAD over and 
+over again to simplify subtrees of the parse tree.
+
+The program consists of several files:
+
+1) poly.l & poly.y: These are lex and yacc specifications
+   that allow formulas in either QEPCAD or REDLOG format
+   to be parsed.
+
+2) polynom.h: This header file defines a class "fpart",
+   which is a class for tree representations of quantifier-
+   free formulas.
+
+3) main.cc, simplify.h & simplify.cc, utils.h & utils.cc
+
+Notes:  
+------------------------------------------------------
+The files lex.yy.c and poly.tab.c are created by flex and
+bison.  The file poly.tab.h is created by cutting out the
+token definitions (e.g. #define	MINUS	259) from the file
+poly.tab.c.

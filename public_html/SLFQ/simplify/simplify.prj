@@ -1,0 +1,43 @@
+;; -*- Prcs -*-
+(Created-By-Prcs-Version 1 3 3)
+(Project-Description "SLFQ: Simplifying Large Formulas with QEPCAD
+SLFQ is program for simplifying very large formulas quantifer-free
+formulas based on repeated calls to QEPCAD.")
+(Project-Version simplify 1 20)
+(Parent-Version simplify 1 19)
+(Version-Log "Fixed init() to deal properly with mixed saclib/qepcad arguments.")
+(New-Version-Log "")
+(Checkin-Time "Tue, 17 Apr 2012 14:04:33 -0400")
+(Checkin-Login wcbrown)
+(Populate-Ignore ())
+(Project-Keywords)
+(Files
+;; Files added by populate at Wed, 04 Sep 2002 10:13:22 -0400,
+;; to version 0.0(w), by qepcad:
+
+  (README (simplify/0_README 1.6 600))
+  (LOG (simplify/14_LOG 1.9 600))
+  (Makefile (simplify/1_Makefile 1.8.1.2 600))
+  (main.cc (simplify/2_main.cc 1.20 600))
+  (main_parse.cc (simplify/4_main_parse 1.2 600))
+  (polynom.h (simplify/5_polynom.h 1.11 600))
+  (poly.l (simplify/6_poly.l 1.7 600))
+  (poly.y (simplify/7_poly.y 1.14 600))
+  (simplify.h (simplify/17_simplify.h 1.8 600))
+  (simplify.cc (simplify/18_simplify.c 1.14 600))
+  (utils.h (simplify/19_utils.h 1.3 600))
+  (utils.cc (simplify/20_utils.cc 1.5 600))
+  (option.h (simplify/24_option.h 1.3 600))
+  (slfqargs.h (simplify/25_slfqargs.h 1.6 600))
+  (examples/README (simplify/21_README 1.2 600))
+  (examples/Ex5 (simplify/22_Ex5 1.1 600))
+  (examples/Ex4 (simplify/23_Ex4 1.1 600))
+  (examples/Ex3 (simplify/11_Ex3 1.2 600))
+  (examples/Ex2 (simplify/12_Ex2 1.2 600))
+  (examples/Ex1 (simplify/13_Ex1 1.2 600))
+
+
+  (slfq_signal.h (simplify/26_slfq_signa 1.1.1.1 600))
+  (slfq_signal.cc (simplify/27_slfq_signa 1.1.1.1 600)))
+(Merge-Parents)
+(New-Merge-Parents)

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - Extended Tarski Formulas</title>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+
+  <body>
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Extended Tarski Formulas<hr></h1>
+
+    <p>
+      Real quantifier elimination traditionally refers to eliminating
+      quantified variables from <em>Tarski formulas</em>, which are
+      boolean combinations of polynomial equalities and inequalities.
+      The atomic formulas in a Tarski formula in the variables
+      <em>x<sub>1</sub>, ..., x<sub>k</sub></em> have the form
+      <em>f(<em>x<sub>1</sub>, ..., x<sub>k</sub></em>) s 
+	g(<em>x<sub>1</sub>, ..., x<sub>k</sub></em>)</em>, where
+      <em>f</em> and <em>g</em> are polynomials with integer
+      coefficients and <em>s</em> is one of the relational operators 
+      &gt;,&lt;,=,/=,&gt;=,&lt;=.  Sets that are definable by Tarski
+      formulas are called <em>semi-algebraic</em>
+      (if <em>F(<em>x<sub>1</sub>, ..., x<sub>k</sub></em>)</em>
+      is a Tarski formula it defines the subset of <em><b>R</b><sup>k</sup></em>
+      consisting of all points <em><b>a</b></em> such that <em>F(<b>a</b>)</em>
+      evaluates to true).  QEPCAD accepts a slightly larger language
+      than simple Tarski formulas, a language we refer to as
+      <em>Extended Tarski formulas</em>.  The extended language still
+      defines exactly the semi-algebraic sets, but it allows some sets 
+      to be described more easily than is possible with plain Tarski
+      formulas, and this can translate into more efficient computation 
+      for QEPCAD.
+    </p>
+    <p>
+      The language of <em>Extended Tarski formulas</em> (ETFs) is defined in
+      Chapter 7 of <a href="http://www.cs.usna.edu/~wcbrown/research/Thesis.html">my
+	thesis</a>, and it is shown that we can perform quantifier
+      elimination in this language using CADs - in fact it isn't really
+      different than quantifier elimination for Tarski formulas using
+      CADs.  That chapter also formally defines the class of
+      <em>Restricted ETFs</em> and this language, which is still a
+      superset of the language of Tarski formulas, is the language of
+      input and output formulas in QEPCAD.  Here we only give an
+      informal definition.
+    </p>
+    <p>
+      The language of Restricted ETFs extends the language of Tarski
+      formulas by allowing atomic formulas of the form
+      <em>x<sub>k</sub> s root<sub>j</sub>f(x<sub>1</sub>, ...,	x<sub>k</sub>)</em>, 
+      where
+      <em>f</em> is a polynomial with integer
+      coefficients, <em>j</em> is a nonzero integer, and <em>s</em> is
+      one of the relational operators &gt;,&lt;,=,/=,&gt;=,&lt;=.
+      The truth of this atomic formula at the point 
+      <em>(a<sub>1</sub>,...,a<sub>n</sub>)</em>, where <em>n &gt;= k</em>
+      is false if the polynomial 
+      <em>f(a<sub>1</sub>,...,a<sub>k-1</sub>,x<sub>k</sub>)</em>
+      has fewer than <em>k</em> distinct real roots, and is otherwise
+      given by <em>a<sub>k</sub> s b</em>, where <em>b</em> is the 
+      |<em>j</em>|<sup>th</sup> root of 
+      <em>f(a<sub>1</sub>,...,a<sub>k-1</sub>,x<sub>k</sub>)</em>
+      ordered from smallest to largest if <em>j &gt; 0</em>  and
+      largest to smallest otherwise.
+      Remember that in a CAD construction problem there is an assumed
+      order to the variables of 
+      <em>x<sub>a</sub> &lt; x<sub>2</sub> &lt; ... &lt; x<sub>k</sub></em>.
+      That order is a part of this definition!
+   </p>
+      <center><b>Some Examples of Indexed Root Expressions and the
+	  Sets They Define</b></center>
+    <p>
+      <table>
+	<tr><td><code>[ x2 &gt; _root_1 x1^2 + x2^2 - 1 ]</code></td>
+	  <td><img src="ETF.gif"></td>
+	  <td>A simple example in the extended language - the cells
+	    colored blue are in the set defined by the formula</td>
+</tr>
+	<tr><td><code>[ x2 &gt; _root_-2 (x1^2 + x2^2)^4 - 
+7 x1^6 x2 + 35 x1^4 x2^3 - 
+21 x1^2 x2^5 + x2^7 ]</code></td>
+	  <td><img src="ETF2.gif"></td>
+	  <td>Sometimes the sets defined by indexed root expressions
+	    are a bit odd!</td>
+	</tr>
+      </table>
+    </p>
+
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Tue Jul 23 09:25:02 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 31 09:34:04 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

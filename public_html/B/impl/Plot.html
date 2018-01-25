@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Plot Language Documentation</title>
+  </head>
+
+  <body>
+    <h1>Plot Language Documentation</h1>
+    The rend package is designed to produce a description of a CAD
+    plot in a small language defined as follows:
+    <p>
+    <dl>
+      <dt><b>Initialization</b>
+      <dd>
+	<dl>
+	  <dt><code>d1 d2</code>
+	  <dd>
+	    Two int's separated by a space and followed by a
+	    newline. This should indicate the size in pixels of 
+	    the plot window.  d1 is pixel size for width, d2 is pixel
+	    size for height.
+	</dl>
+	<p>
+      <dt><b>Command Loop</b>
+      <dd>What follows are the literal characters that are sent to
+	indicate the type of object to be described, along with
+	descriptions of the info following the character code.
+	<dl>
+	  <dt><code>L</code>
+	  <dd>Means draw a 2-level section over a 1-level sector.  A
+	    single character (T/F/U) follows that indicates truth
+	    value. Then and int n giving the number of points in the
+	    polyline to follow.  Then n pairs of int's giving the
+	    xy-coordinates of the points comprising the polyline.
+	  <dt><code>P</code>
+	  <dd>Means draw a 2-level sector over a 1-level sector. A
+	    single character (T/F/U) follows that indicates truth
+	    value. Then and int n giving the number of points in the
+	    polygon to follow.  Then n pairs of int's giving the
+	    xy-coordinates of the points comprising the polygon.
+	    Vertices may or may not appear twice in this list, but
+	    they will be ordered.
+	  <dt><code>R</code>
+	  <dd>Means draw a 2-level sector over a 1-level section. A
+	    single character (T/F/U) follows that indicates truth
+	    value. Then three int's x, y1, y2.  The segment with
+	    endpoints (x,y1) and (x,y2) should be produced.
+	  <dt><code>V</code>
+	  <dd>Means draw a 1-level section. A
+	    single character (T/F/U) follows that indicates truth
+	    value. Then one int x, y1, y2.  The segment with
+	    endpoints (x,-infinty) and (x,+infinity) should be produced.
+	  <dt><code>C</code>
+	  <dd>Means draw a 1-level sector. A
+	    single character (T/F/U) follows that indicates truth
+	    value. Then two int's x1 and x2.  The rectangle 
+	    (x1,x2)x(-infinty,+infinity)
+	    should be produced.
+	  <dt><code>S</code>
+	  <dd>Means draw a 2-level section over a 1-level section
+	    (i.e. a single point). A
+	    single character (T/F/U) follows that indicates truth
+	    value.  Then two int's x and y.  A point should be
+	    produced at coord's (x,y).
+	  <dt><code>F</code>
+	  <dd>Refresh.
+	  <dt><code>E</code>
+	  <dd>Means the graphics data is at an end.
+	</dl>
+    </dl>	
+    This information is produced by the exceedingly ugly code in the
+    file WRITE_PLOT.cc.
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Oct 18 18:24:53 EDT 1999 -->
+<!-- hhmts start -->
+Last modified: Mon Oct 18 18:50:59 EDT 1999
+<!-- hhmts end -->
+  </body>
+</html>

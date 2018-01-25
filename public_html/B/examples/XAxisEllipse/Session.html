@@ -1,0 +1,99 @@
+<head></head>
+<body>
+<pre>
+valiant[15] [~/]> <b>qepcad</b>
+=======================================================
+                                                       
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version 19 (Interactive)                
+                       January 11, 2001                
+                                                       
+                          by                           
+                       Hoon Hong                       
+              (hhong@risc.uni-linz.ac.at)              
+      Research Institute for Symbolic Computation      
+                                                       
+                 with contributions by                 
+                   George E. Collins                   
+                   Jeremy R. Johnson                   
+                  Mark J. Encarnacion                  
+                                                       
+=======================================================
+Enter an informal description  between '[' and ']':
+<b>[ The X Axis Ellipse Problem ]</b>
+Enter a variable list:
+<b>(a,b,c,x,y)</b>
+Enter the number of free variables:
+<b>3</b>
+Enter a prenex formula:
+<b>(A x)(A y)[ a > 0 /\ b > 0 /\
+[ [ b^2 (x - c)^2 + a^2 y^2 - a^2 b^2 = 0] ==> x^2 + y^2 - 1 <= 0 ] ].</b>
+
+
+=======================================================
+
+Before Normalization >
+<b>prop</b> <font color="red">This has the effect of specifying the McCallum Projection</font>
+
+Before Normalization >
+<b>go</b>
+
+Before Projection (y) >
+<b>go</b>
+
+Before Choice >
+<b>fast</b> <font color="red">This specifies "fast cell choice" in lifting - usually a good idea</font>
+
+Before Choice >
+<b>go</b>
+
+Before Solution >
+<b>sol T</b> <font color="red">Requests a Tarski Formula solution</font>
+
+An equivalent quantifier-free formula:
+
+a > 0 /\ b > 0 /\ c - a + 1 >= 0 /\ c + a - 1 <= 0 /\ [ b^2 - a <= 0 \/ b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0 ]
+
+
+Before Solution >
+<b>sol G</b> <font color="red">Tries to construct a solution "geometrically"</font>
+
+An equivalent quantifier-free formula:
+
+[
+  a > 0
+  /\
+  a - 1 <= 0
+  /\
+  b > 0
+  /\
+  b^2 - a <= 0
+  /\
+  c - a + 1 >= 0
+  /\
+  c + a - 1 <= 0
+]
+\/
+[
+  a > 0
+  /\
+  a - 1 < 0
+  /\
+  b > _root_-1 b^2 - a
+  /\
+  b - 1 <= 0
+  /\
+  b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0
+]
+
+
+Before Solution >
+<b>quit</b>
+Quitting the QEPCAD system... Bye!
+valiant[16] [~/]> 
+</pre>

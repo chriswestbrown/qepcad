@@ -1,0 +1,42 @@
+
+[
+]
+(c,d,a,b)
+2
+(E a)(E b)[0 < a /\ a < 1 /\ 1 < b /\ b < 2  /\ d > 0 /\
+4 a b d^2 - 5 b d^2 - 5 a d^2 + 6 d^2 + 4 a b c^2 - 5 b c^2
+- 5 a c^2 + 6 c^2 - 10 a b c + 12 b c + 12 a c - 14 c + 6 a b - 7 b
+- 7 a + 8 > 0 /\
+6 a b d^2 - 9 b d^2 - 9 a d^2 + 13 d^2 + 6 a b c^2 - 9 b c^2
+- 9 a c^2 + 13 c^2 - 18 a b c + 26 b c + 26 a c - 36 c + 13 a b - 18 b
+- 18 a + 24 < 0
+/\
+3 d^4 + 6 c^2 d^2 - 18 c d^2 + 11 d^2 + 3 c^4 - 18 c^3 + 39 c^2 - 36 c + 12 /= 0
+].
+prop
+res-alg S
+go
+st 1
+rem-pj 3,5
+y
+rem-pj 3,6
+y
+rem-pj 3,8
+y
+rem-pj 3,9
+y
+st 2
+rem-pj 2,7
+y
+rem-pj 2,10
+y
+rem-pj 2,12
+y
+rem-pj 2,13
+y
+go
+fast
+go
+sol T
+d-stat
+quit

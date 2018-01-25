@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - The CAD2D Program</title>
+ <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - The CAD2D Program<hr></h1>
+    <p>    
+    The CAD2D program is a minor modification of QEPCAD for quantifier-free
+    formulas in 2 variables.  It is able to do some lifting steps
+    completely with validated floating-point arithmetic, which can
+    lead to much reduced overall time for 2-dimensional CAD
+    computation.  Particularly, if you're interested in plotting a
+    2-dimensional CAD, this is a better choice than QEPCAD.  It's a
+    bit buggy, though.  Not in the "wrong answer" kind of way, but in
+    the "might crash" kind of way.  Work in progress!
+    </p>
+    <p>
+      <b>Using CAD2D</b>
+      CAD2D works like QEPCAD, for the most part.  The main difference 
+      is that once the formula is entered, the program automatically
+      goes through the normalization, projection, and stack
+      construction phases without any user interaction.
+    <p>
+      <table cellpadding="5">
+	<tr>
+	  <td><pre>
+prompt% cad2d
+=======================================================
+     CAD2D - A Program for producing CADs of R^2       
+                                                       
+Based on QEPCAD Version B 0.0, 26 Jul 2002, by Hoon Hong
+with contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robiduex, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[ An interesting CAD of R^2 to plot ]
+Enter a variable list:
+(x,y)
+Enter the number of free variables:
+2
+Enter a prenex formula:
+[ (x^2 + y^2)^4 - 7 x^6 y + 35 x^4 y^3 - 21 x^2 y^5 + 
+  y^7 &lt;= 0 /\ 2 y &lt; x^2 + 1 ].
+
+=======================================================
+
+Before Solution &gt;
+p-2d-cad -1.25 1.25 -1.25 1.25 0.005 cad2.eps
+
+Before Solution &gt;
+quit
+Quitting the QEPCAD system... Bye!
+prompt%
+	</pre></td>
+	  <td align="center">
+	    <b><code>cad1.eps</code></b><br>
+	    <img src="cad1.gif"/>
+	  </td></tr>
+      </table>
+    </p>
+    </p>
+    <p>
+      <b>Implementation Information</b>
+      CAD2D is in the <code>cad2d</code> directory.  It is essentially 
+      just a few modified files from QEPCAD, linked together with the
+      regular QEPCAD libraries to form a program that does a little
+      bit of optimization of 2D CAD construction.  The code that does
+      the numerical stuff is in <code>extensions/lift2D</code>.
+    </p>
+    <hr>
+    <address><a href="mailto:qepcad@csb.cs.usna.edu">QEPCAD account {Prof. Brown}</a></address>
+<!-- Created: Tue Jul 30 12:36:10 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 12:53:43 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

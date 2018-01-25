@@ -1,0 +1,5 @@
+[ The X Axis Ellipse Problem - a^2 and b^2 having been replaced with a and b ]
+(a,b,c,x,y)
+3
+(A x)(A y)[ a > 0 /\ b > 0 /\
+[ [ b (x - c)^2 + a y^2 - a b = 0] ==> x^2 + y^2 - 1 <= 0 ] ].

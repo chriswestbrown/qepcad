@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Cell Documentation</title>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - QEPCAD Cell Documentation<hr></h1>
+
+    <p>
+    <a href="cells">George'sFile</a>
+    </p>
+    
+    <DT><B>Cell : a qepcad data structure</B></DT>
+    <DD> A list 
+      (LEVEL, CHILD, ASSIGNED, TRUTH, SAMPLE, INDX, SIGNPF, HOWTV,
+      DEGSUB, MULSUB).  Note that the constants LEVEL, CHILD,
+      ASSIGNED, TRUTH, SAMPLE, INDX, SIGNPF, HOWTV,
+      DEGSUB, MULSUB which define the positions of this data in the
+      list are defined in qepcad.h.
+      <OL>
+	<LI>LEVEL - the level of the cell.</LI>
+	<LI>CHILD - a list of qepcad Cell data structures, the children.</LI>
+	<LI>ASSIGNED - Assignment flag (for parallel execution only).</LI>
+	<LI>TRUTH - the truth value of the cell: TRUE, FALSE, or UNDET.</LI>
+	<LI>SAMPLE - a sample point data structure.</LI>
+	<LI>INDX - the index of the cell as a list.</LI>
+	<LI>SIGNPF - a list (S_1,...,S_k), where k is the LEVEL of the cell.
+	  S_i is a list (s_1,...,s_n) where n is the number of k-i+1 level
+	  projection factors, and s_j is the sign of P_(k-i+1,j) in the cell.</LI>
+	<LI>HOWTV - how the truth value was assigned, the possibilities
+	  are BYTEV = trial evaluation, BYPRP = propogation, 
+	  BYEQC = equational constraint, and NOTDET = not determined.</LI>
+	<LI>DEGSUB - List of degrees of substituted projection factors.</LI>
+	<LI>MULSUB - List of multiplicities of substituted projection
+	  factors. The list of
+	  multiplicities of substituted projection factors is a list
+	  ((i_1,e_1),...,(i_n,e_n)), n >= 0, with i_1 < i_2 < ... < i_n
+	  and each e_j > 0 where the i_j are the second indices of all
+	  k-level projection factors which are zero in the cell and e_j
+	  is the multiplicity of the zero.  This is a null list for
+	  each sector, a non-null list for each section.
+	</LI>
+      </OL></DD>
+    
+    
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Mon Oct 18 17:20:55 EDT 1999 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:25:13 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

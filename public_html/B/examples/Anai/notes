@@ -1,0 +1,32 @@
+[ 
+ In this problem I am simplifying the answer given to the last
+ example problem from the following paper:
+
+ @InProceedings{Anai:98,
+  author = 	 {H. Anai},
+  title = 	 {Solving {LMI} and {BMI} problems by quantifier elimination},
+  booktitle = 	 {Proc. of IMACS-ACA'98},
+  year = 	 {1998},
+  editor = 	 {R. Liska},
+  address = 	 {http://www-troja.fjfi.cvut.cz/aca98/proceedings.html},
+  note = 	 {Electronic Proceedings}}
+]
+(s,z)
+2
+[
+[s z  + s - 1 >= 0 /\ s = 0 /\  z  + 1 >= 0]
+\/ [s z  + s >= 0 /\ s = 0 /\  z  = 0] \/ 
+[s^2  + 4 s z  >= 0 /\ [[
+s^2  - 2 s <= 0 /\ s z  + s - 1 <= 0 /\ s = 0 /\ [
+s^2  + 3 s z  - s - 2 z  <= 0
+ \/ [s +  z  - 1 <= 0 /\ [s z  + s - 1 = 0 \/  
+z  = 0]]] /\ [s + 2 z  >= 0 \/  z  = 0]] \/ 
+[s^2  - 2 s <= 0 /\ s + 2 z  >= 0 /\ s = 0 /\ [
+[s^2  + 3 s z  - s - 2 z  <= 0 /\ [s z  + s - 1 <= 0 
+\/ z  = 0]] \/ [s +  z  - 1 >= 0 /\ 
+[s z  + s - 1 >= 0 \/  z  = 0]]]]]] \/ 
+[s = 0 /\  z  >= 0]
+].
+finish
+
+

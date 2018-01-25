@@ -1,0 +1,37 @@
+[ Extension of example 5.14 from Hong, Liska, Steinberg, 
+  "Testing Stability by Quantifier Elimination" 
+  Journal of Symbolic Computation, Vol. 24, No. 2, 
+  August 1997.  
+  NOTE:  This must be run with a larger garbage collected
+  memory space than saclib's default.  Launch QEPCADB
+  like "qepcad +N4000000" for example.
+]
+(a,b,c2)
+2
+(A c2)[
+  c2^4 (a - b + 1) ( a - b - 1) (a - b)^2 <= 0
+  /\
+  c2^4 b^2 (b^2 - 1) + 4 c2^3 a b^2 (b - 1)
+  + 2 c2^2 a b (3 a b - 2 a - 2 b + 1)
+  + 4 c2 a^2 b (a - 1) + a^2 (a^2 - 1) <= 0
+  /\
+  [
+    c2^2 ( 8 a^2 b^2 - 12 a^2 b + 5 a^2 - 8 a b^3 + 8 a b^2 
+    + 2 a b - 4 a + 4 b^4 - 4 b^3  - 3 b^2 + 4 b  ) 
+    + 2 c2 ( 4 a^3 b  - 2 a^3 - 4 a^2 b^2 - 2 a^2 b + a^2 
+    + 4 a b^3 - 2 a b^2 + 2 a b - 2 b^3 + b^2  )  
+    + 4 a^4 - 8 a^3 b - 4 a^3 + 8 a^2 b^2 + 8 a^2 b - 3 a^2 
+    - 12 a b^2 + 2 a b + 4 a + 5 b^2 - 4 b <= 0
+   \/
+    2 c2^4 b ( 3 a^2 b - 2 a^2 - 2 a b^2 + a + b^3 - b) 
+    +  4 c2^3 a b ( a^2 - a + b^2 - b) 
+    + 2 c2^2 a ( a^3 - 2 a^2b + 3 a b^2 - a - 2 b^2 + b ) <= 0
+  ]
+].
+go
+go
+select [level < 2 \/ dimension = 2]
+go
+tvc2d
+use-select n
+go

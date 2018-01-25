@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - The Projection Phase</title>
+  </head>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - The Projection Phase<hr></h1>
+
+    <p>
+      <b>NOTE:</b> This section of the documentation is out of date!</b><br>
+      In the Projection Phase, QEPCAD computes a set of polynomials
+      that implicitly defines the CAD that it will later explicitly
+      construct in the <em>Stack Construction Phase</em>.  This set of 
+      polynomials, the <em>projection factor set</em>, must satisfy
+      some special properties in order to define a CAD.  So the goal
+      of this phase is to construct as small a set as we can while
+      ensuring that it defines a CAD and contains certain polynomials
+      we'll need to solve the quantifier elimination problem.
+      A <em>projection operator</em> is a function that's used to
+      define a projection factor set, and several are available in
+      QEPCAD.   
+    </p>
+    <p>
+      <b>The Average User</b><br>
+<div class="screen">
+<pre>
+=======================================================
+Enter an informal description  between '[' and ']':
+[ Using Hong's Projection at level 4 ]
+Enter a variable list:
+(a,b,d,c)
+Enter the number of free variables:
+4
+Enter a prenex formula:
+[ 
+54 c^3 - 27 a b c^2 + 6 a^3 c^2 - 144 b d c + 
+6 a^2 d c + 4 b^3 c - a^2 b^2 c + 96 a d^2 + 40 a b^2 d 
+- 9 a^3 b d = 0 
+].
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (c) >
+proj-op (m,m,h)
+
+Before Projection (c) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+</pre>
+</div>
+      From the perspective of the average user, two
+      projection operators are important:  Hong's projection and
+      McCallum's projection.  McCallum's projection produces a smaller 
+      projection factor set, but QEPCAD sometimes discovers during the 
+      Stack Construction Phase that it cannot be sure of the validity
+      of McCallum's projection and prints out an error message
+      (actually a "possible error" message).
+      Hong's projection is
+      always valid, but produces a larger projection factor set.
+      QEPCAD's default behaviour is to use a slightly improved version 
+      of McCallum's projection
+      operator.  
+      [ Essentially it makes a half-hearted attempt to apply the
+      Reduced McCallum projection. It's only half-hearted because it
+      has a very weak system for trying to determine whether the
+      system of coefficients for a projection factor is consistent. ]
+      If QEPCAD later prints out an error message, it's up
+      to the user to restart the computation and explicitly use
+      Hong's projection operator instead of McCallum's.  (Note:
+      McCallum's projection operator is always valid when projecting
+      in 2 or 3 variables.)  In the example to the right, we show
+      how to specify which projection operator should be used.
+      Running this same example with the default (McCallum's
+      projection used at every step) produces the error message
+      "<code>Error! Delineating polynomial should be added over cell(2,2)!</code>"
+      during the stack construction phase.  In this case it turns out
+      that McCallum's projection is not invalid, it's just that QEPCAD 
+      can't <em>prove</em> that it's valid.  Thus we must rerun the
+      example with Hong's projection for all but the last two
+      projection steps.  In general, if McCallum's projection produces 
+      an error message for a problem involving variables 
+      <code>(x1,x2,...,xk)</code> you should issue the command
+      <code>proj-op (m,m,h,h,h,...,h)</code> where the list has
+      <em>k-1</em> elements, all but the first two of which are '<code>h</code>'.
+    </p>
+    <p>
+      <b>The Advanced User</b><br>
+      If you know some things about different projection operators you 
+      can interact with QEPCAD to do better - specifically by removing 
+      projection factors during the projection process.  I'll add some 
+      info on that in the future!
+    </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Tue Jul 23 15:09:22 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Mar 13 13:33:34 EDT 2007
+<!-- hhmts end -->
+  </body>
+</html>

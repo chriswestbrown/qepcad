@@ -1,0 +1,30 @@
+                        Sample Points
+
+Sample points are either in primitive or extended representation.
+A sample point in primitive representation is a list (M,I,b)
+of length 3.  M is the integral minimal polynomial of an algebraic
+number alpha and I is an isolating interval for alpha as a root
+of M.  b is a list (b_1,...,b_k), k >= 1, where the b_i are the
+coordinates of the sample point, each integrally represented as
+elements of Q(alpha).  If all coordinates of b are rational
+numbers then M and I are arbitrary but are usually taken to be
+x and [0] respectively.
+
+Elements of an algebraic number field Q(alpha) are, in various
+contexts, in either of two representations.  Let beta be an element
+of Q(alpha), n the degree of alpha.  If beta /= 0, the rational
+representation of beta is the unique rational polynomial (element of
+Q[x], B, of degree less than n such that B(alpha) = beta.  The
+integral representation of beta is the unique pair (b,B^) such that
+b is a rational number, B^ is a positive primitive integral
+polynomial, and B = b * B^.  If beta = 0 then its representation in
+either case is just the single-precision integer 0.
+
+A sample point in extended representation is a list (A,J,M,I,b) of
+length 5.  M, I, and b are the same as in primitive representation
+above.  A and J define an additional algebraic number b_{k+1}
+as the unique root of the algebraic polynomial A in the isolating
+interval J, A being a squarefree polynomial with coefficients in
+Q(alpha).  The program CONVERT converts a sample point from extended
+to primitive representation by computing a primitive element gamma
+for Q(alpha,beta).

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Naive Solution Formula Cosntruction</title>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Naive Solution Formula Cosntruction<hr></h1>
+
+    <h2>Overview</h2>
+    The "Naive Solution Formula Construction" (NSFCONST) method is my
+    first attempt to write a simple, fast method for constructing
+    simple solution formulas.  It assumes a projection definable CAD
+    <b>D</b> with projection factor set <b>P</b>, as well as a subset
+    <b>S</b> of <b>P</b> (possibly <b>S = P</b>) such that the
+    elements in <b>S</b> suffice for solution formula construction.
+    It proceeds to construct a solution formula in three steps:
+    <ol>
+      <li>Construct <b>L_t</b> a list of the true cells in <b>D</b>,
+      and <b>L_f</b> a list of the false cells in <b>D</b>.
+      <li>Using <b>L_t</b> and <b>L_f</b> construct a list <b>L</b>
+      of prime  implicants, such that every cell in <b>L_t</b> is
+      captured by at least one implicant in <b>L</b> --- i.e. <b>L</b>
+      <em>covers</em> <b>L_t</b>.
+      <li>Construct <b>SF</b>, a minimum cardinality subset of
+      <b>L</b> that still covers <b>L_t</b>.
+    </ol>
+    Clearly, the disjunction of the implicants in <b>SF</b> is a
+    solution formula.
+    <h2>Implementation Overview --- The heuristic</h2>
+    The main implementation issue here is the construction of <b>L</b>
+    in Step 2.  This is done iteratively, starting with <b>L</b> as
+    the empty list and successively adding implicants to it until it
+    covers <b>L_t</b>.  At each iteration, a cell in <b>L_t</b> is
+    chosen that is not already covered by <b>L</b>.  A minimum
+    lengthed prime implicant covering the cell is then constructed and
+    added to <b>L</b>.  The heuricstic here is that short implicants
+    tend to cover more cells than long implicants.  So by focusing on
+    short implicants we hope to cover all the true cells with few
+    implicants.
+
+    <h3>Choosing cells</h3>
+    The order in which cells from <b>L_t</b> are chosen in Step 2 can
+    have considerable effect on NSFCONST's performance; both in the
+    time required to construct a formula and in the simplicity of the
+    result.  A rough heuristic argument and some experimental evidence
+    led me to decide upon choosing cells by a largest dimension first
+    policy.  How is this accomplished?  Between Step 1 and Step 2, the
+    elements of <b>L_t</b> are sorted by dimension.  After a new
+    implicant is added to <b>L</b>, all elements of <b>L_t</b> that
+    are covered by the implicant are deleted.  The order of the
+    elements that remain is, however, unaltered.  Thus, the first
+    element of <b>L_t</b> is always a true cell of largest dimension
+    among those not covered by <b>L</b>.
+
+    <h3>Constructing Shortest Prime Implicants</h3>
+    The shortest implicant problem is translated into a minimum
+    hitting set problem.  The underlying set <b>Q</b> is the set of
+    all atomic formulas on the elements of <b>S</b> that the chosen
+    true cell satisfies.  For each false cell <b>c</b> in <b>L_f</b>
+    we construct the set <b>T_c</b> of elements of <b>Q</b> that
+    <b>c</b> does not satisfy.  If <b>H</b> is a hitting set for the
+    collection of all <b>T_c</b>'s, then the conjunction of the
+    elements of <b>H</b> is a minimum lengthed implicant covering the
+    chosen true cell.
+
+    <h3>Constructing <b>SF</b> from <b>L</b></h3>
+    <b>SF</b> is also constructed using a minimum cardinality hitting
+    set algorithm.  <b>L</b> is the underlying set, and for each true
+    cell <b>c</b> we construct a subset <b>T_c</b> of <b>L</b>
+    consisting of all implicants in <b>L</b> that capture <b>c</b>.
+    <b>SF</b> is constructed as a minimum cardinaltiy hitting set for
+    the collection of all <b>T_c</b>'s.
+
+    <h2>Functions</h2>
+    Before listing functions specific to NSFCONST, I should point out
+    that this implementation operates on a pruned-CAD data structure.
+    
+    <dl>
+      <dt><a href="../niavsf/NSFCONST.c">niavsf/NSFCONST.c</a>
+      <dd>Produces a solution formula for a pruned-CAD structure using
+      the NSFCONST.
+      <dt><a href="../niavsf/SPCADCBDD.c">niavsf/SPCADCBDD.c</a>
+      <dd>Sorts pruned-CAD cells by decreasing dimension.
+    </dl>
+
+      <hr>
+      <address><a href="mailto:brown@cis.udel.edu">Christopher W. Brown</a></address>
+<!-- Created: Fri Jun 12 12:31:37 EDT 1998 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:27:06 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

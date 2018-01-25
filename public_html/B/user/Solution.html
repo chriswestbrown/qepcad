@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - The Solution Formula Construction Phase</title>
+  </head>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - The Solution Formula Construction Phase<hr></h1>
+
+    <p>
+      When the stack construction phase is complete, QEPCAD has a CAD of 
+      free-variable space with truth values attached to each cell.  This 
+      represents the solution set of the (possibly quantified) input
+      formula.  The last step is to represent this set as a formula (a
+      <em>solution formula</em>), and 
+      one of the big advantages of quantifier elimination by CAD is its
+      ability to produce <em>simple</em> solution formula.  If you
+      simply type <code>go</code> at the "<code>Before Solution &gt;</code>"
+      prompt, QEPCAD will automatically construct a (hopefully) simple
+      solution formula in the language of Tarski formulas.  However,
+      more options are available with the <code>solution-extension</code>
+      command.  To understand these options a bit better it's good to
+      know a little bit about how solution formulas are constructed.
+    </p>
+    <p>
+      QEPCAD constructs solution formulas from the polynomials in the
+      projection factor set defining the CAD of free-variable space.
+      It is not always possible to construct a Tarski formula solely
+      from these polynomials, in which case we must add polynomials to 
+      the projection factor set.  
+      A CAD-with-truth-values for which a Tarski solution formula can
+      be built exclusively from the elements of the projection factor
+      set is called <em>projection definable</em>.
+      The command "<code>pdq</code>", which stands for projection
+      definability query, allows the user to ask QEPCAD whether the
+      CAD in the solution formula construction phase is projection
+      definable. It is, however, always possible
+      to construct an <a href="ETF.html"><em>Extended Tarski
+	  Formula</em></a>
+      (ETF) solution
+      formula for a CAD-with-truth-values using just the polynomials
+      in the projection factor set. 
+    </p>
+    <p>
+      <b>The Basic Options</b>
+      The <code>solution-extension</code> command takes a letter as an
+      arguments that provides several different possibilities for
+      solution formula construction.
+    <div class="screen">
+      <pre>
+Enter an informal description  between '[' and ']':
+[Produces a CAD that's not projection definable ]
+Enter a variable list:
+(x,y)
+Enter the number of free variables:
+1
+Enter a prenex formula:
+(Ey)[ x^2 + y^2 - 3 = 0 /\ x + y &gt; 0 ].
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (y) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+pdq
+CAD is not projection definable.
+
+Before Solution >
+solution-extension T
+An equivalent quantifier-free formula:
+
+x^2 - 3 &lt;= 0 /\ [ x &gt;= 0 \/ 2 x^2 - 3 &lt; 0 ]
+
+Before Solution >
+solution-extension E
+An equivalent quantifier-free formula:
+
+x^2 - 3 &lt;= 0 /\ x &gt; _root_1 2 x^2 - 3
+
+      </pre>
+    </div>
+    <ul>
+      <li><code><b>solution-extension T</b></code>
+	This option produces a formula in the language of Tarski
+	formulas, and in fact this exactly the routine that gets
+	called if you simply type "<code>go</code>" at the
+	"<code>Before Solution &gt;</code>" prompt, or
+	"<code>finish</code>" at any point.  If the CAD is not
+	projection definable, polynomials will be added to the
+	projection factor set.
+      </li>
+      <li><code><b>solution-extension E</b></code>
+	This option produces a formula in the language of
+	<a href="ETF.html"><em>Extended Tarski Formulas</em></a>
+	(ETFs).  Projection factors are never added to the projection
+	factor set.
+      </li>
+      <li><code><b>solution-extension G</b></code>
+	This option tries to produce a formula that gives insight into 
+	the geometry of the solution set.  The method of doing so, and 
+	the properties of the formulas that the method produces are
+	described in Chapter 8 of 
+	<a href="http://www.cs.usna.edu/~wcbrown/research/Thesis.html">my thesis</a>.
+	Generally the formula will be an ETF rather than a Tarski
+	formula.  The basic idea is that the set gets described in
+	diskoint pieces.
+      </li>
+      <li><code><b>solution-extension F</b></code>
+	This option produces a formula based purely ono the
+	full-dimensional cells in free variable space.  This means
+	that the truth values of lower dimensional cells are ignored.
+      </li>
+      <li><code><b>solution-extension I</b></code>
+	This option enters the user into an "interactive" mode, which
+	gives him more control over how solution formulas are
+	constructed. 
+      </li>
+    </ul>
+    The example to the left shows the various options in use on a
+    simple example of an input that produces a CAD of 1-space that is
+    not projection definable.  I left out the "<code>G</code>" option, 
+    because it really isn't interesting for CAD's of 1-space - it
+    needs at least 2-levels to do anything fun.  You see in this
+    example that the polynomial <em>x</em> only appears in the formula 
+    produced by "<code>soltution-extension T</code>".  That polynomial 
+    is not in the projection factor set, and was actually added after
+    the fact by QEPCAD in order to make it possible to construct a
+    solution formula in the language of Tarski formulas.
+    </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Tue Jul 23 16:59:04 EDT 2002 -->
+<!-- hhmts start -->
+Last modified: Tue Mar 13 13:28:09 EDT 2007
+<!-- hhmts end -->
+  </body>
+</html>

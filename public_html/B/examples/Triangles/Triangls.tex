@@ -1,0 +1,74 @@
+If a formula that is already quantifier free is entered into QEPCAD B,
+the program produces a simple equivalent formula. As an interesting
+example of formula simplification QEPCAD B, consider the following:
+Figure 1 shows a triangle <em>ABC</em> with what we might
+call the ``external bisector of vertex <em>B</em> with respect to <em>A</em>''.
+    \scalebox{0.5}{\includegraphics{triangle.pdf}}
+    <small>Triangle <em>ABC<em> with the external bisector of vertex <em>B<em>
+      with respect to <em>A<em>.</small>
+    \label{fig:triangle}
+  \end{center}
+\end{figure}
+It is fairly clear from the diagram that this external bisector exists
+as drawn if and only if <em>\theta > (\pi - \phi)/2<em>.  Suppose we want a
+characterization in terms of the side lengths <em>a<em>, <em>b<em> and <em>c<em> rather
+than the angles <em>\theta<em> and <em>\phi<em>.  Straightforward application of
+the common trigonometric identities produces the
+equivalent characterization that, if <em>a<em>, <em>b<em> and <em>c<em> are the side
+lengths of a non-degenerate triangle, this external bisector
+exists if and only if
+\begin{equation}
+\label{eqn:input1}
+b^2 + a^2 - c^2 \leq 0 \vee c (b^2 + a^2 - c^2)^2 < a b^2 (2 a c - (c^2 + a^2 - b^2)).
+\end{equation}
+Of course <em>a<em>, <em>b<em> and <em>c<em> are the side lengths of a non-degenerate
+triangle if and only if 
+\begin{equation}
+\label{eqn:assume1}
+a > 0 \wedge b > 0 \wedge c > 0 \wedge a < b + c \wedge b < a + c \wedge c < a + b.
+\end{equation}
+The conjunction of (\ref{eqn:input1}) and (\ref{eqn:assume1}) completely characterizes the triples of
+real numbers <em>(a,b,c)<em> that are side-lengths of non-degenerate
+triangles for which the above described external bisector exists.  
+Entering this conjunction as
+input to QEPCAD B\ produces the equivalent formula
+<em>c > 0 \wedge b > 0 \wedge a - b + c > 0 \wedge a - c < 0 \wedge a + b - c > 0<em>,
+which is a little hard to interpret, because it's unclear which
+conditions simply specify a non-degenerate triangle, and which are
+specific to characterizing the existence of the external bisector.
+QEPCAD B\ allows us to declare ``assumptions'', which are conditions
+on the free variables that are ``assumed'' by the solution formula
+produced.  A true solution formula is actually the conjunction of the
+assumptions and the solution formula QEPCAD B\ produces.  Here is a
+QEPCAD B\ session for this simplification problem:
+{\tiny
+\begin{verbatim}
+=======================================================
+Enter an informal description  between '[' and ']':
+[ Charaterizing triangles with external bisectors ]
+Enter a variable list:
+(c,b,a)
+Enter the number of free variables:
+3
+Enter a prenex formula:
+[ b^2 + a^2 - c^2 <= 0 \/ c (b^2 + a^2 - c^2)^2 < a b^2 (2 a c - (c^2 + a^2 - b^2)) ].
+=======================================================
+
+Before Normalization >
+assume [ a > 0 /\ b > 0 /\ c > 0 /\ a < b + c /\ b < a + c /\ c < a + b ]
+
+Before Normalization >
+finish
+
+An equivalent quantifier-free formula:
+
+a - c < 0
+
+====================================================
+\end{verbatim}
+}
+In other words, given the assumption (i.e. the conditions that <em>a<em>,
+<em>b<em> and <em>c<em> really form a triangle), the input formula is equivalent
+to <em>a - c < 0<em>.  Simplification has ``discovered'' the theorem
+that the external bisector described above exists if and only if side
+<em>c<em> is longer than side <em>a<em>.

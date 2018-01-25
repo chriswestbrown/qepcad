@@ -1,0 +1,71 @@
+QEPCAD's polynomial data structure
+----------------------------------
+
+A polynomial structure is a list of length five.  The first
+element of the list is the polynomial, the second is its label,
+the third its parentage, the fourth its type and the fifth its
+status.  The list positions are defined in qepcad.h as
+follows:
+
+#define PO_POLY       1
+#define PO_LABEL      2
+#define PO_PARENT     3
+#define PO_TYPE       4
+#define PO_STATUS     5
+
+The label of a polynomial is a list whose first element
+is a list of characters and whose remaining elements are
+integer indices.  For example, a projection factor
+that appears externally as P_2,3 has the internal label
+(('P'),2,3).
+
+The parentage of a polynomial is a list containing one
+element for each of its parents or parent pairs.  Each
+parent or parent pair is also represented by a list.  The
+first element of that list is the type of parentage, which
+may be any of the following: resultant, discriminant, leading
+coefficient, trailing coefficient (if the Lazard projection
+was used), derivative (solution formula phase may add 
+derivatives or projection factors) or factor.  The type of 
+any parent of a  projection factor is 'factor' whereas the 
+type of any parent of a projection polynomial is one of the 
+other four types.  These five types have names that are 
+defined in qepcad.h as follows:
+
+#define PO_RES        10
+#define PO_DIS        11
+#define PO_LCO        12
+#define PO_TCO        13
+#define PO_FAC        14
+#define PO_DER        15
+
+If the parent type is PO_FAC then the parent list has
+three elements, the third being the projection polynomial
+(or input polynomial) of which it is a factor, and the
+second is the multiplicity of the factor.
+
+If the parent type is PO_RES then the parent list has
+six elements, the fourth and sixth being the two polynomials
+whose resultant is being described.  The second, third and
+fifth elements relate to the subresultant projection method;
+if the McCallum projection method is used these elements
+are respectively 0, 1 and 1.
+
+If the parent type is PO_DIS then the parent list has
+four elements, corresponding to the first four elements of
+a PO_RES parent list.
+
+If the parent type is PO_DER then the parent list has
+three elements, the third being the projection polynomial
+(or input polynomial) of which it is a factor, and the
+second is simply set to zero.
+
+If the parent type is PO_LCO then the parent list has
+three elements.  In this case we have the leading
+coefficient of the i-th reductum of some polynomial. 
+The third element is that polynomial and the second
+element is i.  (i = 0 indicates no reducta.)
+
+The type PO_TCO occurs only if the Lazard projection method
+is used, which method is discouraged because it may not be
+valid.

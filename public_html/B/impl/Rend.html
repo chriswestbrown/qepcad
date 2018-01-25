@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Rend Documentation</title>
+
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Rend Documentation<hr></h1>
+    <h2>General</h2>
+<p>
+    <ol>
+      <li><b>Indices</b> of cells are: 1 for the first actual cell in the
+	stack, AD2D_ErrI for an undefined (e.g. uninitialized) index, 
+	AD2D_Infy for the virtual cell at positive infinity, and
+	AD2D_N_In for the virutal cell at negative infinity.  Note
+	that AD2D_ErrI, AD2D_Infy, and AD2D_N_In are defined in
+	<a href="../../extensions/adj2d/adj2D.h">adj2D.h</a>, and that the virtual
+	cells at +/- infinity are considered to be sections.
+<p>
+      <li><b>Truth values</b> are TRUE, FALSE, and UNDET.  These are
+	#define's appearing in <a
+	  href="../../source/qepcad.h">qepcad.h</a>. 
+	<p>
+      <li><b>Graphical CAD Language</b>
+	<a href="Plot.html">Detailed Info</a>.
+    </ol>
+<p>
+    <h2>Types</h2>
+    <dl>
+      <dt>Rend_Cell
+      <dd>Defined in <a href="../../extensions/rend/Rend_Cell.h">Rend_Cell.h</a> and <a
+	  href="../../extensions/rend/Rend_Cell.cc">Rend_Cell.cc</a>.
+	  An object of type Rend_Cell represents a cell in a CAD.  In
+	  keeping with QEPCAD's recursive view of CAD's the entire CAD 
+	  is represented by the base-cell of that CAD, in this case
+	  the Rend_Cell object corresponding to the 0-level cell.
+	<p>
+      <dt>Rend_Sample
+      <dd>Defined in <a href="../../extensions/rend/Rend_Sample.h">Rend_Sample.h</a> and <a
+	  href="../../extensions/rend/Rend_Sample.cc">Rend_Sample.cc</a>.  An object of type 
+	Rend_Sample represents a sample point for a cell.  There are
+	several subtypes of Rend_Sample
+	<ul>
+	  <li>Rend_Sample_1DS: a sample point for a 1-level section
+	    cell
+	  <li>Rend_Sample_1DO: a sample point for a 1-level sector
+	    cell
+	  <li>Rend_Sample_2DS: a sample point for a 2-level section
+	    cell over a 1-level section
+	  <li>Rend_Sample_2DC: a sample point for a 2-level section
+	    cell over a 1-level sector
+	  <li>Rend_Sample_BR: a sample point for virtual cells at +/- infinity
+	</ul>
+	<p>
+      <dt>Rend_Win
+      <dd>Defined in <a href="../../extensions/rend/Rend_Win.h">Rend_Win.h</a> and <a
+	  href="../../extensions/rend/Rend_Win.cc">Rend_Win.cc</a>.  The model I'm using for 
+	these plotting programs distinguishes between the "view
+	window", which is a rectangle in the cartesian plane, and the
+	"rend window", which is rectangle on the screen.  An object of 
+	type Rend_Win represents a "rend window" and includes the
+	corresoponding "view window" coordinates.
+	<p>
+      <dt>Mapper
+      <dd>Defined in <a href="../../extensions/rend/Mapper.h">Mapper.h</a> and <a
+	  href="../../extensions/rend/Mapper.cc">Mapper.cc</a>.  A Mapper object represents
+	the mapping of points from the "view rectangle" to points from
+	the "rend rectangle".
+		<p>
+      <dt>gcmemloc
+      <dd>Defined in <a href="../../extensions/rend/gcmemloc.h">gcmemloc.h</a>.  This file is basically
+	a hack that allows garbage collected saclib "Word"'s that are
+	global, static local, inside arrays, or inside class
+	definitions.  It's not efficient, but it works without
+	modifying the saclib garbage collector.  The inefficiencey
+	only shows up at deallocations, so if you leave the local
+	variables as normal old Word objects, then there's not too
+	much overhead.
+		<p>
+      <dt>Safe_Array
+      <dd>Defined in <a href="../../extensions/rend/Safe_Array.h">Safe_Array.h</a>.  I wrote
+	this before  
+	I had access to a compiler with STL (and before I knew I could 
+	download implementations).  It's just a bare-bones templated
+	array class. It does bounds checking which was nice when I was 
+	hacking.
+    </dl>
+    
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+<!-- Created: Sun Oct 17 16:35:08 EDT 1999 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:33:31 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

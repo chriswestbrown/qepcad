@@ -1,0 +1,96 @@
+----------------------------------------------------------------------
+solution-extension x
+ 
+Use an alternative solution formula construction method.  The
+parameter x is allowed to be T,E,G, or I.  If x is T, then a
+formula in the usual language of Tarski formulas is produced.
+If x is E, a formula in the language of Extended Tarski formulas
+is produced.  If x is G, then a geometry-based formul is
+produced. Finally, if x is I, and "interactive mode" is entered
+and the user is queried to determine how the formula is to be
+constructed and displayed.
+----------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------
+d-2d-cad [ D ] | [ E x1 x2 y1 y2 Sx Sy e ]
+
+-------------------------------------
+Display 2D CAD
+-------------------------------------
+
+1. Calling the display program
+------------------------------
+d-2d-cad displays 2-dimensional CAD's.  If the CAD has larger dimension, 
+the induced CAD of 2-space is displayed.  d-2d-cad can be called either 
+with the argument "D", which causes the program to choose viewing
+parameters for you, or with the argument E and a list of specific values 
+for those parameters.  The parameters are:
+
+4 floating-point values: x1 x2 y1 y2, which represent the portion of
+the plane that's included in the plot --- namely [x1,x2] X [y1,y2].
+
+2 positive integer values: Sx Sy which give the dimensions (in pixels)
+of the plot window --- namely Sx X Sy.
+
+1 floating-point value: e, which gives the distance between successive
+x-values for which points in section cells are determined.
+
+Ex:
+
+d-2d-cad D
+
+  - or -
+
+d-2d-cad E -1.75 2.25 -2.0 1.0 400 300 0.125
+
+
+2. Interactive Commands
+------------------------------
+Once the d-2d-cad command has been given, a plot window appears with
+an initial plot based either on the explicitly given  parameter values
+or default parameter values computed by the program.  After the display 
+window appears, the current viewing window coordinates are given and 
+the user is prompted for a command.  The possible commands are printed
+out at the prompt.  They are the single characters:
+
+n -- which stands for "number of points".  The plotting program 
+     accurately places each single-point cell (i.e. section over a
+     section) in the plotting window.  Curves (sections over sectors)
+     connecting single-point cells are approximated by computing points
+     on the curve, and connecting them by line segments.  $n$ equally
+     spaced x-values are chosen, and points on curves are computed for
+     each of these x-values.  Increasing the "number of points" increases
+     the accuracy with which these curves are approximated.  Note that
+     the plot is topologically correct regardless of the "number of 
+     points".  After typing 'n' and pressing return, the plotting program
+     will prompt you for a number.
+
+c -- which stands for "viewing window coordinates".  The plot widow
+     shows a picture of some rectangle in 2-space that is referred to as
+     the "viewing window".  If this command is given, the program prompts
+     you to enter 4 floating-point numbers, separated only by whitespace.
+     These provide the coordinates of the new viewing window: 
+       xmin xmax ymin ymax, where xmin < xmax and ymin < ymax
+
+p -- which stands for "print postscript".  This command allows you to
+     make an eps file of the currect plot.  You will be prompted for a
+     file name, and for "accuracies" x-values and for y-values.  Since
+     postscript devices are typically capable of a much higher resolution
+     than computer monitors, it may be desirable to place points quite
+     accurately in the plot.  When you are promoted for an accuracy, the
+     current accuracy will be displayed.  If you request less accuracy it
+     is simply ignored.  More accuracy requires recomputation.  
+
+w -- which stands for "new plot window".  If this command is given, a new
+     plot window is created, which is exactly like the old plot window.
+     However, any subsequent interactive commands only affect the new plot
+     window.  The old plot window remains the same.
+
+q -- which stands for quit.  This command exits the plotting program and
+     returns to qepcad's interactive interface.
+
+
+
+----------------------------------------------------------------------

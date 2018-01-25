@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Testing Positive SemiDefiniteness</title>
+    <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+
+  <body>
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> -Testing Positive SemiDefiniteness</h1>
+
+    <dl>
+      <dt><b>Background</b></dt>
+      <dd>      
+	In "An effective decision method for semidefinite polynomials",
+	Zeng Guangxing and Zeng Xiaoning,
+	<em>Journal of Symbolic Computation</em> 37 (2004) pages 83-99,
+	the authors give a special-purpose algorithm for deciding the
+	semidefiniteness of multivariate polynomials and for providing
+	witness points for polynomials that aren't semidefinite.  Here
+	we consider how best to answer such questions with QEPCAD, and
+	try QEPCAD out on one of their examples.
+	<p></p>
+      </dd>
+      <dt><b>Formulating the problem for QEPCAD</b></dt>
+      <dd>
+      The striaghtforward translation of "is p positive semidefinite"
+      into quantifier elimination is 
+      "&forall; x1, x2, ..., xn [ p(x1,...,xn) >= 0 ]".
+      However, this is not a very efficient formulation for QEPCAD.
+      If p fails to be positive semidefinite, there must be an open
+      set of points on which p < 0.  So we can phrase our problem
+      as the "not" of
+<blockquote>
+(F x1)(F x2)...(F xn)[ p(x1,...,xn) < 0 ]
+</blockquote>
+    where, recall, "F" means "there exist infinitely many".  Clearly
+    if this formula is true p is not semi-definite.  After all, it
+    would have been enough to find one point at which p is negative
+    and we would have found infinitely many.  However, what if this
+    formula returns false?  Is it possible that p could none-the-less
+    not be positive semi-definite?  No, because if p is not positive
+    semi-definite there is an open set of points in which p < 0, and
+    this open set provides infinitely many values of x1 such that
+    there are infinitely many values of x2 such that ... such that
+    there are inifinitely many values of xn such that p(x1,...,xn) < 0.
+    <p>
+      Why is this formulation better?  Intuituvely, deciding "there
+      exists infinitely many x" is easier because you can miss or ignore
+      finitely many values of x and you'll still get the right answer.  In
+      QEPCAD's case, it chooses to ignore the finitely many test
+      values it has for x that not rational.  This way it doesn't have
+      to do algebraic number computations and that's a HUGE win in
+      terms of performance.
+    </p>
+      </dd>
+
+      <dt><b>The Example Problem</b></dt>
+      <dd>
+      Number 4 of Guangxing and Xiaoning "Examples of quaternary
+      [i.e. 4-variate] polynomials" is:
+    <blockquote>
+      p = w^6 + 2 z^2 w^3 + x^4 + y^4 + z^4 + 2 x^2 w + 2 x^2 z + 3 x^2 + w^2 + 2 z w + z^2 + 2 z + 2 w + 1
+    </blockquote>
+	CAD construction is very sensitive to variable ordering, and
+	this example demonstrates that well.  As a general rule of
+	thumb when producing a CAD for a single polynomial 
+	try to order variables in
+	<ol>
+	  <li>Descending order by degree of variable, breaking ties with</li>
+	  <li>Descending order by highest total-degree term in which
+	    the variable appears, breaking ties with</li>
+	  <li>Descending order by number of terms containing the
+	    variable</li>
+	</ol>
+	When the input contains many polynomials hueristics for
+	variable ordering become more complicated.  In this case, p is
+	degree 6 in w and degree 4 in the rest, so our order starts as
+	(w,...).  Amongst the remaining variables, z appears in a
+	total degree 5 term, and the rest appear in terms of total
+	degree at most 4, giving us (w,z,...).  Amongst x and y, x
+	appears in more terms, so we end up with (w,z,x,y) as a
+	variable ordering.
+<p>
+	The following QEPCAD session, run on a ??? MHz Pentium IV with ???
+	MB RAM, shows that p is in fact positive semidefinite.  
+	QEPCAD was run with the default size for Saclib's garbage
+	collected space, which is 2MB, and required 0.15 seconds of CPU
+	time to produce its result.	  
+<pre>
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 1.30, 05 Feb 2004
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robidoux, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[ Computes the "not" of "is p positive semidefinite?" ]
+Enter a variable list:
+(w,z,x,y)
+Enter the number of free variables:
+0
+Enter a prenex formula:
+(F w)(F z)(F x)(F y)[
+w^6 + 2 z^2 w^3 + x^4 + y^4 + z^4 + 2 x^2 w + 
+2 x^2 z + 3 x^2 + w^2 + 2 z w + z^2 + 2 z + 2 w + 1 &lt; 0
+].
+
+
+=======================================================
+
+Before Normalization >
+finish
+
+An equivalent quantifier-free formula:
+
+FALSE
+
+
+=====================  The End  =======================
+
+-----------------------------------------------------------------------------
+1 Garbage collections, 492023 Cells and 0 Arrays reclaimed, in 20 milliseconds.
+411729 Cells in AVAIL, 500000 Cells in SPACE.
+
+System time: 150 milliseconds.
+System time after the initialization: 140 milliseconds.
+-----------------------------------------------------------------------------
+</pre>
+</p>
+      </dd>
+    </dl>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">QEPCAD account {Prof. Brown}</a></address>
+<!-- Created: Fri Feb  6 09:12:13 EST 2004 -->
+<!-- hhmts start -->
+Last modified: Sun Feb 22 10:08:42 EST 2004
+<!-- hhmts end -->
+  </body>
+</html>

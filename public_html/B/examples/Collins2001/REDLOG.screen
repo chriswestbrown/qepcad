@@ -1,0 +1,37 @@
+valiant[201] [~/]> reduce
+Loading image file: /usr/reduce/lisp/psl/solaris/red/reduce.img 
+REDUCE 3.7, 15-Apr-1999 ...
+
+1: load_package redlog;
+
+2: rlset(OFSF);
+
+{}
+
+3: F := ex(a,ex(b,0 < a and a < 1 and 1 < b and b < 2  and d > 0 and 
+3: 4*a*b*d^2-5*b*d^2-5*a*d^2+6*d^2+4*a*b*c^2-5*b*c^2-5*a*c^2+6*c^2-10*a*b*c+12*b*c+12*a*c-14*c+6*a*b-7*b-7*a+8 > 0 and 
+3: 6*a*b*d^2-9*b*d^2-9*a*d^2+13*d^2+6*a*b*c^2-9*b*c^2-9*a*c^2+13*c^2-18*a*b*c+26*b*c+26*a*c-36*c+13*a*b-18*b-18*a+24 < 0));
+
+f := ex a ex b ( - a < 0 and a - 1 < 0 and  - b + 1 < 0 and b - 2 < 0 and d > 0 
+
+           2                     2                2                 2
+and 4*a*b*c  - 10*a*b*c + 4*a*b*d  + 6*a*b - 5*a*c  + 12*a*c - 5*a*d  - 7*a
+
+        2                 2            2             2                    2
+ - 5*b*c  + 12*b*c - 5*b*d  - 7*b + 6*c  - 14*c + 6*d  + 8 > 0 and 6*a*b*c
+
+                     2                 2                 2               2
+ - 18*a*b*c + 6*a*b*d  + 13*a*b - 9*a*c  + 26*a*c - 9*a*d  - 18*a - 9*b*c
+
+                 2              2              2
+ + 26*b*c - 9*b*d  - 18*b + 13*c  - 36*c + 13*d  + 24 < 0)
+
+4: on time;
+
+Time: 120 ms
+
+5: SF := rlqe(F)$
+
+Time: 54020 ms  plus GC time: 5100 ms
+
+6: 

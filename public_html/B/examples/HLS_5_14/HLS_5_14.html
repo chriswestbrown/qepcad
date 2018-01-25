@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD Example: Hong, Liska, Steinberg 5.14</title>
+
+  <LINK REL="STYLESHEET" HREF="../../QEPCAD.css">
+  </head>
+  <body>
+
+    <h1><a href="../../QEPCAD.html">Q E P C A D</a> - Example: Hong,
+      Liska, Steinberg 5.14</h1>
+    This example problem is formula 5.14 from Hong, Liska, Steinberg,
+    "Testing Stability by Quantifier Elimination", Journal of Symbolic
+    Computation, Vol. 24, No. 2, August 1997.  They report that QEPCAD
+    was unable to prove 5.14 true (meaning the time or space resources 
+    were prohibitive).  Here we show how we used the
+    current version of QEPCAD and some tricks to prove formula 5.14
+    true in less than 2 seconds on a 800Mhz P3 laptop.
+    <p>
+      <h2>The Problem</h2>
+      The problem we consider here is:
+    <pre>
+F1 (formula 5.14 from the article) = 
+(A a)(A b)(A c2)[ [0 <= a <= 1 /\ 0 <= b <= 1] ==> A <= 0 /\ C <= 0 /\ [D <= 0 \/ B <= 0] ]
+    </pre>
+    where A, B, C, and D are polynomials in a,b, and c2.
+    <pre>
+A = c2^4 (a - b + 1) ( a - b - 1) (a - b)^2
+B = 2 c2^4 b ( 3 a^2 b - 2 a^2 - 2 a b^2 + a + b^3 - b) 
+    +  4 c2^3 a b ( a^2 - a + b^2 - b) 
+    + 2 c2^2 a ( a^3 - 2 a^2b + 3 a b^2 - a - 2 b^2 + b )
+C = c2^4 b^2 (b^2 - 1) + 4 c2^3 a b^2 (b - 1)
+    + 2 c2^2 a b (3 a b - 2 a - 2 b + 1)
+    + 4 c2 a^2 b (a - 1) + a^2 (a^2 - 1)
+D = c2^2 ( 8 a^2 b^2 - 12 a^2 b + 5 a^2 - 8 a b^3 + 8 a b^2 
+    + 2 a b - 4 a + 4 b^4 - 4 b^3  - 3 b^2 + 4 b  ) 
+    + 2 c2 ( 4 a^3 b  - 2 a^3 - 4 a^2 b^2 - 2 a^2 b + a^2 
+    + 4 a b^3 - 2 a b^2 + 2 a b - 2 b^3 + b^2  )  
+    + 4 a^4 - 8 a^3 b - 4 a^3 + 8 a^2 b^2 + 8 a^2 b - 3 a^2 
+    - 12 a b^2 + 2 a b + 4 a + 5 b^2 - 4 b
+    </pre>
+    <h2>The Solution</h2>
+    Notice that all the inequalities in the formula are non-strict.
+    This means that any point at which the quantifier-free part of the
+    formula is not satisfied is surrounded by a nieghborhood of points
+    at which the quantifier-free part of the formula is not satisfied.
+    All quantifiers are "for all", which means we're searching for
+    counter-examples.  By the above argument, we're searching for open
+    sets of counter-examples.  Thus, we can replace each of the "for all"
+    quantifiers in the original formula with the "for all but
+    finitely many" quantifier (which is <b><code>G</code></b> for
+    "generic" in QEPCAD B) and
+    produce an equivalent formula. 
+    QEPCAD B is able to return "true" for this formulation in about 2
+    seconds on my 800Mhz P3 laptop.  See the
+    <a href="In.better">QEPCADB input</a>.
+    <p>
+      The moral of the story is this: "for all but finitely many" can
+      be decided using CAD faster than "for all" (which makes sense,
+      since finitely many points can be ignored), so you should use it
+      if you can.  Note, however, that it doesn't make a difference with
+      the top-level quantifier.
+    <p>
+    <h2>Last Remark (and a pretty picture)</h2>
+    I wondered what the projection of 
+    <code>A &lt;= 0 /\ C &lt;= 0 /\ [D &lt;= 0 \/ B &lt;= 0] ]</code>
+    onto the a-b plane looks like.  So <a href="HLS5.14.pdf">here it
+      is</a> (the unit grid is shown in green, and the coordinate axes 
+    in red) at least up to some lower dimensional subset.  It's a
+    bizarre picture when you think about it.  These polynomials just
+    happen to intersect along a couple of planes that are nicely
+    algined with the coordinate axes.  
+    <p>
+      Here only one quantifier was eliminated, so the
+      <b><code>G</code></b> quantifier doesn't help us.  However,
+      QEPCAD B is able to compute adjacencies between cells in a CAD
+      of 2-space, and has a command called <b><code>tvc2d</code></b>
+      (which stands for "truth value closure 2D") that completes truth
+      value assignments to cells of a CAD of 2-space based on the
+      assumption that the solution set is the closure of an open set,
+      which should be the case for this problem.  So, I instructed
+      QEPCADB to lift over cells in 2-space only when they had full
+      dimension, and used tvc2d to assign truth values to the lower
+      dimensional cells.  See the
+      <a href="In.2D">QEPCADB input</a>
+    </p>
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+    <!-- Created: Fri Jul 13 16:10:11 EDT 2001 -->
+<!-- hhmts start -->
+Last modified: Wed Aug 13 10:10:26 EDT 2003
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,5 @@
+Notes on preparint a new qepcad-B distro:
+
+1) remember to set default.qepcadrc to comment out
+   out Singular.
+2) remember to set any test flags to 0.

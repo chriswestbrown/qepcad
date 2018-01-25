@@ -1,0 +1,94 @@
+[]
+(x,y,x1,x2,y2)
+2
+(E x1)(E x2)(E y2)[
+x = x1 x2 - y2 /\ 
+y = x1 y2 + x2 /\ 
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= y2 /\ y2 <= 1
+].
+finish
+
+
+[
+sub y2 = x1 x2 - x
+]
+(x,y,x1,x2)
+2
+(E x1)(E x2)[
+y = x1 (x1 x2 - x) + x2 /\
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= (x1 x2 - x) /\ (x1 x2 - x) <= 1
+].
+
+
+[
+sub y2 = x1 x2 - x and 
+declare the obvious equational constraint
+]
+(x,y,x1,x2)
+2
+(E x1)(E x2)[
+y = x1 (x1 x2 - x) + x2 /\
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= (x1 x2 - x) /\ (x1 x2 - x) <= 1
+].
+prop
+go
+eqn-const-l (A_4,1)
+finish
+
+
+[
+sub y2 = x1 x2 - x and 
+declare the obvious equational constraint and 
+use the fact that the solution set is the closure 
+of an open set
+]
+(x,y,x1,x2)
+2
+(E x1)(E x2)[
+y = x1 (x1 x2 - x) + x2 /\
+0 <= x1 /\ x1 <= 2 /\ 
+2 <= x2 /\ x2 <= 4 /\ 
+-1 <= (x1 x2 - x) /\ (x1 x2 - x) <= 1
+].
+prop
+go
+eqn-const-l (A_4,1)
+go
+sel [level = dimension \/ level > 2 ]
+go
+sel [level < 2 ]
+go
+tvc2d
+use-sel n
+go
+sol T
+d-stat
+
+
+[
+
+I messed this up somehow!
+
+sub y2 = x1 x2 - x
+and 
+
+y - x1^2 x2 + x - x2
+
+y + x = (x1^2 + 1) x2
+
+x2 = (y + x)/(x1^2 + 1)
+
+]
+(x,y,x1)
+2
+(E x1)[
+0 <= x1 /\ x1 <= 2 /\ 
+2 (x1^2 + 1) <= (y + x) /\ (y + x) <= 4 (x1^2 + 1) /\ 
+(-1 + x) (x1^2 + 1) <= x1 (y + x) /\ x1 (y + x) <= (1 + x) (x1^2 + 1)
+].

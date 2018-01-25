@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>QEPCAD - What's New?</title>
+  <LINK REL="STYLESHEET" HREF="QEPCAD.css">
+  </head>
+
+  <body>
+    
+    <h1><a href="QEPCAD.html">Q E P C A D</a> - What's New?<hr></h1>
+    <p>
+      <b>New Features and Improvements</b><br>
+    <ul>
+      <li>
+	Version 1.54 adds portability to 64-bit systems.  Right now, I
+	can only verify that it compiles and runs properly on 64-bit
+	Ubuntu ... hopefully it's also OK on other 64-bit linux distros.
+      </li>
+      <li>
+      <a href="../SLFQ/Home.html">SLFQ</a>
+      <small>(Simplifying Large Quantifier-free Formulas with QEPCAD B)</small>,
+      a small program that simplifies large quantifier-free formulas
+      by making repeated calls to QEPCAD B to simplify subformulas.
+      In its current configuration, SLFQ requires at least QEPCAD B
+      version 1.54. 
+      </li>
+      <li>QEPCAD now accepts input and (if desired) produces output in 
+	an extended language that allows references to indexed roots
+	of polynomials. <a href="user/ETF.html"><b>More Information ...</b></a>
+      <li>QEPCAD allows an extended family of quantifiers including
+	"for infinitely many", "for all but finitely many", "for
+	precisely a connected subset", and "for exactly <em>k</em>".
+	QEPCAD is able to solve problems phrased with these
+	quantifiers <em>much</em> more quickly than if they were
+	translated into Tarski formulas!  Especially if "for
+	infinitely many" or "for all but finitely many" are used.
+	<a href="user/EnterForm.html"><b>More Information ...</b></a>	
+      <li>QEPCAD produces eps-file plots of 2-dimensional CADs.
+      <li>A modified version of QEPCAD that's optimized for 2D CAD
+	construction is included.  It's called CAD2D.
+	<a href="user/cad2d.html"><b>More Information ...</b></a>
+      <li>The McCallum Projection is now the default projection for
+	QEPCAD, and the program deals correctly with the possibility
+	of the projection's failure.  
+	<a href="user/Projection.html"><b>More Information ...</b></a>
+      <li>QEPCAD can always produce solution formulas.  The original
+	was sometimes only able to produce separate necessary and
+	sufficient conditions.
+      <li>General fixing of bugs and speeding up of bottlenecks.
+    </ul>
+    </p>
+
+    <hr>
+    <address><a href="mailto:wcbrown@usna.edu">Christopher W Brown</a></address>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>ESPCAD</title>
+    <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - ESPCAD<hr></h1>
+
+    The ESPCAD (or Extended-Sign PCAD) just extends the PCAD
+    structure. The pieces of information to be added are 
+    <p>
+    <dl>
+      <dt><b>SC_SIGN</b>
+      <dd>
+      If cell C is an i-level cell of an ESPCAD (Extended sub-CAD), then
+      field SC_SIGN is a list (s_1,s_2, ... ,s_m), such that there are
+      m i-level projection factors for the ESPCAD, and s_j is the sign of
+      the jth i-level projection factor in C.
+      <p>
+      <dt><b>SC_EXTS</b>
+      <dd>
+      If cell C is an i-level cell of an ESPCAD (Extended sub-CAD), then
+      field SC_EXTS is a list (s_1,s_2, ... ,s_m), such that there are
+      m i-level projection factors for the ESPCAD, and s_j is the
+      <a href="Polyindex.html"><b>index</b></a>
+      of the jth i-level projection factor in C.
+      <p>
+      <dt><b>SC_TMPM</b>
+      <dd>This is a temporary mark whose use is variable.
+      <p>
+      <dt><b>SC_RRNV</b>
+      <dd>If cell C is an i-level cell of an ESPCAD (Extended sub-CAD), then
+      field SC_RRNV is a list (s_1,s_2, ... ,s_m), such that there are
+      m (i+1)-level projection factors, and s_j gives the number of
+      distinct real roots of the jth (m+1)-level projection factor
+      over C.  If the jth polynomial is identically zero over C, then
+      s_j is -1.
+    </dl>
+    <p>
+    Here's a list of programs for manipulating ESPCAD's:
+    <a href="../espcad/func_list.html">LIST</a>
+
+      <hr>
+      <address><a href="mailto:brown@ren.eecis.udel.edu">Christopher W. Brown</a></address>
+<!-- Created: Fri Jun 26 14:10:39 EDT 1998 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:24:34 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>

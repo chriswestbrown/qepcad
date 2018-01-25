@@ -1,0 +1,61 @@
+      body { 
+      margin-left: 4em; margin-right: 5em; 
+      margin-top: 3em; margin-bottom: 3em; 
+      color: #CC0033; background: #FFFFCC; 
+      font-family: Garamond, "Times New Roman", serif;
+      }
+
+      H1 { font-size: 1.5em; }
+      
+      A:link { color: #CC0033; }
+      A:visited { color: #CC0033; }
+      A:active { color: #CC0033; }
+      A:hover { color: #CCCCCC; }
+      A:link, A:visited, A:active     {
+/*        text-decoration: none;*/
+        }
+
+      .caption {
+      font-size: 0.8em;
+      font-weight: bolder;
+      }
+
+      .info {
+      float: left;
+      background: #CC0033;
+      color : #CCCCCC;
+      border: solid;
+      padding : 0.5em;
+      margin-right: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: 0em;
+      margin-top: 0em;
+      }
+
+      .screen {
+      float: right;
+      background: #FFFFFF;
+      color : #000000;
+      font-size:0.8em;
+      border: solid;
+      padding : 0.5em;
+      margin-right: 0em;
+      margin-bottom: 0.5em;
+      margin-left: 0em;
+      margin-top: 0em;
+     }
+
+
+      .screenleft {
+      float: left;
+      background: #FFFFFF;
+      color : #000000;
+      font-size:0.8em;
+      border: solid;
+      padding : 0.5em;
+      margin-right: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: 0em;
+      margin-top: 0em;
+     }
+

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Formulas</title>
+  <LINK REL="STYLESHEET" HREF="../QEPCAD.css">
+  </head>
+  <body>
+    
+    <h1><a href="../QEPCAD.html">Q E P C A D</a> - Formulas<hr></h1>
+
+    The idea here is to come up with some format for formulas that
+    will allow me to do all the manipulations I want.  Here is the
+    definition of a formula in this format.<p>
+    Let D be a CAD and P be its projection factor set:
+    <ol>
+      <li>(TRUE) and (FALSE) are both formulas.<p>
+      <li>((i,j),op) is a formula, where 0 < i <= |P| and 0 < j <=
+      |P_i|, and op is in {LTOP,EQOP,GTOP,GEOP,NEOP,LEOP}.<p>
+      <li>(ANDOP,F_1,...,F_i) is a formula, where i > 1 and
+      F_1,...,F_i are formulas. <p>
+      <li>(OROP,F_1,...,F_i) is a formula, where i > 1 and F_1,...,F_i
+      are formulas. <p>
+      <li>((i,j),(op,k)) is a formula,where 0 < i <= |P| and 0 < j <
+      |P_i|, and op
+      is in {LTOP,EQOP,GTOP,GEOP,NEOP,LEOP} and k is a non-zero int.
+    </ol>
+    The list (i,j) will refer to a polynomial in the following way:
+    The signiture vector for a given cell assumes an ordering on the
+    polynomials of a given level in P.  So, (i,j) refers to the jth
+    polynomial in the ordering of the elements of P_i.
+    The interpretation of 5. is probably deserving of some
+    explanation.  Let us give a name to the polynomial (i,j), call
+    it  q(x_1, ...,x_i).
+    Then ((i,j),(op,k)) is interpreted as 
+    <dl>
+      <dt>if k > 0
+	<dd><b>x_i op "the kth root of
+    q(x_1, ..., x_{i-1}, X)"</b>, where <b>X</b> is a purely symbolic
+    variable.  This atomic formula is true if and only 
+    if q(x_1, ..., x_{i-1}, X) has at least k roots, and x_i bears
+    relation op to the kth of these, ordered smallest to largest.
+      <dt>if 0 > k
+      <dd>x_i op "the |k|th root of
+    q(x_1, ..., x_{i-1}, X)"</b>, where <b>X</b> is a purely symbolic
+    variable.  This atomic formula is true if and only 
+    if q(x_1, ..., x_{i-1}, X) has at least |k| roots, and x_i bears
+    relation op to the |k|th of these, ordered largest to smallest.
+      <hr>
+<!-- Created: Fri Jun 19 13:26:49 EDT 1998 -->
+<!-- hhmts start -->
+Last modified: Tue Jul 30 15:25:05 EDT 2002
+<!-- hhmts end -->
+  </body>
+</html>
