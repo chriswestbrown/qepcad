@@ -1,0 +1,35 @@
+This is a super simple set of regression tests.
+I have problem sets, and I do a diff on the output
+for the sets from old/new qepcad's or between ports
+to different platforms.
+
+* applicationTestSet
+
+This is a set of problems that come from applications
+or examples --- i.e. not random problems.  They should
+test a wide variety of qepcad features, assumptions,
+equational constraints, etc.  It all runs in a single
+qepcad invocation.
+
+* largeSetTestSet
+
+This is a set of 1,000 QE problems of the form
+(E y)[ p(x,y) = 0 ], where p is a random, dense polynomial 
+of total degree 6.  They all run in a single qepcad
+invocation.  This should give garbage collection and
+memory leak issues a chance to surface.
+Note:  some of the examples are large enough to need
+a little extra memory on their own.  Try running as:
+qepcad +N12000000
+
+*****************************************************
+
+* CAD2DlargeSetTestSet
+
+This is the same set as "largeSetTestSet", but formatted
+for cad2d.  Here too you'll need at least +N12000000.
+If you post-process the output a bit, you can compare
+qepcad to cad2d and they should give the same solutions.
+However, cad2d is much faster on these examples! 
+(Over 20x faster!)
+

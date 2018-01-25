@@ -1,0 +1,257 @@
+=======================================================
+                Quantifier Elimination                 
+                          in                           
+            Elementary Algebra and Geometry            
+                          by                           
+      Partial Cylindrical Algebraic Decomposition      
+                                                       
+               Version B 1.54, 15 Apr 2010
+                                                       
+                          by                           
+                       Hoon Hong                       
+                  (hhong@math.ncsu.edu)                
+                                                       
+With contributions by: Christopher W. Brown, George E. 
+Collins, Mark J. Encarnacion, Jeremy R. Johnson        
+Werner Krandick, Richard Liska, Scott McCallum,        
+Nicolas Robidoux, and Stanly Steinberg                 
+=======================================================
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(x,y,x1)Enter the number of free variables:
+2
+Enter a prenex formula:
+(E x1)[
+0 <= x1 /\ x1 <= 2 /\ 
+2 (x1^2 + 1) <= (y + x1 x) /\ 
+(y + x1 x) <= 4 (x1^2 + 1) /\ 
+-1 (x1^2 + 1) <= (x1 (y + x1 x) - x (x1^2 + 1)) /\ 
+(x1 (y + x1 x) - x (x1^2 + 1)) <= 1 (x1^2 + 1)
+].
+
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (x1) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+sol E
+An equivalent quantifier-free formula:
+
+x + 1 >= 0 /\ 8 y + x^2 - 16 >= 0 /\ y + 2 x - 20 <= 0 /\ 2 y - x + 5 >= 0 /\ 4 y - x - 17 <= 0 /\ [ 2 y + x - 5 >= 0 \/ y - 2 >= 0 \/ [ x - 1 >= 0 /\ x - 2 < 0 ] \/ [ x - 1 < 0 /\ x > 0 ] ]
+
+
+Before Solution >
+sol T
+An equivalent quantifier-free formula:
+
+x + 1 >= 0 /\ 8 y + x^2 - 16 >= 0 /\ y + 2 x - 20 <= 0 /\ 2 y - x + 5 >= 0 /\ 4 y - x - 17 <= 0 /\ [ 2 y + x - 5 >= 0 \/ y - 2 >= 0 \/ [ x - 1 >= 0 /\ x - 2 < 0 ] \/ [ x - 1 < 0 /\ x > 0 ] ]
+
+
+Before Solution >
+continue
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(a,b,c,d,x)Enter the number of free variables:
+4
+Enter a prenex formula:
+(Ax)[ x^4 + a x^3 + b x^2 + c x + d > 0 ].
+
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (x) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+sol E
+An equivalent quantifier-free formula:
+
+d > _root_1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 /\ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 \/ d > _root_-1 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 ]
+
+
+Before Solution >
+sol T
+An equivalent quantifier-free formula:
+
+256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 >= 0 /\ [ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 = 0 ] \/ [ 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 /\ 384 d^2 - 192 a c d - 128 b^2 d + 144 a^2 b d - 27 a^4 d + 72 b c^2 - 3 a^2 c^2 - 40 a b^2 c + 9 a^3 b c + 8 b^4 - 2 a^2 b^3 > 0 /\ 768 d - 192 a c - 128 b^2 + 144 a^2 b - 27 a^4 > 0 ] \/ [ 108 c^2 - 108 a b c + 27 a^3 c + 32 b^3 - 9 a^2 b^2 > 0 /\ 256 d^3 - 192 a c d^2 - 128 b^2 d^2 + 144 a^2 b d^2 - 27 a^4 d^2 + 144 b c^2 d - 6 a^2 c^2 d - 80 a b^2 c d + 18 a^3 b c d + 16 b^4 d - 4 a^2 b^3 d - 27 c^4 + 18 a b c^3 - 4 a^3 c^3 - 4 b^3 c^2 + a^2 b^2 c^2 > 0 ] ]
+
+
+Before Solution >
+continue
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(x0,y0,b,x)Enter the number of free variables:
+2
+Enter a prenex formula:
+(A b)(A x)[
+b^2 - 2 b y0 + x0^2 + y0^2 <= 0 \/ b x^2 - 2 b x x0 + b x0^2 - x^2 y0 + x 
+x0 y0 < 0 \/ 2 b y0 - x0^2 - y0^2 + 1 /= 0 \/ x^2 - 2 x x0 < 0 \/ y0 <= 0 \/ 
+[2 b x y0 - 2 b x0 y0 + x^2 x0 - 2 x x0^2 - 2 x y0^2 + x0^3 + x0 y0^2 /= 0 
+/\ x0 /= 0]
+].
+
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (x) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+sol E
+An equivalent quantifier-free formula:
+
+x0 /= 0 \/ y0 <= 0
+
+
+Before Solution >
+sol T
+An equivalent quantifier-free formula:
+
+x0 /= 0 \/ y0 <= 0
+
+
+Before Solution >
+continue
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(a,b,c,x,y)Enter the number of free variables:
+3
+Enter a prenex formula:
+(A x)(A y)[ a > 0 /\ b > 0 /\
+[ [ b^2 (x - c)^2 + a^2 y^2 - a^2 b^2 = 0] ==> x^2 + y^2 - 1 <= 0 ] ].
+
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (y) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+sol E
+An equivalent quantifier-free formula:
+
+a > 0 /\ b > 0 /\ c - a + 1 >= 0 /\ c + a - 1 <= 0 /\ [ b^2 - a < 0 \/ b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0 ]
+
+
+Before Solution >
+sol T
+An equivalent quantifier-free formula:
+
+a > 0 /\ b > 0 /\ c - a + 1 >= 0 /\ c + a - 1 <= 0 /\ [ b^2 - a < 0 \/ b^2 c^2 + b^4 - a^2 b^2 - b^2 + a^2 <= 0 ]
+
+
+Before Solution >
+continue
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(z,x,y)Enter the number of free variables:
+0
+Enter a prenex formula:
+(E z)(E x)(E y)[
+0  > 3 x^4 y^2 - 2 x^3 y^3 + 1/2 x^2 y^4 + 4 x^3 y^2 z 
+     + x^2 y^3 z + 10 x^2 y^2 z^2 + 2 x y^2 z^3 - 8 x^2 y z^3 
+     + 4 x y z^4 + 8 z^6
+].
+
+=======================================================
+
+Before Normalization >
+go
+
+Before Projection (y) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+sol E
+An equivalent quantifier-free formula:
+
+FALSE
+
+
+Before Solution >
+sol T
+An equivalent quantifier-free formula:
+
+FALSE
+
+
+Before Solution >
+continue
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(a2,a1,eta1,xi2)Enter the number of free variables:
+2
+Enter a prenex formula:
+(E eta1)(E xi2)[eta1 < 0 /\ 2 a2^2 a1^2 xi2^2 + 2 a2^4 xi2^2 + 2 a2^2 xi2^2 - 4 eta1 a2 a1^2 xi2 - 4 eta1 a2^3 xi2 + 2 eta1^2 a1^4 + 4 eta1^2 a2^2 a1^2 - a2^2 a1^2 + 2 eta1^2 a1^2 + 2 eta1^2 a2^4 - a2^4 + 2 eta1^2 a2^2 - a2^2 = 0].
+
+=======================================================
+
+Before Normalization >
+assume [a2 /= 0 /\ a1^2 + a2^2 - 1 > 0]
+Before Normalization >
+prop-eqn-const
+
+Before Normalization >
+go
+
+Before Projection (xi2) >
+eqn-const-poly 2 a2^2 a1^2 xi2^2 + 2 a2^4 xi2^2 + 2 a2^2 xi2^2 - 4 eta1 a2 a1^2 xi2 - 4 eta1 a2^3 xi2 + 2 eta1^2 a1^4 + 4 eta1^2 a2^2 a1^2 - a2^2 a1^2 + 2 eta1^2 a1^2 + 2 eta1^2 a2^4 - a2^4 + 2 eta1^2 a2^2 - a2^2.
+Before Projection (xi2) >
+go
+
+Before Choice >
+go
+
+Before Solution >
+sol E
+An equivalent quantifier-free formula:
+
+TRUE
+
+
+Before Solution >
+sol T
+An equivalent quantifier-free formula:
+
+TRUE
+
+
+Before Solution >
+continue
+Enter an informal description  between '[' and ']':
+[]Enter a variable list:
+(skoX)Enter the number of free variables:
+0
+Enter a prenex formula:
+(E skoX) [[(skoX ((-3/4)+(skoX ((1/2)+(skoX ((1/6)+(skoX ((1/24)+(skoX ((1/120)+(skoX ((121/87480)+(skoX ((17/87480)+(skoX ((49/2099520)+(skoX ((409/170061120)+(skoX ((361/1700611200)+(skoX ((1/62985600)+(skoX ((181/183666009600)+(skoX ((1/20407334400)+(skoX ((1/550998028800)+(skoX (1/24794911296000))))))))))))))))))))))))))))))<=0] /\ [[~[0<=skoX]] /\ [[~[skoX<=(-1)]] /\ [[~[1<=skoX]] /\ [~[skoX=0]]]]]].
+
+=======================================================
+
+Before Normalization >
+q
+Quitting the QEPCAD system... Bye!

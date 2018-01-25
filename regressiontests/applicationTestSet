@@ -1,0 +1,84 @@
+[]
+(x,y,x1)
+2
+(E x1)[
+0 <= x1 /\ x1 <= 2 /\ 
+2 (x1^2 + 1) <= (y + x1 x) /\ 
+(y + x1 x) <= 4 (x1^2 + 1) /\ 
+-1 (x1^2 + 1) <= (x1 (y + x1 x) - x (x1^2 + 1)) /\ 
+(x1 (y + x1 x) - x (x1^2 + 1)) <= 1 (x1^2 + 1)
+].
+go
+go
+go
+sol E
+sol T
+continue
+[]
+(a,b,c,d,x)
+4
+(Ax)[ x^4 + a x^3 + b x^2 + c x + d > 0 ].
+go
+go
+go
+sol E
+sol T
+continue
+[]
+(x0,y0,b,x)
+2
+(A b)(A x)[
+b^2 - 2 b y0 + x0^2 + y0^2 <= 0 \/ b x^2 - 2 b x x0 + b x0^2 - x^2 y0 + x 
+x0 y0 < 0 \/ 2 b y0 - x0^2 - y0^2 + 1 /= 0 \/ x^2 - 2 x x0 < 0 \/ y0 <= 0 \/ 
+[2 b x y0 - 2 b x0 y0 + x^2 x0 - 2 x x0^2 - 2 x y0^2 + x0^3 + x0 y0^2 /= 0 
+/\ x0 /= 0]
+].
+go
+go
+go
+sol E
+sol T
+continue
+[]
+(a,b,c,x,y)
+3
+(A x)(A y)[ a > 0 /\ b > 0 /\
+[ [ b^2 (x - c)^2 + a^2 y^2 - a^2 b^2 = 0] ==> x^2 + y^2 - 1 <= 0 ] ].
+go
+go
+go
+sol E
+sol T
+continue
+[]
+(z,x,y)
+0
+(E z)(E x)(E y)[
+0  > 3 x^4 y^2 - 2 x^3 y^3 + 1/2 x^2 y^4 + 4 x^3 y^2 z 
+     + x^2 y^3 z + 10 x^2 y^2 z^2 + 2 x y^2 z^3 - 8 x^2 y z^3 
+     + 4 x y z^4 + 8 z^6
+].
+go
+go
+go
+sol E
+sol T
+continue
+[]
+(a2,a1,eta1,xi2)
+2
+(E eta1)(E xi2)[eta1 < 0 /\ 2 a2^2 a1^2 xi2^2 + 2 a2^4 xi2^2 + 2 a2^2 xi2^2 - 4 eta1 a2 a1^2 xi2 - 4 eta1 a2^3 xi2 + 2 eta1^2 a1^4 + 4 eta1^2 a2^2 a1^2 - a2^2 a1^2 + 2 eta1^2 a1^2 + 2 eta1^2 a2^4 - a2^4 + 2 eta1^2 a2^2 - a2^2 = 0].
+assume [a2 /= 0 /\ a1^2 + a2^2 - 1 > 0]
+prop-eqn-const
+go
+eqn-const-poly 2 a2^2 a1^2 xi2^2 + 2 a2^4 xi2^2 + 2 a2^2 xi2^2 - 4 eta1 a2 a1^2 xi2 - 4 eta1 a2^3 xi2 + 2 eta1^2 a1^4 + 4 eta1^2 a2^2 a1^2 - a2^2 a1^2 + 2 eta1^2 a1^2 + 2 eta1^2 a2^4 - a2^4 + 2 eta1^2 a2^2 - a2^2.
+go
+go
+sol E
+sol T
+continue
+[]
+(skoX)
+0
+(E skoX) [[(skoX ((-3/4)+(skoX ((1/2)+(skoX ((1/6)+(skoX ((1/24)+(skoX ((1/120)+(skoX ((121/87480)+(skoX ((17/87480)+(skoX ((49/2099520)+(skoX ((409/170061120)+(skoX ((361/1700611200)+(skoX ((1/62985600)+(skoX ((181/183666009600)+(skoX ((1/20407334400)+(skoX ((1/550998028800)+(skoX (1/24794911296000))))))))))))))))))))))))))))))<=0] /\ [[~[0<=skoX]] /\ [[~[skoX<=(-1)]] /\ [[~[1<=skoX]] /\ [~[skoX=0]]]]]].
+q
