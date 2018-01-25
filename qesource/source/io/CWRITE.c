@@ -19,7 +19,7 @@ public:
 };
 
 static stack<OutputContext> OCS;
-ostream *currOut;
+ostream *currOut = &(std::cout);
 
 void PushOutputContext(ostream &out) 
 {

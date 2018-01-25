@@ -59,7 +59,7 @@ Return: /* Prepare for return. */
 static void SIGINT_handler(int i, siginfo_t *sip,void* uap)
 {  
   if (sip->si_signo == SIGALRM)
-    FAIL("TIMEOUT","Existing QEPCADB due to timeout");
+    FAIL("TIMEOUT","Exiting QEPCADB due to timeout");
   ENDQEPCAD(); // Kill child CAServer processes
   ENDSACLIB(SAC_FREEMEM);
   exit(1);

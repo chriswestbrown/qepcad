@@ -259,16 +259,3 @@ Exit: /* Prepare for quitting. */
        va_end(argPtr);
        exit(1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

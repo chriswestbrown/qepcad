@@ -194,10 +194,16 @@ Step2: /* Failures from the SACLIB library. */
          goto Abort;
          }
 
+       /* TIMEOUT */
+       if (!strcmp(algName,"TIMEOUT")) {
+	 goto Exit;
+       }
+       
 Abort: /* Prepare for abort. */
        SWRITE("\n\nNow the FAIL handler is aborting the program ...\n");
        va_end(argPtr);
-       abort();
+       //abort();
+       exit(2);
 
 Exit:  /* Prepare for exit. */
        SWRITE("\n\nNow the FAIL handler is exiting the program ...\n");

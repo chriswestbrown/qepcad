@@ -13,8 +13,9 @@ void ENDQEPCAD()
   for(ServerBase::iterator p = GVSB.begin(); p != GVSB.end(); ++p)    
     delete p->second;
   GVSB.clear();
-  delete GVCAP;
-  delete GVContext;
+  
+  if (GVCAP != 0) delete GVCAP;
+  if (GVContext != 0) delete GVContext;
 
 Return: /* Prepare for return. */
        return;

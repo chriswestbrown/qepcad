@@ -150,9 +150,11 @@ simple equivalent Tarski formulas.\n\
 Options\n\
 -h      : Help information\n\
 -noecho : Turns off echoing of input\n\
+-t <num>: Sets a timeout of <num> seconds.\n\
 \n\
 Saclib options\n\
 +N<numcells> : Sets garbage collected space to <numcells>.  Default is 2000000.\n\
+               Maximum allowable is 1073741822 (Because \"Word\" is 32 bits).\n\
 ";
       int i = 0, x = 0;
       int N = int(out.str().length());
