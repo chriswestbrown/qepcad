@@ -14,8 +14,11 @@ static void setversline() {
   SWRITE("QEPCAD Version B ");
   SWRITE(version);
   SWRITE(", ");
-  for(j = 5; j < 16; j++)
+  for(j = 4; j < 10; j++)
     CWRITE(versdate[j]);
+  while(versdate[++j] != '\0');
+  while(versdate[--j] != ' ');
+  SWRITE(versdate + j);
 }
 
 void PRINTCAD2DBANNER()

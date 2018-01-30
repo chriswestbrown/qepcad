@@ -18,6 +18,7 @@ already been initialized!
 
 void QEPCAD_ProcessRC(int argc, char **argv);
 void QEPCAD_Usage(int cols);
+void setversline();
 
 /*
   This is a somewhat graceful way for me to work on experimental
@@ -41,7 +42,8 @@ void BEGINQEPCAD(int &argc, char**& argv)
   /* With an invalid command-line argument (or -h) just print usage 
      and exit*/
   int usageAndExit = -1; /* -1 means don't print usage and exit! */
-
+  int justExit = 0;
+  
   /* #cols for usage message output is 80 or terminal width if 
      stdout attached to a terminal*/
   int cols = 80;         /* number of columns for help output */
@@ -60,6 +62,11 @@ void BEGINQEPCAD(int &argc, char**& argv)
   {
     if (strcmp(argv[i],"-exp") == 0) { experimentalExtensionFlag = 1; }
     else if (strcmp(argv[i],"-noecho") == 0) { NOECHOSWITCHSET = TRUE; }
+    else if (strcmp(argv[i],"-v") == 0)
+    {
+      SWRITE("QEPCAD   -"); setversline(); SWRITE("\n");
+      justExit = 1;
+    }
     else if (strcmp(argv[i],"-h") == 0)
     {
       usageAndExit = 0;
@@ -89,6 +96,7 @@ void BEGINQEPCAD(int &argc, char**& argv)
       usageAndExit = 1;
     }
   }
+  if (justExit) { exit(0); }
   if (usageAndExit >= 0) { QEPCAD_Usage(cols); exit(usageAndExit); }
 
   /* Set things up so Singular can be used as a CAServer */
@@ -139,7 +147,7 @@ void QEPCAD_ProcessRC(int argc, char **argv)
 void QEPCAD_Usage(int cols)
 {
       ostringstream out;
-      out << "usage: qepcad [-h] [-noecho] [+N<numcells>]\n\n";
+      out << "usage: qepcad [-h|-v] [-noecho] [-t <num>] [+N<numcells>]\n\n";
       out << "QEPCAD B v" << QEPCADBVersion();
       out << "\
  is a program for studying Cylindrical Algebraic Decomposition (CAD). \
@@ -149,12 +157,14 @@ simple equivalent Tarski formulas.\n\
 \n\
 Options\n\
 -h      : Help information\n\
+-v      : Print version string\n\
 -noecho : Turns off echoing of input\n\
 -t <num>: Sets a timeout of <num> seconds.\n\
 \n\
 Saclib options\n\
 +N<numcells> : Sets garbage collected space to <numcells>.  Default is 2000000.\n\
                Maximum allowable is 1073741822 (Because \"Word\" is 32 bits).\n\
++h           : Prints Saclib help message.\n\
 ";
       int i = 0, x = 0;
       int N = int(out.str().length());

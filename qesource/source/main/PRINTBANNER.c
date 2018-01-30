@@ -6,10 +6,10 @@ Prints the qepcad banner!
 #include "qepcad.h"
 
 /* $Format: "static const char* version = \"$ProjectVersion$\";"$ */
-static const char* version = "1.70";
+static const char* version = "1.71";
 
 /* $Format: "static const char* versdate = \"$ProjectDate$\";"$ */
-static const char* versdate = "Tue Jan 30 11:51:56 EST 2018";
+static const char* versdate = "Tue Jan 30 16:04:07 EST 2018";
 
 void setversline() {
   int j;
