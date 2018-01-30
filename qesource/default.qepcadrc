@@ -5,4 +5,4 @@
 # so that it gets used for some computer algebra
 # computations is the only feature.
 #####################################################
-SINGULAR /usr/bin
+# SINGULAR /usr/bin
