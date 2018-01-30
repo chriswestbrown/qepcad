@@ -13,11 +13,12 @@ static const char* versdate = "Tue Jan 30 11:51:56 EST 2018";
 
 void setversline() {
   int j;
-  SWRITE("            Version B ");
+  SWRITE("   Version B ");
   SWRITE(version);
   SWRITE(", ");
-  for(j = 5; j < 16; j++)
-    CWRITE(versdate[j]);
+  SWRITE(versdate);
+  /* for(j = 5; j < 16; j++) */
+  /*   CWRITE(versdate[j]); */
 }
 
 const char* QEPCADBVersion() { return version; }
