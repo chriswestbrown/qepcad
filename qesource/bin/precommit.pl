@@ -6,7 +6,7 @@
 # the version number and puts a new version date stamp on.
 #########################################################
 
-sub bumpVersion() {
+sub bumpVersion {
     my $fname = $_[0];
     my $pre = 'static const char\* version = "';
     my $post = '";';
@@ -29,7 +29,7 @@ sub bumpVersion() {
     return "ERROR";
 }
 
-sub stampVersionDate() {
+sub stampVersionDate {
     my $fname = $_[0];
     $pre = 'static const char\* versdate = "';
     $post = '";';
@@ -59,7 +59,7 @@ $dateNEW = stampVersionDate($f1);
 print "Stamped version date to $dateNEW.\n";
 
 # cad2d
-my $f2 = "../source/cad2d/src/PRINTCAD2DBANNER.c";
+my $f2 = "../cad2d/src/PRINTCAD2DBANNER.c";
 $versNEW = bumpVersion($f2);
 print "Bumped version number to $versNEW.\n";    
 $dateNEW = stampVersionDate($f2);
