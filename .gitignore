@@ -1,0 +1,11 @@
+# emacs backup files
+*~
+
+# library files
+*.a
+
+# the executables
+qesource/cad2d/cad2d
+qesource/cad2d/cad2dd
+qesource/source/qepcad
+qesource/source/qepcadd
