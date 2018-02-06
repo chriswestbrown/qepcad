@@ -795,11 +795,15 @@ $(OBJS_SACLIBd)
 # ============================================================
 opt:		override CFLAGS = $(FLAGSo)
 opt:		override CC = $(CCo)
-opt:		$(DEPENDENCIESo)
-		ranlib $(LIB)
-		@echo Linking the optimized program......
-		$(CCo) $(FLAGSo) $(INCLUDES) saclib/GCSI.c saclib/FAIL.c \
-			$(LIB) $(EXTLIBS) $(LIB) $(EXTLIBS) -o $(EXE)
+opt:	dolib dolink
+
+dolib:	$(DEPENDENCIESo)
+
+dolink:	dolib
+	ranlib $(LIB)
+	@echo Linking the optimized program......
+	$(CCo) $(FLAGSo) $(INCLUDES) saclib/GCSI.c saclib/FAIL.c \
+	  $(LIB) $(EXTLIBS) $(LIB) $(EXTLIBS) -o $(EXE)
 
 
 deb:		override CFLAGS = $(FLAGSd)

@@ -15,9 +15,13 @@ FLAGSo = -O4 -D__CORRECT_ISO_CPP_STRINGS_H_PROTO
 CCd        =  g++
 FLAGSd = -g
 
+SUBMAKEFLAGS = -j1
+
 MFlags	= "CCo=${CCo}" "FLAGSo=${FLAGSo}"\
           "CCd=${CCd}" "FLAGSd=${FLAGSd}"\
-          "MAKE=${MAKE}"
+          "MAKE=${MAKE}"\
+	  "SUBMAKEFLAGS=${SUBMAKEFLAGS}"
+MFlags += -j1
 
 ARFLAGS := crvU
 
