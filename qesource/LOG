@@ -133,3 +133,11 @@ ALSO:
 - moved propogate to become a member function of QepcadCls.
   in order to implment this change.
 
+2/06/2018
+Fixed a number of bugs that have to do with failing gracefully
+when launched with +N value that's too high.  This also means
+a minor tweak to saclib.  Also added some changes to allow
+Tarski to call Qepcad, like a -t for "timeout" option.  The
+makefile now sets all calls to make to -j1, since there is
+apparently some dependency that's implicit in serial make, that
+needs to be explicit for parallel make ... but I'm unsure where.
