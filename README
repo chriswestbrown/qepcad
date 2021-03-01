@@ -1,9 +1,47 @@
 This is the QEPCADB project.  The actual software system is in
 the qesource directory.  The public_html directory has some
 documentation in it (same as the qepcad website), and the
-regressiontests cirectory has some basic regression tests.  For
+regressiontests directory has some basic regression tests.  For
 most people qesource is where to start.  Note that the license
 information is in that directory and the distribution I provide
 through the qepcad website is just that directory.
+
+QEPCAD is an implementation of quantifier elimination by partial
+cylindrical algebraic decomposition due orginally to Hoon Hong, and
+subsequently added on to by many others. It is an interactive
+command-line program written in C/C++, and based on the SACLIB
+library. Presented here is QEPCAD B version 1.x, the "B" designating a
+substantial departure from the original QEPCAD and distinguishing it
+from any development of the original that may proceed in a different
+direction. QEPCAD and the SACLIB library are the result of a program
+of research by George Collins and his PhD students that has spanned
+several decades ... and continues still!
+
+I extended and improved QEPCAD for several years. Improvements that
+didn't involve changes to the way the program interacted with the user
+I'd just go ahead and make. However, changes that affected the
+interaction of QEPCAD and the user, or changes that added new features
+were "tacked on" to the program, requiring the user to know about
+extra commands. Moreover, there was no cannonical source for QEPCAD
+distribution or documentation, and no internet accessible source at
+all. This branch of QEPCAD, QEPCAD "B", was introduced to address
+those problems - to make QEPCAD easily accessable through the
+internet, to provide good documentation, and to incorporate many
+improvements and extensions in a way that makes them most accessible
+to the user.
+
+The Authors
+The principal author of the original QEPCAD is Hoon Hong. Other contributors include:
+
+Christopher W. Brown
+George E. Collins
+Mark J. Encarnacion
+Jeremy R, Johnson
+Werner Krandick
+Scott McCallum
+Stanly Steinberg
+Richard Liska
+Nicolas Robidoux
+The author of Version B is Christopher W. Brown.
 
 Chris Brown
