@@ -1,1 +1,9 @@
-Every project should have a README 
+This is the QEPCADB project.  The actual software system is in
+the qesource directory.  The public_html directory has some
+documentation in it (same as the qepcad website), and the
+regressiontests cirectory has some basic regression tests.  For
+most people qesource is where to start.  Note that the license
+information is in that directory and the distribution I provide
+through the qepcad website is just that directory.
+
+Chris Brown
