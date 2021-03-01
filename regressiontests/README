@@ -1,3 +1,15 @@
+This directory has a few basic regression tests.
+Run this way:
+
+qepcad < applicationTestSet | ./pullsf.pl | diff - applicationTestSet.out
+
+If there is no output, then you've passed all the tests.
+Unfortunately, this isn't quite perfect, because changes is QEPCADB
+may cause different formulas or ordering of elements of formulas, so
+that they are not textually identical even though equivalent.
+
+###################################################################
+
 This is a super simple set of regression tests.
 I have problem sets, and I do a diff on the output
 for the sets from old/new qepcad's or between ports
