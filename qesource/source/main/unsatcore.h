@@ -34,10 +34,9 @@ private:
   // appearsIn[(i,j)] is a vector of all indices (a,b) s.t. conjunct[a].factors[b].Q is proj. fac. (i,j)
   std::map<std::pair<int,int>, std::vector< std::pair<int,int> > > appearsIn;
 
+  QepcadCls* Qptr;
   GCWord MHSP, HITSETSOL;
   
-  QepcadCls* Qptr;
-
 public:
  UnsatCore(QepcadCls &Q) : Qptr(&Q), MHSP(NIL), HITSETSOL(0) { } 
 

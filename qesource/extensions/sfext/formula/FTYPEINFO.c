@@ -23,6 +23,7 @@ Word FTYPEINFO(Word A)
     return TRUE;
   if (FIRST(A) == FALSE)
     return FALSE;
-  
+  FAIL("FTYPEINFO","FTYPEINFO called on unsupported formula type!");
+  return UNDET; // based on how it is called, this should never happen
 }
       

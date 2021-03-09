@@ -23,13 +23,13 @@ extern void gcw_MARK();
 
 void GCSI(Word s, char *EACSTACK)
 {
-       Word I,L,N,N1,Np,Np1,T,T1,c,**i,j,inc;
+  Word I,L,N,N1,Np,Np1,T,T1,c,/* **i,j, */inc;
        char *a;
-       GCArray *v;
+       //GCArray *v;
        /* hide I,L,N,N1,Np,Np1,T,T1,c,i,j,inc,a,v; */
 
 Step1: /* Setup. */
-	  if (GCM == 1) {
+       if (GCM == 1) {
          SWRITE("\nThe "); GWRITE(GCC+1); 
          SWRITE("--th garbage collection....\n");
        }

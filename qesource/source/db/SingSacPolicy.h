@@ -27,18 +27,12 @@ public:
 
   Word IPRES(Word r, Word A, Word B)
   {
-    if (r > 2)
-      sing->IPRES(r,A,B);
-    else
-      sac ->IPRES(r,A,B);
+    return r > 2 ? sing->IPRES(r,A,B) : sac ->IPRES(r,A,B);
   }
 
   Word IPDSCR(Word r, Word A)
   {
-    if (r > 2)
-      sing->IPDSCR(r,A);
-    else
-      sac ->IPDSCR(r,A);
+    return r > 2 ? sing->IPDSCR(r,A) : sac->IPDSCR(r,A);
   }
 
   Word IPFACTGB(Word r, Word I, Word N)  

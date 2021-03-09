@@ -39,7 +39,7 @@ Step1: /* Process. */
   {
     Word R;
     
-Step1: /* Determine method to use. */
+  Step1: /* Determine method to use. */
     switch (PCRESALG) {
     case MODULAR: R = ::IPRES(r,A,B); break;
     case SUBRES:  R = IPRESPRS(r,A,B); break; 
