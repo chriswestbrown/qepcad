@@ -1,5 +1,5 @@
 #include "newadj2D.h"
-Word ISSECTOR(Word C) { return LAST(LELTI(C,INDX)) % 2; }
+static Word __pure ISSECTOR(Word C) { return LAST(LELTI(C,INDX)) % 2; }
 void SAMPLECWR(Word c);
 void strippedAFLWR(Word M,Word I,Word N,Word a,Word A);
 void ANDWRITExx(Word M,Word I,Word n);

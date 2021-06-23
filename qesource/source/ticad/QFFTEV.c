@@ -12,7 +12,7 @@ Quantifier-Free Formula Trial Evaluation.
  \parm{t} is the trial truth value of $F$ on the cell $c$.
 ======================================================================*/
 #include "qepcad.h"
-static Word zeroQ(Word s, Word I_L);
+static Word zeroQ(Word s, Word I_L) __pure;
 static Word ATOMETFEVAL(Word Q, Word D, Word c, Word F);
 
 Word QepcadCls::QFFTEV(Word F, Word c, Word k)

@@ -25,6 +25,8 @@ outputs
 #define BDCOMP(a,b)       ((a) > (b) ? 1 : ((a) < (b) ? -1 : 0))
 #define CFLCT 5
 
+static Word comp1(Word a, Word b) __pure;
+
 static Word comp1(Word a,Word b) {
   Word A,B,t;
   A = RED(a); B = RED(b); t = 0;

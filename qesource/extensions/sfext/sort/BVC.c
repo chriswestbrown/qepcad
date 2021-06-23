@@ -12,9 +12,9 @@ b : -1 if u < v in lex order, 0 if u = v, 1 if u > v.
   ======================================================================*/
 #include "mysort.h"
 
-Word BVC(Word *u_, Word *v_, Word n)
+Word BVC(const Word *u_, const Word *v_, Word n)
 {
-       Word *w,*u,*v;
+       const Word *w,*u,*v;
        u = u_;
        v = v_;
        w = u + n;

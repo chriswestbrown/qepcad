@@ -17,7 +17,7 @@ outputs
 #include "qepcad.h"
 #include "espcad.h"
 
-static Word comp(Word A, Word B);
+static Word comp(Word A, Word B) __pure;
 #define BDCOMP(a,b)   ((a) > (b) ? 1 : ((a) < (b) ? -1 : 0))
 	  
 Word ESPCADDOPFSUFF(Word P, Word K)

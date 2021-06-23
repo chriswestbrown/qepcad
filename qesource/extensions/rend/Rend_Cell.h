@@ -49,8 +49,8 @@ public:
   Rend_Cell& operator[](int i); /* gives child from index   */
   Rend_Cell* neighbor_l(); /* returns left neighbor cell    */
   Rend_Cell* neighbor_r(); /* returns right neighbor cell   */
-  int array_index();       /* returns i such that 
-			      parent->child[i] is the cell  */
+  int array_index() __pure; /* returns i such that 
+				parent->child[i] is the cell  */
   void set_extents(Word J);
   void out_descrip(Rend_Win &W, ostream &out, Mapper &M);
   void out_descrip_ps(Rend_Win &W, ostream &out, Mapper &M);

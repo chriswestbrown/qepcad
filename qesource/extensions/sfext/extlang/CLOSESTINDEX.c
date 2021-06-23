@@ -10,6 +10,8 @@ cp: the ESCAD cell in L with index closest to c.
 
 #include "extlang.h"
 
+static Word comp(Word u, Word v) __pure;
+
 static Word comp(Word u, Word v)
 {
   Word r,t,U,V,A,B,a,b;

@@ -34,7 +34,7 @@ extern "C" {
 
 #include <iostream>
 #include <sstream>
-istream& qein(); // fetches the current qepcad istream object
+istream& qein() __pure; // fetches the current qepcad istream object
 
 class singlelinestream : public istringstream
 {

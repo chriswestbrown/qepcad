@@ -24,6 +24,8 @@ Note:  The point is that not only sorting the list of subsets so that
 #define BDCOMP(a,b)  ((a) > (b) ? 1 : ((a) < (b) ? -1 : 0))
 #define MC_FAIL 0
 
+static Word comp(Word a, Word b) __pure;
+
 static Word comp(Word a, Word b) {
       Word ap,bp,t,q;
       ap = a; bp = b;
