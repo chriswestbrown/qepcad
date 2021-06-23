@@ -40,11 +40,6 @@ Rend_Sample_1DS::Rend_Sample_1DS(Word C,Word P)
 }
 
 
-Rend_Sample_1DS::~Rend_Sample_1DS()
-{
-  
-}
-
 /*************************************************************
  **  Refines I to 2^k or less, and returns binary rational 
  **  middle of interval.
@@ -112,13 +107,6 @@ Rend_Sample_1DO::Rend_Sample_1DO(Rend_Cell *dad)
   L.W = NIL;
 }
 
-
-Rend_Sample_1DO::~Rend_Sample_1DO()
-{
-  
-}
-
-
 Word Rend_Sample_1DO::coordinate(int k)
 {
   Word e,j1,j2,J,kp = k;
@@ -178,11 +166,6 @@ Rend_Sample_2DS::Rend_Sample_2DS(Word C)
 }
 
 
-Rend_Sample_2DS::~Rend_Sample_2DS()
-{
-  
-}
-
 /*************************************************************
  **  Refines I to 2^k or less, and returns binary rational 
  **  lower endpoint.
@@ -237,11 +220,6 @@ Rend_Sample_2DC::Rend_Sample_2DC(Word C,Word P)
 
 }
 
-Rend_Sample_2DC::~Rend_Sample_2DC()
-{
-  
-}
-
 Word Rend_Sample_2DC::coordinate(int k)
 {
   return L.W;
@@ -263,11 +241,6 @@ void Rend_Sample_2DC::clear_points()
 Rend_Sample_BR::Rend_Sample_BR(Word a)
 {
   N.W = a;
-}
-
-Rend_Sample_BR::~Rend_Sample_BR()
-{
-  
 }
 
 Word Rend_Sample_BR::coordinate(int k)

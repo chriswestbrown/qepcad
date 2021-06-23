@@ -37,6 +37,7 @@ class CADELT
 public:
   virtual bool read(istream &in) = 0;
   virtual void glRend(const CADColors &C) = 0;
+  virtual ~CADELT() {}
 };
 
 class SNoverSR : public CADELT
