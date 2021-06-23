@@ -239,7 +239,7 @@ Step3: /* Make assignments. */
 
 Word ASYS2(Word M, Word H, Word I, Word P2)
 {
-  Word P,p,tH,tI,h1,h2,i1,i2,L1p,L2p,L1n,L2n,n1p,n1n,n2p,n2n,p1,p2,L1,L2,t;
+  Word P,p,tH,tI,h1,h2,i1,i2;
 
   tH = -LBRNSIGN(IUPLBREVAL(M,FIRST(H)));
   tI = LBRNSIGN(IUPLBREVAL(M,SECOND(I)));

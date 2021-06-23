@@ -17,7 +17,7 @@ Output
 
 Word MAFUPGCD(Word p, Word M, Word A, Word B)
 {
-       Word C,A1,A2,A3,a,ap,r;
+       Word C,A1,A2,A3;
   
 Step1: /* A = 0 \/ B = 0 */
        if (A == 0) {

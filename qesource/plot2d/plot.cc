@@ -112,7 +112,6 @@ void* readdata(void *x)
 {
   vector<CADELT*> E;
   istream &in = *inp;
-  int flag;
   char c;
   do {
     while( in >> c )

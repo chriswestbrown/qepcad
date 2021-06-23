@@ -17,11 +17,10 @@ Side Effects
 
 void PPFLPROJ(Word L, Word i, Word P)
 {
-      Word A,T,p,B,b,t,tp,C;
+      Word A,p,B,b,t,tp,C;
 
 Step1: /* Loop over each proj. fac. p in level i of P. */
       A = LELTI(P,i);
-      T = NIL;
       while(A != NIL) {
 	ADV(A,&p,&A);
 

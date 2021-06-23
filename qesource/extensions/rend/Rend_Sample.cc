@@ -46,7 +46,7 @@ Rend_Sample_1DS::Rend_Sample_1DS(Word C,Word P)
  *************************************************************/
 Word Rend_Sample_1DS::coordinate(int k)
 {
-  Word P,J,j1,j2,js1,js2,s1,s2;
+  Word P,J,j1,j2;
 
   P = A.W; J = I.W;
 
@@ -64,7 +64,7 @@ Step2: /* Save interval refinement and return. */
 
 Word Rend_Sample_1DS::round(int k, int roundup)
 {
-  Word P,J,j1,j2,js1,js2,s1,s2;
+  Word P,J,j1,j2;
 
   P = A.W; J = I.W;
 
@@ -109,7 +109,7 @@ Rend_Sample_1DO::Rend_Sample_1DO(Rend_Cell *dad)
 
 Word Rend_Sample_1DO::coordinate(int k)
 {
-  Word e,j1,j2,J,kp = k;
+  Word /* e, */ j1,j2,J,kp = k;
   do {
     j1 = l -> sample -> round(kp,1);
     j2 = r -> sample -> round(kp,0);
@@ -132,8 +132,8 @@ Word Rend_Sample_1DO::coordinate(int k)
  *************************************************************/
 Rend_Sample_2DS::Rend_Sample_2DS(Word C)
 {
-  Word T,i,t1,t2,t3,j1,j2,s1,s2,s;
-  Word tB,tJ,tA,tI,d1,d2,d3,d4,d5;
+  Word T,t1,t2,t3,j1,j2,s1,s2;
+  Word tB,tJ,tA,tI,d1;
 
   //-- Set A to the minpol of sample point, and I to isolating int --/
   T = LELTI( C , SAMPLE );
@@ -172,7 +172,7 @@ Rend_Sample_2DS::Rend_Sample_2DS(Word C)
  *************************************************************/
 Word Rend_Sample_2DS::coordinate(int k)
 {
-  Word J,j1,j2,JL,S,tB,tJ,tA,tI,d1,i;
+  Word J,S,tB,tJ,tA,tI,d1,i;
 
   
 Step1: /* Initialize and decide if refinement is even necessary. */

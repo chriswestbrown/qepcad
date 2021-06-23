@@ -18,8 +18,8 @@ not propogate!
 
 Word QepcadCls::PROJMCECmod(Word r, Word A)
 {
-       Word A1,A2,Ap,Ap1,Ap2,App,D,L,Lh,P,R,W,i,t,Q,j,S,Sp,C;
-       Word Ls, Lc,LL,f,rp,fp,tf,T1,fef,esu,AssTmp,Sf,k;
+       Word A1,A2,Ap,Ap1,Ap2,App,D,L,Lh,P,R,W,i,t,Q,j,S,C;
+       Word Ls, Lc,LL,f,rp,fp,T1,fef,esu,AssTmp,Sf;
 
 Step0: /* Obtain pivot constraint: If pivot is not all of level k, we can't use it! */
        C = LELTI(GVPIVOT,r);

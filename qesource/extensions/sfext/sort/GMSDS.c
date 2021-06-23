@@ -19,7 +19,7 @@ static Word G23VSDS(Word *v,Word m,Word (*C)(Word,Word));
 
 Word GMSDS(Word *A, Word m, Word (*C)(Word,Word))       
 {
-       Word *T,*T1,*T2,*A1,*A2,m1,m1p,m2,m2p,mp,k,l;
+       Word *T,*T1,*T2,*A1,*A2,m1,m1p,m2,m2p,mp,k;
 
 Step1: /* Split. */
        m1 = m >> 1;

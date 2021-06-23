@@ -12,7 +12,7 @@ Integral Polynomial, List of Lists, Distributed Write, modified.
 
 void IPLLDWRMOD(Word V, Word A)
 {
-       Word A1,A11,i,P,L,H;
+       Word A1,A11,i,P,H;
        /* hide i,j,n,r; */
 
 Step1: /* Write. */

@@ -27,7 +27,7 @@ int bc(int a, int b)
 
 Word ADJ2DITOEL(Word L, Word c1, Word c0)
 {
-  Word *A, E,n,l,s,a,b,k1,k0,i,itop,ibot,S;
+  Word *A, E,n,l,a,b,k1,k0,i,itop,ibot,S;
 
 Step1: /* Initialize & Special Case. */
   E = NIL;

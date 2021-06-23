@@ -7,12 +7,9 @@ Initialize Program/Trace Control.
 
 void INITCTRL()
 {
-       Word k;
-       /* hide k; */
-
 Step1: /* Initialize program control */
-       Word PCDBUSE = 'y';
-       Word PCDBLIMIT = 10;
+       PCDBUSE = 'y';
+       PCDBLIMIT = 10;
 
 Step2: /* Initialize Algorithm Trace Control Variables. */
        TCPROJ = NIL;

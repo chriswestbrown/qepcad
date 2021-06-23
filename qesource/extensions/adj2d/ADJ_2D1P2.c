@@ -9,7 +9,7 @@ void sa_send(const char* S);
 
 Word ADJ_2D1P2(Word U, Word V, Word w_l, Word B)
 {
-  Word Sol,S,v,J,w_v,u,w_u,I,Solp,t,f;
+  Word Sol,S,v,J,w_v,u,w_u,I,Solp,f;
 
   /*sa_send("[");*/
 

@@ -15,8 +15,8 @@ Inputs
 
 void QepcadCls::CLEAN_BIGLOOP(Word Jb, Word Pb, Word P0, Word D0, Word N, Word *P_, Word *D_)
 {
-      Word P,D,G,C,T,N_T,Tb,Gb,Gbp,S_N_T,Tp,Gp,K,KT,p,i,S;
-      Word Q,Q_i,Ps,Ds,Qb,Qb_i,Dsp,t,Ph;
+      Word P,D,G,C,T,N_T,Gb,K,KT,p,i,S;
+      Word Q,Ps,Ds,Dsp,t,Ph;
       Word inum,tm,temp;
 
 Step1: /* Initialize. */

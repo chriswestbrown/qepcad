@@ -20,7 +20,6 @@ Substitute the rational sample point into the projection factors.
 Word QepcadCls::SUBSTR(Word c, Word k, Word b, Word B)
 {
        Word B1,Bp,S,S1;
-       Word dV,IV;
        Word P,L,Q,T1,T2,Sp,G,f,i;
 
 Step1: /* Do it. */

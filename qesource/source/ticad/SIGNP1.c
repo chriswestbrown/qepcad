@@ -19,7 +19,7 @@ using namespace std;
 
 void SIGNP1(Word c, Word P1, Word I)
 {
-       Word S1,c1,cb,I1;
+       Word c1,cb,I1;
 
 Step1: /* Compute the signatures of $P_1$. */
        vector<BDigit> S;

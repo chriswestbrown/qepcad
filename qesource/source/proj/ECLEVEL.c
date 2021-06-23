@@ -14,10 +14,9 @@ Output
 
 Word ECLEVEL(Word L)
 {
-       Word k,Lp,L1;
+       Word k,L1;
 
 Step1: /* Initialize. */
-       Lp = L;
        k = 0;
 
 Step2: /* Loop. */

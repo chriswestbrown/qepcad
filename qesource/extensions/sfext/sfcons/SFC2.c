@@ -5,7 +5,7 @@ Solution formula construction version 2
 
 void QepcadCls::SFC2(Word D, Word P, Word J, Word n, Word sfm)
 {
-      Word t,SF,D0,P0,J0,D1,P1,Pp,Dp,Q,L,Lt,Lf;
+      Word t,SF,D1,P1,Pp,Dp,Q,L,Lt,Lf;
 
 Step1: /* Space is either empty or R^n. */
       t = DOPFSUFF(P,LIST1(D));

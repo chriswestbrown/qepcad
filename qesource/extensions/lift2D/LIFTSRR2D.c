@@ -38,7 +38,7 @@ void debWRITEINTERVAL(Word I) {
 
 Word LIFTSRR2D(Word c, Word D, Word P)
 {
-  Word S_L,S_R,s_L,s_R,S,i,c_L,c_R,cp,flag,m_L,m_R,so,mo,m,s,j;
+  Word S_L,S_R,s_L,s_R,S,i,c_L,c_R,cp,so,m,s;
   Word M,I,P2,Rp,t,R,Rs,Rt,SP,r,k,c1,c2,prev,Sp,sor,next,s2,nextc,X;
   Word OC, OT,count;
 
@@ -108,7 +108,6 @@ Word LIFTSRR2D(Word c, Word D, Word P)
   /* Go through the neighboring stacks! */
   /**************************************/
   i = 0;
-  flag = FALSE;
   for(S = NIL; S_L != NIL; S_L = RED(S_L), S_R = RED(S_R)) {
 
     c_L = FIRST(S_L);
@@ -133,8 +132,7 @@ Word LIFTSRR2D(Word c, Word D, Word P)
 		  CCONC(LELTI(c,INDX),LIST1(i)),COMP(FIRST(LELTI(c_L,SIGNPF)),LELTI(c,SIGNPF)),
 		  NOTDET,
 		  LELTI(c_L,DEGSUB),LELTI(c_L,MULSUB));
-      S = COMP(cp,S);
-      flag = FALSE; }
+      S = COMP(cp,S); }
 
     else {
       /************************************************************

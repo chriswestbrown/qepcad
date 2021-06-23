@@ -7,7 +7,7 @@
 
 void PCADWRITE(Word Cs, Word Ps)
 {
-      Word C,l,i,L,k,I;
+      Word l,L,k,I;
 
 Step1: /* */
       I = PCADCINDEX(Cs);

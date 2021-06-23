@@ -16,11 +16,7 @@ been set to something other than NIL, those assumptions are used.
 
 void QepcadCls::CADautoConst()
 {
-       Word A,D,F,F_e,F_n,F_s,Fh,J,P,Q,Ths,f,i,r,t, T;
-       /* hide Ths,i,t; */
-       Word cL,**cC,cr,ce,ci,*cT,cj,cs,cl,ct; /* Chris variables. */
-       Word Cs,Ps,Qs,Pps,Cps,Qps,SF; /* Chris variables. */
-       char c1,c2; /* Chris variables. */
+       Word A,D,F,Fh,J,P,Q,f,r;
 
 Step1: /* Normalize. */
        FIRST4(GVF,&r,&f,&Q,&Fh);

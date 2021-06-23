@@ -24,7 +24,7 @@ Outputs
 
 void BPOLSETS(Word L_, Word D, Word P, Word *T_, Word *N_)
 {
-      Word L,T,Q,q,a,b,I_a,I_b,i_a,i_b,n,P_N,S_a,S_b,s_a,s_b,t,N,p,
+      Word L,T,Q,q,a,b,I_a,I_b,i_a,i_b,n,P_N,t,N,
 	   S_T,S_L,s_c,c,i,Tb,Tp;
 
 Step1: /* Initialization. */

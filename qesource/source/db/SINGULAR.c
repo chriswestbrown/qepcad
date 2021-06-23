@@ -162,8 +162,6 @@ Return: /* Prepare for return. */
 
 void SingularServer::IPFAC(Word r, Word P, Word *s_, Word *c_, Word *L_)
 {
-  int T1 = serverTime();
-
   Word V = CreateVariableList(r);
   string out =  WritePolyForSingular(r,P,V);
 
@@ -211,9 +209,6 @@ void SingularServer::IPFAC(Word r, Word P, Word *s_, Word *c_, Word *L_)
   Word lcf = PLBCF(r,FIRST(L));
   Word ct = IABSF(lcf);
   sn *= ISIGNF(lcf);
-
-  // Figure out how long that took!
-  int T2 = serverTime();
 
   // RETURN
   *s_ = sn;

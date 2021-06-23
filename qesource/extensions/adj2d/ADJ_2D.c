@@ -17,12 +17,6 @@ Outputs
 ======================================================================*/
 #include "adj2D.h"
 #include "adj2D.h"
-static void start();
-static void stop();
-static int k;
-static void zero() { k = 0; }
-void bump() { k++; }
-static void print() { SWRITE("\n\nk = "); IWRITE(k); SWRITE("\n\n"); }
 
 Word ADJ_2D(Word c, Word c_l, Word c_r, Word P, Word J)
 {
@@ -36,19 +30,4 @@ Word ADJ_2D(Word c, Word c_l, Word c_r, Word P, Word J)
   Sol = P3(U,V,W,v_l,FIRST(LELTI(c,INDX)));
 
   return Sol;
-}
-
-static Word ADJ_D_Time;
-
-void start()
-{
-  ADJ_D_Time = ACLOCK();
-}
-
-void stop()
-{
-  ADJ_D_Time = ACLOCK() - ADJ_D_Time;
-  SWRITE("\nADJ_2D took ");
-  IWRITE(ADJ_D_Time);
-  SWRITE(" millseconds.\n");
 }

@@ -20,8 +20,8 @@ using namespace std;
 
 Word QepcadCls::PROJMCmod(Word r, Word A)
 {
-       Word A1,A2,Ap,Ap1,Ap2,App,D,L,Lh,P,R,W,i,t,Q,j,S,Sp;
-       Word Ls, Lc,LL,f,rp,fp,tf,T1,fef,esu,AssTmp,Sf;
+       Word A1,A2,Ap,Ap1,Ap2,App,D,L,Lh,P,R,W,i,t,Q,j,S;
+       Word Ls, Lc,LL,f,rp,fp,T1,fef,esu,AssTmp,Sf;
 
 Step1: /* Obtain coefficients. */
        P = NIL;

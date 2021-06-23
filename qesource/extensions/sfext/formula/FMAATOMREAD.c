@@ -13,9 +13,9 @@ Word POLYINDEX(Word P, Word p, Word r, Word *t);
 
 void FMAATOMREAD(Word Q, Word V, Word *F_, Word *t_)
 {
-       Word F,P,P1,P2,R,a,r,s,t,k,pi;
+       Word F,P1,P2,R,r,t,k,pi;
        char c;
-       /* hide r,s,t; */
+       /* hide r,t; */
 
 Step1: /* Read the left polynomial. */
         t = 1; r = LENGTH(V); F = NIL;

@@ -87,7 +87,6 @@ void QepcadCls::UnsatCore::prepareForLift()
     OrigAtom &A = conjuncts[k];
     Word r = A.r;
     Word P = A.P;
-    Word sigma = A.relop;
     Word s, c, L;
     IPFACDB(r,P,&s,&c,&L); // FACTOR
     if (ISIGNF(c)<= 0) { FAIL("QepcadCls::UnsatCore::prepareForLift","Unexpected non-positive sign!"); }
@@ -154,6 +153,7 @@ short T_prod[8][8] = {
   /*GEOP*/{NOOP,LEOP,EQOP,LEOP,GEOP,ALOP,GEOP,ALOP},
   /*ALOP*/{NOOP,ALOP,EQOP,ALOP,ALOP,ALOP,ALOP,ALOP}
 };
+#if 0
 static
 short T_sum[8][8] = {
   //______|NOOP_LTOP_EQOP_LEOP_GTOP_NEOP_GEOP_ALOP
@@ -166,6 +166,7 @@ short T_sum[8][8] = {
   /*GEOP*/{NOOP,ALOP,GEOP,ALOP,GTOP,ALOP,GEOP,ALOP},
   /*ALOP*/{NOOP,ALOP,ALOP,ALOP,ALOP,ALOP,ALOP,ALOP}
 };
+#endif
 
 inline int signToSigma(int s) { return s < 0 ? LTOP : (s == 0 ? EQOP : GTOP); }
 

@@ -25,8 +25,8 @@ static Word LLPFZC(Word c,Word P);
 
 void QepcadCls::CSORCELLTR_MOD(Word c, Word Pp, Word PpO, Word PpN, Word P)
 {
-      Word f,s,sh,M,K,C,Pps,L,T,B,E,I,A,a,b,k;
-      Word PP,NP,L_P,TP,i,ta,t;
+      Word s,sh,T,B,A,a,b,k;
+      Word PP,NP,L_P,TP,i,ta;
 
 Step0:
       k = LELTI(c,LEVEL);

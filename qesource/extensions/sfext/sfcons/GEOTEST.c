@@ -101,7 +101,7 @@ Word GEOMERGE(Word c,Word G,Word P)
 
 Word GEOFIT(Word c,Word G,Word P)
 {
-  Word Q,Qp,C_Q,C_Qp,Ap,App,R,Rp,T,Tp,t,Rpp,A,m,L,x,a;
+  Word Q,Qp,C_Q,C_Qp,Ap,App,R,Rp,T,Tp,t,Rpp,m,L,x,a;
   FIRST5(G,&Q,&C_Q,&Ap,&R,&T);
   FIRST5(c,&Qp,&C_Qp,&App,&Rp,&Tp);
   Tp = SINTER(Tp,T);
@@ -128,8 +128,8 @@ Word GEOFIT(Word c,Word G,Word P)
 
 Word GEOTEST(Word C,Word P,Word k,Word A)
 {
-       Word L,Lp,c,S,t,G,Q,Ap,Qp,App,C_Q,C_Qp,SF,SF1,
-	    SF2,Lt,Lf,Si,Fi,T,R,Tp,Rp,Rpp,Bs,Bi,i,s,t1,t2,SFp,Ap1,Ap2,a;
+       Word L,Lp,c,S,t,G,Q,Ap,Qp,App,C_Q,SF,SF1,
+	    SF2,Lt,Lf,T,Bs,Bi,i,s,t1,t2,Ap1,Ap2,a;
 
 Step1: /* Set L to a list of all (k-1)-level cells over which there are
 k-level cells with SC_TMPM of TRUE. */

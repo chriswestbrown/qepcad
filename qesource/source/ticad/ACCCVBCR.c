@@ -25,7 +25,7 @@ static Word SECTIONPOLS(Word k, Word c, Word P);
 
 Word QepcadCls::ACCCVBCR(Word k, Word c, Word B1, Word b, Word* B1h)
 {
-  Word d, nnf, dV, IV, cp, i, I_i, d_i, c_i, L, Q, Qb, Qbs, F, Fp, a;
+  Word d, nnf, dV, IV, i, I_i, c_i, L, Q, Qb, Qbs, F, Fp, a;
 
 Step1: /* Initialization **********************************************/
   a = NIL; /* this is the pseudo-sample point we're building up *******/
@@ -41,7 +41,6 @@ Step2: /* Loop over each level from 1 to k ****************************/
   c_i = GVPC;
   for(i = 1; i <= k; i++) {
     I_i = LELTI(IV,i);
-    d_i = LELTI(dV,i);
     c_i = LELTI(LELTI(c_i,CHILD),I_i);
     
 Step3: /* c_i is a section over a 0-dimensional cell ******************/
@@ -99,11 +98,10 @@ L : the list of all k-level polynomials of which c is a section.
 ======================================================================*/
 static Word SECTIONPOLS(Word k, Word c, Word P)
 {
-  Word L,P_k,M,i,Mp;
+  Word L,P_k,M,i;
   L = NIL;
   P_k = LELTI(P,k);
-  M = LELTI(c,MULSUB);
-  for(Mp = M; M != NIL; M = RED(M)) {
+  for(M = LELTI(c,MULSUB); M != NIL; M = RED(M)) {
     i = FIRST(FIRST(M));
     L = COMP(LELTI(P_k,i),L); }
   return L;

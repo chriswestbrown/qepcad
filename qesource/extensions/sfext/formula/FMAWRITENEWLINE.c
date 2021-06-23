@@ -10,7 +10,7 @@ ForMulA write.
 
 void FMAWRITENEWLINE(Word F, Word P, Word V, Word n)
 {
-  Word L,E,i,j,k,op,t,Fp,O,A;
+  Word i,j,k,op,t,Fp,O,A;
 
   switch(FTYPEINFO(F)) {
 
@@ -65,7 +65,7 @@ void FMAWRITENEWLINE(Word F, Word P, Word V, Word n)
 
 void FMAWRITENEWLINEp(Word F, Word P, Word V, Word flag)
 {
-  Word L,E,i,j,k,op,t,Fp,O,A;
+  Word i,j,k,op,t,Fp,O,A;
 
   switch(FTYPEINFO(F)) {
 

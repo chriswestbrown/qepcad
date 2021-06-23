@@ -4,7 +4,7 @@
 Word CH_VIEW_WIN(Rend_Cell &M, Rend_Win &W, Word Xs, Word Xt,
 	      Word Ys,Word Yt, Word e, Word P)
 {
-  Word mx,dx,dxp,dxp2,my,dy,d2x,d2y,L,i;
+  Word mx,my,d2x,d2y,L,i;
 
   mx = LBRNP2PROD( LBRNSUM(W.x.W,W.X.W) , -1 );
   my = LBRNP2PROD( LBRNSUM(W.y.W,W.Y.W) , -1 );

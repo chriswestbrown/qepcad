@@ -29,7 +29,7 @@ static Word F1; /* Flag indicating that p.f.'s were put back. */
 
 void QepcadCls::SFC4(Word D, Word P, Word J, Word n, Word L)
 {
-      Word t,SF,Dp,Pp,Lt,Lf,LA,Q,D1,P1,D0,P0,J0,i,Lp,pflag;
+      Word t,SF,Dp,Pp,Lt,Lf,LA,Q,D1,P1,D0,P0,J0,i;
       char e,s,m,c;
       e = s = m = c = '\0';
       T1 = T2 = T3 = T4 = 0;

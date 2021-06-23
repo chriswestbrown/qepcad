@@ -20,7 +20,7 @@ Outputs:
 
 Word EVALSYS(Word S, BDigit t, Word R)
 {
-  Word r, L, i, S_i, Ap, a, A, is, As, F, f, ip, fp, s, c;
+  Word r, L, i, S_i, Ap, a, A, is, As;
   
 Step1: /* Construct the skelaton of L, the answer. */
   r = LENGTH(S);

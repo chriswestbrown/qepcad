@@ -20,7 +20,6 @@ Substitute the sample point into the projection factors.
 Word QepcadCls::SUBST(Word c, Word k, Word M, Word b, Word B)
 {
        Word B1,Bp,S,S1;
-       Word dV,IV;
        Word P,L,Sp,T1,T2,G,Q,f,i;
 
 Step1: /* Substitute. */

@@ -21,7 +21,7 @@ Output
 
 Word SYSSOLVECAD(BDigit r, Word L, Word A, Word Vp, QepcadCls &Q)
 {
-  Word F, Fp, d, t, Lt, Lf, V, S;
+  Word F, Lt, Lf, V, S;
 
   /* Set variable list */
   if (LENGTH(Vp) < r) {

@@ -31,8 +31,8 @@ Outputs
 
 void modIBPRRIOAPSF(Word M, Word I, Word B, Word p, Word k, BDigit *J_, BDigit *L_)
 {
-	BDigit *Mp,*bp,*c,i,m,n,q1,q2,S,s,t;
-	Word a,b,Bp,I1,I2,J,K,L,Ls,Lp,T,Jp,Js,Ld;
+	BDigit *Mp,*bp,*c,m,n,q1,q2,S,s,t;
+	Word a,b,J,L,Ls,Lp,Jp,Js,Ld;
 
 Step1: /* Convert the minimal polynomial to a software interval
           polynomial. */

@@ -22,7 +22,7 @@ Outputs
 
 void CCADCONmod(Word n, Word P, Word C, Word *Ps_, Word *Cs_)
 {
-      Word Ps,i,Cs,Q,S,c,L,Lp,b,d,bs,ds,cs,T1,T2;
+      Word Ps,i,Cs,Q,S,c,L,Lp,b,d,bs,ds,T1,T2;
 
 Step1: /* Set Ps to the empty projection list, and Cs to the full 
 original CAD C. */

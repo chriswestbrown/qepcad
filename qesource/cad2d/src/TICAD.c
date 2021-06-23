@@ -24,7 +24,7 @@ Output
 
 Word QepcadCls2D::TICAD(Word Q,Word F,Word f,Word P,Word A)
 {
-       Word As,D,Ps,Ths,Thss,c,cp,k,s,sh,sp,t,R,S;
+       Word As,D,Ps,c,k,s,sh;
        Word L,d;
        
 Step1: /* Initialize. */

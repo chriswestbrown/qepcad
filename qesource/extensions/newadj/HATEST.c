@@ -111,13 +111,11 @@ Sample point coordinate write.
 
 void SAMPLECWR(Word c)
 {
-       Word I,Ip,M,Mp,b,bp,k,s,F,j,Ms,Is;
+       Word I,Ip,M,Mp,b,bp,s,F,j,Ms,Is;
        Word M1;
-       /* hide k; */
 
 Step1: /* Setup. */
        s = LELTI(c,SAMPLE);
-       k = LELTI(c,LEVEL);
 
 Step2: /* Extended representation. */
        if (ISPRIMIT(s)) goto Step3;
@@ -160,7 +158,7 @@ Algebraic number field elements list write.
 
 void strippedAFLWR(Word M,Word I,Word N,Word a,Word A)
 {
-       Word A1,Ap,i,l,L,j;
+       Word A1,Ap,i;
        /* hide i; */
 
 Step1: /* Write. */
@@ -196,7 +194,7 @@ Side effects
 
 void ANDWRITExx(Word M, Word I, Word n)
 {
-       Word J,R,Mp,K;
+       Word J,R,K;
        Word a,a1,a2,b,b1,b2,d,d1,d2,e,f,m;
        Word N;
 

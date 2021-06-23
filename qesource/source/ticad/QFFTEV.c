@@ -17,8 +17,8 @@ static Word ATOMETFEVAL(Word Q, Word D, Word c, Word F);
 
 Word QepcadCls::QFFTEV(Word F, Word c, Word k)
 {
-       Word F1,Fp,I,Pt,T,i,j,m,s,t,tp,z;
-       /* hide m,t,tp,z; */
+       Word F1,Fp,I,Pt,T,i,j,s,t,tp,z;
+       /* hide t,tp,z; */
 
 Step1: /* Classify the formula $F$. */
        T = FIRST(F);

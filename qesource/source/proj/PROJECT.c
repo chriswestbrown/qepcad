@@ -19,7 +19,7 @@ Projection Phase.
 
 void QepcadCls::PROJECT(Word r, Word A, Word *P_, Word *J_)
 {
-       Word D,F,J,P,Ps,J_k1,P_k,R,Ths,Thss,k,i;
+       Word D,F,J,P,J_k1,P_k,R,Ths,Thss,k,i;
 
 Step1: /* Initialize. */
        P = LLCOPY(A); 

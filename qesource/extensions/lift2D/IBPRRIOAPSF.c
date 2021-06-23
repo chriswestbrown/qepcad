@@ -30,8 +30,8 @@ Outputs
 
 void IBPRRIOAPSF(Word M, Word I, Word B, BDigit p,BDigit k, Word *J_, Word *L_)
 {
-	BDigit *Mp,*bp,*c,i,m,n,q1,q2,S,s,t;
-	Word b,Bp,I1,I2,J,K,L,Ls,Lp,T,Jp;
+	BDigit *Mp,*bp,*c,m,n,q1,q2,S,s,t;
+	Word b,J,L,Ls,Lp,Jp;
 
 Step1: /* Convert the minimal polynomial to a software interval
           polynomial. */

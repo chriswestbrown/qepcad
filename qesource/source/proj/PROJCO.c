@@ -15,7 +15,7 @@ Collins' projection.
 
 Word QepcadCls::PROJCO(Word r, Word A)
 {
-       Word A1,A2,Ap,Ap1,Ap2,App,D,L,L1,P,P1,R,R1,R11,R2,R21,Rp,Rp1,Rp11,Rp2,
+       Word A1,A2,Ap,Ap1,Ap2,App,D,L,L1,P,R,R1,R11,R2,R21,Rp,Rp1,Rp11,Rp2,
             Rpp,Rs2,S1,Sp1,T,W,ap1,b,d,i,i1,i2,k,t;
 
 Step1: /* $r = 2$. */

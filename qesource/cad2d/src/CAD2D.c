@@ -20,8 +20,8 @@
 
 void QepcadCls2D::CAD2D(Word Fs, Word *t_, Word *F_e_, Word *F_n_, Word *F_s_)
 {
-       Word A,D,F,F_e,F_n,F_s,Fh,J,P,Q,Ths,f,i,r,t;
-       Word L;
+       Word A,D,F,F_e,F_n,F_s,Fh,J,P,Q,f,i,r,t;
+
 Step1: /* Normalize. */
        t = -1;
        F_e = F_n = F_s = NIL;
@@ -72,9 +72,7 @@ Word AllAdjs(QepcadCls2D &Q, Word D,Word P,Word J)
 
 Word printgraph(Word D, Word L)
 {
-  Word A,R,c,Q,a,b;
-  FILE* fp;
-  fp = fopen("temp","w");
+  Word R,c,Q,a,b;
   
   SWRITE("graph: {\n");
 

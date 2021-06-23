@@ -97,7 +97,7 @@ Output
 
 Word ESPCADCTLSNC(Word c1,Word c2,Word c3,Word i,Word P)
 {
-      Word S1,S2,S3,n,Sp1,Sp2,s1,s2,T,L,j,k;
+      Word S1,S2,n,Sp1,Sp2,s1,s2,T,L,j,k;
 
 Step1: /* Initialize. */
       if (LELTI(c1,SC_TMPM) == LELTI(c2,SC_TMPM) && 
@@ -106,7 +106,6 @@ Step1: /* Initialize. */
 	goto Return; }
       S1 = LELTI(c1,SC_SIGN);
       S2 = LELTI(c2,SC_SIGN);
-      S3 = LELTI(c3,SC_SIGN);
 
 Step2: /* Figure out which polynomials are zero in c2. */
       for(n = 0, Sp1 = S1, Sp2 = S2, T = NIL; n < LENGTH(S1); n++) {

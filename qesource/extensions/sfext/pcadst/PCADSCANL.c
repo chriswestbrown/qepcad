@@ -18,7 +18,7 @@ Outputs
 
 Word PCADSCANL(Word Cs, Word i)
 {
-      Word CC,CC1,CC2,L,c;
+      Word CC,CC1,L,c;
 
 Step1: /* Get list of children. */
       CC = LELTI(Cs,SC_CDTV);

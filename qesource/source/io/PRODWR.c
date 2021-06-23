@@ -10,7 +10,8 @@ Product Write.
 
 void PRODWR(Word v)
 {
-       Word I,I1,P1,P11,Pp,R1,W,W1,i,j,n1,v1,vp;
+       /* Word P1,P11,Pp,i,j,n1; */
+       Word I,I1,R1,W,W1,v1,vp;
        /* hide i,j,n1; */
 
        SWRITE("In \"PRODWR\"! This is dead code!\n"); exit(1);

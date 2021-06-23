@@ -19,7 +19,7 @@ Side Effects
 
 void QepcadCls::CSORCELLTR(Word c, Word Pp, Word PpO, Word PpN)
 {
-      Word f,s,sh,M,K,C,Pps,L,T,B,E,I,A,a,b,k;
+      Word s,sh,M,K,C,Pps,L,T,B,E,I,A,a,b,k;
 
       k = LELTI(c,LEVEL);
 

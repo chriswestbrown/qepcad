@@ -22,7 +22,7 @@ Outputs
 
 Word CADFPCADWI(Word D, Word P, Word S, Word I, Word Pb)
 {
-      Word Db,Is,N,Sb,Pb_N,Ts,L,p,i,is,Q,Ms,C,Cs,Ds,Ss;
+      Word Db,Is,N,Sb,Pb_N,Ts,L,p,i,is,Ms,C,Cs,Ds,Ss;
       Word Mb,mb;
 
 Step1: /* Is D the root cell? */

@@ -78,7 +78,7 @@ BDigit VERIFYPOSITIVITY(Word A, BDigit r)
   else if (FIRST(A) != IROOT)
   {
     /* atomic formula is "P_A T_A 0", where P_A is of level k_A. */
-    Word T_A,P_A,k_A,s,rp,Pp,P,a,T;
+    Word T_A,P_A,k_A;
     FIRST3(A,&T_A,&P_A,&k_A);
     if (r != k_A) { goto Return; }
     

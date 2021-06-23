@@ -38,8 +38,8 @@ static Word comp1(Word a,Word b) {
 
 Word MINPFSETNSC(Word P,Word S,Word D,Word K)
 {
-      Word C,Sltr,Pltr,r,L_r,Ls_r,L,l,l_t,l_s,ls,Kp,Js,x,Jsp,s_k,sk;
-      Word x_s,js,Ls,O,Q,Q_i,Sp,Pp,i,Cp,*V,*Vp,**A,a,N,k,S_r,I,j,p;
+      Word C,Sltr,Pltr,r,L_r,Ls_r,l,l_t,l_s,ls,Kp,Js,Jsp,s_k,sk;
+      Word Ls,O,Q,Q_i,Sp,i,Cp,*V,*Vp,**A,a,N,k,S_r,j,p;
 
 Step1: /* Initialization. */
       C = NIL; Sltr = NIL; S_r = NIL; Pltr = NIL; N = LENGTH(K);

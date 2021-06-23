@@ -90,7 +90,7 @@ Word POLYLABEL(Word P, Word p, Word r, Word *t)
 
 void QepcadCls::PREQNCONSTPOLY()
 {
-  Word t1,t2,t3,r,P1,E,k,pi;
+  Word t1,t2,t3,r,P1,E,pi;
 
   // Check if propagation of equational constraints was specified. 
   if (PCPROPEC == FALSE) {

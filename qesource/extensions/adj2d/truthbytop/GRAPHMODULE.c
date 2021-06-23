@@ -61,9 +61,9 @@ Return: /* Prepare to return. */
 
 Word GSTACKHANDLE(Word i, Word G_)
 {  
-  Word G,Gp,h;
-  G = G_;
-  for(Gp = NIL; G != NIL && (i > FIRST(FIRST(G))); G = RED(G));
+  Word G,h;
+
+  for(G = G_; G != NIL && (i > FIRST(FIRST(G))); G = RED(G));
   if (G == NIL || FIRST(FIRST(G)) != i)
     h = NIL;
   else
@@ -74,7 +74,7 @@ Word GSTACKHANDLE(Word i, Word G_)
 
 Word GVERTEXHANDLE(Word v, Word G_)
 {
-  Word G,i,j,Gp,T,h;
+  Word i,j,T,h;
 
   FIRST2(v,&i,&j);
   h = GSTACKHANDLE(i,G_);

@@ -19,7 +19,7 @@ static Word subprog(Word F);
 
 Word FMAPOLLIST(Word F, Word P)
 {
-  Word Q,L,i,j,n,np,P_i,G;
+  Word Q,L,i,j,P_i;
 
   Q = NIL;
   L = subprog(F);
