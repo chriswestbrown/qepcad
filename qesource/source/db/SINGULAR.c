@@ -67,7 +67,7 @@ Word readSingularPoly(Word r, Word V, istream &in)
   Word A, t;
   string s;
   in >> s;
-  for(int i = 0; i < s.length(); ++i)
+  for(size_t i = 0; i < s.length(); ++i)
     if (s[i] == '*') s[i] = ' ';
   s += ".\n";
   istringstream si(s);
@@ -108,7 +108,7 @@ string WritePolyForSingular(Word r, Word P, Word V)
     out = sout.str();
   }
   // Put in * symbols
-  for(int i = 1; i < out.length() - 1; ++i)
+  for(size_t i = 1; i < out.length() - 1U; ++i)
     if (out[i] == ' ' && out[i+1] != '+' && out[i+1] != '-'
 	&& out[i-1] != '+' && out[i-1] != '-'
 	)
