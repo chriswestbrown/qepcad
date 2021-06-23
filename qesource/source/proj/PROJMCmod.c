@@ -57,7 +57,7 @@ Step1: /* Obtain coefficients. */
 	   t = 1; }
 	 
 	 /* If r = 2 OR r-1 is in free variable space, the leading coefficient is always enough! */
-	 if (t && (r == 2 || (PCMZERROR && r-1 <= GVNFV))
+	 if ((t && (r == 2 || (PCMZERROR && r-1 <= GVNFV)))
 	     || (experimentalExtensionFlag && qfrCheckNonNullified(r,Ap1,GVNA.W,GVNQFF.W,GVVL.W))
 	     )
 	   t = 0;
@@ -91,7 +91,7 @@ Step1: /* Obtain coefficients. */
 	     tf = tf || (Q == FULLDE || Q == FULLDA);
 	     
 	     /* Test 3: in free variable space when the PCMZERROR option is used */
-	     tf = tf || PCMZERROR && rp <= GVNFV;
+	     tf = tf || (PCMZERROR && rp <= GVNFV);
 
 	     /* Test 4: has no common zero with the system of all other coefficients */
 	     if (!tf)
