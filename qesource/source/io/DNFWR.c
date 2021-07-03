@@ -12,7 +12,7 @@ Disjunctive Normal Form Write.
 
 void DNFWR(Word V, Word F)
 {
-       Word F1,F2,Fp,T;
+       Word F1,Fp,T;
 
 Step1: /* Classify the formula F. */
        T = FIRST(F);

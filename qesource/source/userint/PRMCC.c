@@ -10,7 +10,7 @@ Process "manually choose a cell" command.
 
 void QepcadCls::PRMCC(Word *t_)
 {
-       Word C,c,cp,t;
+       Word c,t;
        /* hide t; */
 
 Step1: /* Read in an argument. */

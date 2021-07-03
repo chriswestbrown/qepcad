@@ -15,7 +15,7 @@ Outputs
 
 Word FMACELLEVAL(Word F, Word C, Word P)
 {
-  Word t,L,i,j,k,op,s,S,ip,c,v,cp,n,t1,A1,A2,U_FLAG;
+  Word t,L,i,j,k,op,s,S,ip,c,cp,n,t1,A1,A2,U_FLAG;
 
   switch(FIRST(F)) {
     

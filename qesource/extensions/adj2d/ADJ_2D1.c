@@ -16,6 +16,7 @@ Outputs
 #include "adj2D.h"
 #include "adj2D.h"
 /**************************************/
+/*
 static FILE *OUTPUT;
 
 static void init()
@@ -30,6 +31,7 @@ static void uninit()
 {
   fclose(OUTPUT);
 }
+*/
 /**************************************/
 
 

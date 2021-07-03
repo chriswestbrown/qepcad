@@ -183,7 +183,7 @@ Word Rend_Cell::description(Rend_Win &W)
  *************************************************************/
 void Rend_Cell::out_descrip(Rend_Win &W,ostream &out,Mapper &M)
 {
-  Word p,x,y,L,Lp,l,l1,l2,l3,x1,x2,y1,y2;
+  Word x,y,L,l,x1,x2,y1,y2;
 
   int px = 8;
   int py = 8;
@@ -310,7 +310,7 @@ void Rend_Cell::out_descrip(Rend_Win &W,ostream &out,Mapper &M)
  *************************************************************/
 void Rend_Cell::out_descrip_ps(Rend_Win &W,ostream &out, Mapper &M)
 {
-  Word p,x,y,L,l,x1,x2,y1,y2;
+  Word p,L;
   p = 12;
   switch (level) {
   case 0 :
@@ -382,7 +382,7 @@ void Rend_Cell::out_descrip_ps(Rend_Win &W,ostream &out, Mapper &M)
  *************************************************************/
 void Rend_Cell::out_descrip_ps_color(Rend_Win &W,ostream &out, Mapper &M)
 {
-  Word p,x,y,L,l,x1,x2,y1,y2;
+  Word p,L;
   p = 12;
   switch (level) {
   case 0 :
@@ -475,7 +475,7 @@ void Rend_Cell::out_descrip_ps_color(Rend_Win &W,ostream &out, Mapper &M)
  *************************************************************/
 void Rend_Cell::out_descrip_ps_raji(Rend_Win &W,ostream &out, Mapper &M)
 {
-  Word p,x,y,L,l,x1,x2,y1,y2;
+  Word p,L;
   p = 12;
   switch (level) {
   case 0 :
@@ -511,7 +511,7 @@ void Rend_Cell::out_descrip_ps_raji(Rend_Win &W,ostream &out, Mapper &M)
  *************************************************************/
 void Rend_Cell::out_descrip_ps_standard(Rend_Win &W,ostream &out, Mapper &M)
 {
-  Word p,x,y,L,l,x1,x2,y1,y2;
+  Word p,L;
   p = 12;
   switch (level) {
   case 0 :

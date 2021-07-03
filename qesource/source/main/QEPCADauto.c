@@ -20,13 +20,12 @@ Quantifier Elimination by Partial Cylindrical Algebraic Decomposition.
 
 void QepcadCls::QEPCADauto(Word Fs, Word *t_, Word *F_e_, Word *F_n_, Word *F_s_)
 {
-       Word A,D,F,F_e,F_n,F_s,Fh,J,P,Q,Ths,f,i,r,t, T;
-       /* hide Ths,i,t; */
-       Word cL,**cC,cr,ce,ci,*cT,cj,cs,cl,ct; /* Chris variables. */
-       Word Cs,Ps,Qs,Pps,Cps,Qps,SF; /* Chris variables. */
-       char c1,c2; /* Chris variables. */
+       Word A,D,F,F_e,F_n,F_s,Fh,J,P,Q,f,r,t;
+       /* hide t; */
 
 Step1: /* Normalize. */
+       t = -1;
+       F_e = F_n = F_s = NIL;
        FIRST4(Fs,&r,&f,&Q,&Fh);
        F = NORMQFF(Fh);
        if (GVUA != NIL) GVNA = NORMQFF(GVUA);

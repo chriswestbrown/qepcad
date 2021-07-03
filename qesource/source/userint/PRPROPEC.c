@@ -7,7 +7,7 @@ Process prop-eqn-const command.
 
 void QepcadCls::PRPROPEC()
 {
-       Word C,i,r;
+       Word i,r;
 
 Step1: /* Toggle the PCPROPEC global variable and initialize globals. */
        GVEQNCONST = GVPIVOT = NIL;

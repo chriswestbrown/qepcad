@@ -7,7 +7,7 @@ Process "display-level-factors i" command.
 
 void QepcadCls::PRDLFI()
 {
-      Word i,j,L;
+      Word i;
 
 Step1: /* Get level. */
       i = IREAD();

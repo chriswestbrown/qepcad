@@ -9,7 +9,7 @@ A : a list of atoms from which to construct a formula
 
 Word CYLIMPFORM(Word C, Word P, Word k, Word A)
 {
-       Word SF,L,Lp,c,S,t,Q,As,Ap,Fp,F,Lt,Lf,s,Si,Fi,Qp,SF2;
+       Word SF,L,Lp,c,S,t,F,Lt,Lf,s,Si,Fi,Qp,SF2;
 
 Step1: /* Set L to a list of all (k-1)-level cells over which there are
 k-level cells with SC_TMPM of TRUE. */

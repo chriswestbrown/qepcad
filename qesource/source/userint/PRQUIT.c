@@ -13,7 +13,4 @@ Step1: /* Process. */
        ENDQEPCAD();
        ENDSACLIB(SAC_FREEMEM);
        exit(0);
-
-Return: /* Prepare for return. */
-       return;
 }

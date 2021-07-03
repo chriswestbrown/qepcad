@@ -19,8 +19,7 @@ static Word PLISTOETAmod(Word p,Word B,Word t);
 
 void QepcadCls::SFCFULLD(Word D, Word P, Word J, Word n)
 {
-      Word t,SF,Dp,Pp,Lt,Lf,LA,Q,D1,P1,D0,P0,J0,i,Lp,pflag, L;
-      char e,s,m,c;
+      Word t,SF,Dp,Pp,Lt,Lf,LA,L;
 
 Step1: /* Space is either empty or R^n. */
       t = DOPFSUFF_FULLD(P,LIST1(D));

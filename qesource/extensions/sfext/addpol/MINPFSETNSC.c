@@ -25,6 +25,8 @@ outputs
 #define BDCOMP(a,b)       ((a) > (b) ? 1 : ((a) < (b) ? -1 : 0))
 #define CFLCT 5
 
+static Word comp1(Word a, Word b) __pure;
+
 static Word comp1(Word a,Word b) {
   Word A,B,t;
   A = RED(a); B = RED(b); t = 0;
@@ -36,11 +38,11 @@ static Word comp1(Word a,Word b) {
 
 Word MINPFSETNSC(Word P,Word S,Word D,Word K)
 {
-      Word C,Sltr,Pltr,r,L_r,Ls_r,L,l,l_t,l_s,ls,Kp,Js,x,Jsp,s_k,sk;
-      Word x_s,js,Ls,O,Q,Q_i,Sp,Pp,i,Cp,*V,*Vp,**A,a,N,k,S_r,I,j,p;
+      Word C,Sltr,Pltr,r,L_r,Ls_r,l,l_t,l_s,ls,Kp,Js,Jsp,s_k,sk;
+      Word Ls,O,Q,Q_i,Sp,i,Cp,*V,*Vp,**A,a,N,k,S_r,j,p;
 
 Step1: /* Initialization. */
-      C = NIL; Sltr = NIL; Pltr = NIL; N = LENGTH(K);
+      C = NIL; Sltr = NIL; S_r = NIL; Pltr = NIL; N = LENGTH(K);
 
 Step2: /* Loop over each level in D. */
       for(r = 1; r <= N; r++) {

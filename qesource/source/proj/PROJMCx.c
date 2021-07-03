@@ -15,7 +15,7 @@ McCallum's projection excluding leading coeff's.
 
 Word QepcadCls::PROJMCx(Word r, Word A)
 {
-       Word A1,A2,Ap,Ap1,Ap2,App,D,L,Lh,P,R,W,i,t;
+       Word A1,A2,Ap,Ap1,Ap2,App,D,P,R,W;
 
 Step1: /* Obtain coefficients. */
        P = NIL;

@@ -7,7 +7,7 @@ ForMulA write.
 
 void FMAWRITEQEIN(Word F, Word P, Word V)
 {
-  Word Q,L,i,j,n,np,P_i,G;
+  Word Q,i,n,np,G;
 
 Step1: /* Get list of polynomials. */
   Q = FMAPOLLIST(F,P);

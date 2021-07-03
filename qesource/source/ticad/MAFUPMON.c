@@ -17,7 +17,7 @@ Output
 
 Word MAFUPMON(Word p, Word M, Word A)
 {
-       Word B,d,Ap,a,ap,r;
+       Word B,d,Ap,a,ap;
   
 Step1: /* A = 0 */
        if (A == 0) {

@@ -53,8 +53,7 @@ static Word S1_EMPTY(Word S1)
 
 static Word S2_IN(Word o, Word S2)
 {
-      Word S;
-      for(S = S2; S2 != NIL; S2 = RED(S2)) {
+      for( ; S2 != NIL; S2 = RED(S2)) {
 	if ( EQUAL(FIRST(FIRST(S2)),o) )
 	  return (1); }
       return (0);
@@ -79,30 +78,6 @@ static Word S2_EMPTY(Word S2)
       return ( (S2 == NIL) );
 }
 
-/*--------- Is p a factor of q? ----------------*/
-static Word ISPFACQ(Word p, Word q)
-{
-      Word l_p,R,r;
-      l_p = LELTI(p,PO_LABEL);
-      for(R = LELTI(q,PO_PARENT); R != NIL; R = RED(R)) {
-	r = FIRST(R);
-	if ( (FIRST(r) == PO_FAC) &&
-	    EQUAL(LELTI(THIRD(r),PO_LABEL),l_p) )
-	  return (1); }
-      return (0);
-}
-/*--------- Is p the derivative of q? ----------------*/
-static Word ISPDERQ(Word p, Word q)
-{
-      Word l_p,R,r;
-      l_p = LELTI(p,PO_LABEL);
-      for(R = LELTI(q,PO_PARENT); R != NIL; R = RED(R)) {
-	r = FIRST(R);
-	if ( (FIRST(r) == PO_DER) &&
-	    EQUAL(LELTI(THIRD(r),PO_LABEL),l_p) )
-	  return (1); }
-      return (0);
-}
 /*--------- List of derivative factor  indices. --------*/
 
 static Word LIST_OF_DI(Word o, Word J, Word P)
@@ -132,7 +107,7 @@ return (L);
 
 void KCONST(Word J, Word P, Word G, Word *K_, Word *KT_)
 {
-      Word S1,S2,Gp,o,L,l,KT,K,i,j;
+      Word S1,S2,Gp,o,L,l,KT,K;
 
 /* Initialization. */
       S1 = NIL; S2 = NIL;

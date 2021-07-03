@@ -21,8 +21,7 @@ static Word comp(Word A, Word B);
 
 Word CFLCELLLIST(Word L_D)
 {
-      Word C,r,C_r,L,Lp,T,F,U,c,t,f,u,Fp,Up,h,Cb,Cp,Q;
-      /* Time */ Word tm;
+      Word C,C_r,L,Lp,T,F,U,c,t,f,u,Fp,Up,h,Cb,Cp,Q;
 
 Step1: /* Initialize. */
       C = NIL;

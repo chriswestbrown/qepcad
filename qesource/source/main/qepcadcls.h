@@ -222,7 +222,7 @@ UnsatCore UNSATCORE;
   void CHCELL(Word cs, Word *c_, Word *t_);
   void ECLI(Word D, Word *c_, Word *t_);
   BDigit SCREEN(Word c); 
-  BDigit SCREENBYQUANTIFIER(Word c); 
+  BDigit SCREENBYQUANTIFIER(Word c) __pure; 
   Word ISFECLI(Word D);
   Word INITPCAD();
   void EVALUATE(Word c, Word k, Word F, Word A);

@@ -7,7 +7,7 @@ Process "Remove Projection Factor" command.
 
 void QepcadCls::PRRMPF()
 {
-       Word A_i,C,P_i,P_ij,i,j,t;
+       Word C,P_i,P_ij,i,j,t;
        /* hide C,t; */
 
 Step1: /* Read in arguments. */

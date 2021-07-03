@@ -21,7 +21,7 @@ Outputs
 
 void CCADCONEXT(Word n, Word P, Word C, Word *Ps_, Word *Cs_, Word *N_)
 {
-      Word Ps,i,Cs,Q,S,c,L,Lp,b,d,bs,ds,cs,T1,T2,N,Np;
+      Word Ps,i,Cs,Q,S,L,Lp,bs,ds,cs,T1,T2,N;
 
 Word t;
 

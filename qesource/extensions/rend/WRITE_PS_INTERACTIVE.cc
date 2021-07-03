@@ -190,8 +190,8 @@ void WRITE_PS_INTERACTIVE(Rend_Cell &M, Rend_Win &W, Word L, Word e, Word D, Wor
        **********************************************************/
     case 'a':
       {
-	Word OX, OY,xoff,yoff;
-	double dum,Ox = 0, Oy = 0;
+	Word OX, OY;
+	double Ox = 0, Oy = 0;
 	SWRITE("Provide an origin: ");
 	qein() >> Ox >> Oy;
 	OX = IEEELBRN(Ox);
@@ -262,6 +262,8 @@ void WRITE_PS_INTERACTIVE(Rend_Cell &M, Rend_Win &W, Word L, Word e, Word D, Wor
       if (t == 'p') {
 	  SWRITE("Enter projetion factor by (level,index): ");
 	  p = LREAD(); }
+      else
+	  p = NIL;
 
       switch(c) {
       case 'x': // 1D Sectors

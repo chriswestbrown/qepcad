@@ -42,9 +42,8 @@ void PLOT_2D_CAD(Word D, Word P, Word J,
 {
       char c;
       Word N;
-      Word i,j,I,ap,bp,a,b,L,p_n,n,A,Q,x,yl,Xs,Ys,Xt,Yt;
-      char FIFO_NAME[20] =  "/tmp/_plot_pipe_",
-	RM_FIFO[25] = "rm ";
+      Word L,Xs,Ys,Xt,Yt;
+      char FIFO_NAME[20] =  "/tmp/_plot_pipe_";
       longtostring(getpid(),FIFO_NAME+11);
       int t = 1, first = 1;
       int wcount = 0;

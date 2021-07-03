@@ -24,7 +24,7 @@ Output
 
 Word QepcadCls::TICADauto(Word Q, Word F, Word f, Word P, Word A)
 {
-       Word As,D,Ps,Ths,Thss,c,cp,k,s,sh,sp,t,R,S;
+       Word As,D,Ps,c,k,s,sh,t;
 
 Step1: /* Initialize. */
        D = INITPCAD();

@@ -112,12 +112,13 @@ public:
   int fdout() { return fd[1]; }
   int setStdinToPipe() { return dup2(fdin(),fileno(stdin)); }
   int setStdoutToPipe() { return dup2(fdout(),fileno(stdout)); }
+  int setStderrToPipe() { return dup2(fdout(),fileno(stderr)); }
   void closeIn() { 
     if (_in) { delete _in; _in = 0; }
     if (openmask[0]) { close(fd[0]); openmask[0] = false; } 
   }
   void closeOut() { 
-    const char ts[2] = {EOF,'\n'};
+    // const char ts[2] = {EOF,'\n'};
     if (_out) { delete _out; _out = 0; }
     if (openmask[1]) { 
       //      write(fd[1],ts,2); 

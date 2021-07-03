@@ -1,6 +1,7 @@
 #include "SINGULAR.h"
 #include <iostream>
 #include <string>
+#include <unistd.h>
 using namespace std;
 
 
@@ -15,6 +16,12 @@ SingularServer::SingularServer(string SingularBase)
   if (childpid == 0) {
     intoSingular.setStdinToPipe();
     outofSingular.setStdoutToPipe();
+    outofSingular.setStderrToPipe();
+    intoSingular.closeIn();
+    intoSingular.closeOut();
+    outofSingular.closeIn();
+    outofSingular.closeOut();
+    setsid();
 
     // Begin: Just for debug!!
     //system("/home/wcbrown/bin/Singular -q --no-warn --min-time=0.001 --ticks-per-sec=1000 | tee /tmp/SingOutLog");
@@ -30,9 +37,10 @@ SingularServer::SingularServer(string SingularBase)
 	   "--ticks-per-sec=1000",
 	   NULL);
       perror("SingularServer Constructor: Singular startup failed! (Set SINGULAR environment variable)");
-      outofSingular.closeOut();
       exit(0);
   }
+  intoSingular.closeIn();
+  outofSingular.closeOut();
 }
 
 SingularServer::~SingularServer()
@@ -58,7 +66,7 @@ void SingularServer::reportStats(ostream &out)
 
 char peekNonWS(istream &in) 
 { 
-  char c; while((c = in.peek()) && c == ' ' || c == '\t' || c == '\n') in.get(); return c; 
+  char c; while((c = in.peek()) && (c == ' ' || c == '\t' || c == '\n')) in.get(); return c; 
 }
 
 
@@ -67,7 +75,7 @@ Word readSingularPoly(Word r, Word V, istream &in)
   Word A, t;
   string s;
   in >> s;
-  for(int i = 0; i < s.length(); ++i)
+  for(size_t i = 0; i < s.length(); ++i)
     if (s[i] == '*') s[i] = ' ';
   s += ".\n";
   istringstream si(s);
@@ -108,7 +116,7 @@ string WritePolyForSingular(Word r, Word P, Word V)
     out = sout.str();
   }
   // Put in * symbols
-  for(int i = 1; i < out.length() - 1; ++i)
+  for(size_t i = 1; i < out.length() - 1U; ++i)
     if (out[i] == ' ' && out[i+1] != '+' && out[i+1] != '-'
 	&& out[i-1] != '+' && out[i-1] != '-'
 	)
@@ -162,8 +170,6 @@ Return: /* Prepare for return. */
 
 void SingularServer::IPFAC(Word r, Word P, Word *s_, Word *c_, Word *L_)
 {
-  int T1 = serverTime();
-
   Word V = CreateVariableList(r);
   string out =  WritePolyForSingular(r,P,V);
 
@@ -211,9 +217,6 @@ void SingularServer::IPFAC(Word r, Word P, Word *s_, Word *c_, Word *L_)
   Word lcf = PLBCF(r,FIRST(L));
   Word ct = IABSF(lcf);
   sn *= ISIGNF(lcf);
-
-  // Figure out how long that took!
-  int T2 = serverTime();
 
   // RETURN
   *s_ = sn;

@@ -10,7 +10,7 @@ method to call and, of course, calls it.
 
 void QepcadCls::SOLEXTINT()
 {
-  Word t,F_e,F_n,F_s, T, f, c;
+  Word T, f, c;
 
 Step1: /* Initialization */
   T = ACLOCK();

@@ -13,7 +13,7 @@ Disjuctive Normal Form Label Write.
 
 void DNFLWR(Word N, Word V, Word F)
 {
-       Word F1,F2,Fp,T;
+       Word F1,Fp,T;
 
 Step1: /* Classify the formula F. */
        T = FIRST(F);

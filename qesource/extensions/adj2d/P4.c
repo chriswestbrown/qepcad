@@ -25,7 +25,7 @@ Notes: Program 4 tries to find solutions with zero, then the first 1,
 
 Word P4(Word U, Word V, Word W, Word v_l, Word B)
 {
-  Word I,Sol,S,w,As,J;
+  Word Sol,S,w,As,J;
 
 Step1: /* Loop. */
   J = LIST2(B,AD2D_N_In); Sol = NIL; As = NIL;

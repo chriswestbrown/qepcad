@@ -15,7 +15,7 @@ Establish Children of the root.
 
 void EC1(Word c, Word L, Word Bs)
 {
-       Word B,I,J,Lp,M,N,S,Sp,P,a,b,kp,l,r,rp,s,xb,xp,Lp1,OL;
+       Word B,I,J,Lp,M,N,S,Sp,P,a,b,kp,l,r,s,xb,xp,Lp1,OL;
        /* hide kp,xp; */
        Word T;
 
@@ -58,7 +58,6 @@ Step4: /* First section. */
 
 Step5: /* Check if there are more roots. */
         if (Lp == NIL) goto Step9;
-        rp = r;
 
 Step6: /* Next sector. */
 	ADV(Lp,&Lp1,&Lp);

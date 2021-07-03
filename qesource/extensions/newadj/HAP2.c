@@ -18,7 +18,7 @@ Outputs
 
 Word HAP2(Word U, Word V, Word w_l, Word B)
 {
-  Word Sol,S,v,J,w_v,u,w_u,I,Solp,t,f;
+  Word Sol,S,v,J,w_v,u,w_u,I,Solp,f;
 
   Sol = NIL;
   S = NIL; 

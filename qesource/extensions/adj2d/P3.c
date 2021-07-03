@@ -29,7 +29,7 @@ Note:  Program 3 is the first called, and
 
 Word P3(Word U, Word V, Word W, Word v_l, Word B)
 {
-  Word I,J,Sol,S,u,As;
+  Word J,Sol,S,u,As;
 
 Step1: /* Special Case: No adjacencies to determine. */
   if (U == NIL && W == NIL)

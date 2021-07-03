@@ -80,8 +80,3 @@ Step5: /* Clean up evidence of "shadow stacks". */
 Return: /* Prepare to return. */
        return Sol;
 }
-
-static void dummy()
-{
-
-}

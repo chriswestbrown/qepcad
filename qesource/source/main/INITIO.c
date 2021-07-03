@@ -14,8 +14,6 @@ void OutputContextInit(ostream&);
 
 void INITIO()
 {
-       Word i;
-
 Step1: /* Initialize Input. */	  
        if (isatty(0)) 
 	 InputContextInit(*(new readlineIstream()));

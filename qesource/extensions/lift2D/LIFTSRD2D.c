@@ -14,7 +14,7 @@
 
 Word LIFTSRD2D(Word c, Word D, Word P, Word L)
 {
-  Word S_L,S_R,s_L,s_R,S,i,c_L,c_R,cp,flag,m_L,m_R,so,mo,m,s,j;
+  Word S_L,S_R,s_R,S,i,c_R,cp,so,m,s,j;
   Word M,I,P2,Rp,t,R,Rs,Rt,SP,r,k,c1,c2,prev,Sp,sor,next,s2,nextc,X;
   Word DL,Rps,pf,a,b,e,temp,count,J;
   Word R_L;
@@ -113,7 +113,6 @@ if (PCVERBOSE) { SWRITE("Tried up to precision "); IWRITE(i - 8); SWRITE("\n"); 
   /* Go through the neighboring stacks! */
   /**************************************/
   i = 0;
-  flag = FALSE;
 
   /* LIMITATION OF CURRENT IMPLEMENTATION 
      make sure the larger stack is to the right */
@@ -127,7 +126,6 @@ if (PCVERBOSE) { SWRITE("Tried up to precision "); IWRITE(i - 8); SWRITE("\n"); 
 
   for(S = NIL; S_R != NIL; ) { /******* BIG LOOP!!!! **********/
 
-    c_L = FIRST(S_L);
     c_R = FIRST(S_R);
 
     if (LELTI(c_R,MULSUB) != NIL && FIRST(FIRST(LELTI(c_R,MULSUB))) == J)
@@ -153,7 +151,6 @@ if (PCVERBOSE) { SWRITE("Tried up to precision "); IWRITE(i - 8); SWRITE("\n"); 
 		  NOTDET,
 		  LELTI(c_R,DEGSUB),LELTI(c_R,MULSUB));
       S = COMP(cp,S);
-      flag = FALSE; 
       if (RED(S_L) == NIL && RED(S_R) != NIL)
 	S_R = RED(S_R);
       else {

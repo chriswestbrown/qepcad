@@ -32,7 +32,7 @@ class Rend_Sample
   virtual Word coordinate(int k) = 0; 
   virtual Word round(int k,int roundup)
     { return this -> coordinate(k); }
-  //  virtual ~Rend_Sample() = 0;
+  virtual ~Rend_Sample() {}
 };
 
 class Rend_Sample_1DS : public Rend_Sample
@@ -49,7 +49,6 @@ private:
   gcmemloc A,I;
 public:
   Rend_Sample_1DS(Word C, Word P);
-  virtual ~Rend_Sample_1DS();
   virtual Word coordinate(int k);
   virtual Word round(int k, int roundup);
   Word weakcompare(Word R);
@@ -66,7 +65,6 @@ public:
   gcmemloc L;
 public:
   Rend_Sample_1DO(Rend_Cell *dad);
-  virtual ~Rend_Sample_1DO();
   virtual Word coordinate(int k);
     
 };
@@ -86,7 +84,6 @@ private:
   gcmemloc A,I;
 public:
   Rend_Sample_2DS(Word C);
-  virtual ~Rend_Sample_2DS();
   virtual Word coordinate(int k);
     
 };
@@ -101,7 +98,6 @@ public:
   gcmemloc L;
 public:
   Rend_Sample_2DC(Word C,Word P);
-  virtual ~Rend_Sample_2DC();
   virtual Word coordinate(int k);
   void add_point(Word p);
   void clear_points();
@@ -116,7 +112,6 @@ private:
   gcmemloc N;
 public:
   Rend_Sample_BR(Word a);
-  virtual ~Rend_Sample_BR();
   virtual Word coordinate(int k);    
 };
 

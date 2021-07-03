@@ -11,7 +11,7 @@ Partial CAD write.
 
 void PCADWR(Word c)
 {
-       Word M,cb,cp,p,s;
+       Word cb,cp,p,s;
        /* hide p; */
 
 Step1: /* common. */

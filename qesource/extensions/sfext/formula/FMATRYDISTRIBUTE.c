@@ -45,7 +45,7 @@ Fp: the conjunction of C and F.  The function tries to
 Word FMADISTRIBUTE(Word F, Word C)
 {
 
-  Word Fp, f, L, flag, fp,gp,I,X,X_C, I_C, op, A, Ap;
+  Word Fp, f, L, flag, gp,I,X,X_C, I_C, op, A, Ap;
   f = FIRST(F);
 
   switch(f)
@@ -59,7 +59,6 @@ Word FMADISTRIBUTE(Word F, Word C)
     L = NIL;
     for(Fp = CINV(RED(F)); Fp != NIL; Fp = RED(Fp))
     {      
-      fp = FIRST(Fp);
       gp = FMADISTRIBUTE(FIRST(Fp),C);
       L = COMP(gp,L);
     }

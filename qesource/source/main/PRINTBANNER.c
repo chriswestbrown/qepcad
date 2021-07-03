@@ -12,7 +12,7 @@ static const char* version = "1.74";
 static const char* versdate = "Thu Feb 25 14:48:53 EST 2021";
 
 void setversline() {
-  int j;
+  /* int j; */
   SWRITE("   Version B ");
   SWRITE(version);
   SWRITE(", ");

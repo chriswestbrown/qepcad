@@ -6,7 +6,7 @@ n : the level
 
 void SIMPLE_CAD_INFO(Word D, Word P, Word n, Word flag)
 {
-      Word Ps,Cs,t,Db;
+      Word Ps,Cs,t;
 
 Step1: /* Check for the trivial cases. */
       switch( DOPFSUFF(P,LIST1(D)) ) {

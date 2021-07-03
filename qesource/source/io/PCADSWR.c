@@ -11,7 +11,7 @@ Partial CAD signature write.
 
 void PCADSWR(Word c)
 {
-       Word M,cb,cp,p,s,S;
+       Word cb,cp,p,s,S;
        /* hide p; */
 
 Step1: /* common. */

@@ -7,10 +7,6 @@ Initialize Statistics.
 
 void INITSTAT()
 {
-       Word i;
-       /* hide i; */
-
-
 Step5: /* Statistics on Databases. */
        TMDBMNG = 0;
        TMDBSAV = 0;

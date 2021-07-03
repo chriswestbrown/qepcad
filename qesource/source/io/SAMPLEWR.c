@@ -55,8 +55,7 @@ Return: /* Prepare for return. */
 
 void QepcadCls::SAMPLEWR(Word c)
 {
-       Word I,Ip,M,Mp,b,bp,k,s,F,j,Ms,Is;
-       Word M1;
+       Word k,s;
 
        s = LELTI(c,SAMPLE);
        k = LELTI(c,LEVEL);

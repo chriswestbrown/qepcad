@@ -30,7 +30,7 @@ example, would be bad.
 
 Word SCADDSCON(Word C, Word A, Word n)
 {
-      Word c,a,i,Cs,X,L,t;
+      Word c,a,i,Cs,X,L;
 
 Step1: /* Construct a preliminary version of Cs, with all but the child
 	  list filled in. */

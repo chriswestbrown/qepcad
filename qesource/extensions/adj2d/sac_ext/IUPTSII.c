@@ -14,7 +14,7 @@ Outputs
 
 Word IUPTSII(Word A, Word I)
 {
-       Word i1,i2,Ap,t,a;
+       Word i1,i2,Ap,t;
   
 Step1: /* One-point interval. */
        FIRST2(I,&i1,&i2);

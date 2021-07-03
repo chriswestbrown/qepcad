@@ -21,7 +21,7 @@ Effect
 
 void QepcadCls::APEQC(Word c, Word k, Word P)
 {
-        Word c1,E,E1,E11,Ep,Ep1,h,i,j,m,M,Mp,S,t,tp,Ps,p;
+        Word c1,E,E1,E11,Ep,Ep1,i,j,m,M,Mp,S,t,Ps,p;
 
 Step1: /* Get (k+1)-level equational constraints, if none, return. */
 	E = LELTI(GVEQNCONST,k+1);

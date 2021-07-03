@@ -25,7 +25,7 @@ Notes: P1 has three main cases to deal with. 1) V is empty.  2) No
 
 Word P1(Word U, Word V, Word W, Word v_l, Word B)
 {
-  Word Sol,As,S,u,I,J,a,w,v,n,x,x_u,x_w,N,m_v,m_2v;
+  Word Sol,As,S,u,I,J,a,w,v,n,x,x_u,x_w,m_v,m_2v;
 
   Sol = NIL; As = NIL;
 

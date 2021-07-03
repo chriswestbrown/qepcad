@@ -19,31 +19,10 @@ Construct a stack.
 ======================================================================*/
 #include "cad2d.h"
 
-static Word Chrisolate(Word M, BDigit p)
-{
-  Word n,q1,q2,S,L;
-  BDigit *Mp;
-
-Step1: /* Convert the minimal polynomial to a software interval
-          polynomial. */
-        n = PDEG(M);
-        q1 = p + 3;
-        q2 = q1 + q1;
-        S = (n + 1) * q2 + 1;
-        Mp = GETARRAY(S);
-        IPSIP(M,p,Mp);
-
-Step2: /* Isolate roots! */
-	L = SIPRRID(Mp);
-	FREEARRAY(Mp);
-	return L;
-}
-
 void QepcadCls2D::CONSTRUCT(Word c,Word k,Word f,Word Ps_,Word As)
 {
         BDigit p,t,Ths;
-        Word A1,As1,At,B,b,E,I,Ip,I1,J,Jp,L,M,P1,Ps1,Pt,Pt1,S,s,T,Q;
-	Word junk,a1,b1,t1,p1,j1;
+        Word A1,As1,At,B,b,E,I,Ip,I1,J,Jp,L,M,P1,Ps1,Pt,S,s,T,Q;
 
 Step1: /* Extract the projection factors from their attribute lists. */
 	Word Ps = Ps_;

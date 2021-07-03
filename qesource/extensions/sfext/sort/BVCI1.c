@@ -12,9 +12,9 @@ b : -1 if u < v in lex order, 0 if u = v, 1 if u > v.
   ======================================================================*/
 #include "qepcad.h"
 
-Word BVCI1(Word *u_, Word *v_, Word n)
+Word BVCI1(const Word *u_, const Word *v_, Word n)
 {
-       Word *w,*u,*v;
+       const Word *w,*u,*v;
        u = u_+1;
        v = v_+1;
        w = u + n;

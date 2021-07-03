@@ -15,7 +15,7 @@ Outputs
 
 void LTFOCWTV(Word C, Word *Lt_, Word *Lf_)
 {
-      Word L,Cp,Lt,Lf,t,Ltp,Lfp;
+      Word Cp,Lt,Lf,t,Ltp,Lfp;
 
 Step1: /* If C is undetermined recurse on the children. */
       t = LELTI(C,SC_CDTV); 

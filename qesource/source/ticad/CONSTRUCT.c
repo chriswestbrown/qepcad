@@ -24,8 +24,7 @@ Word IUPSBRRI(Word B, BDigit k);
 void QepcadCls::CONSTRUCT(Word c, Word k, Word f, Word Ps_, Word As)
 {
         BDigit p,t,Ths;
-        Word B,b,E,I,Ip,I1,J,Jp,L,M,Ps,P1,Ps1,S,s,T,Q;
-	Word junk,a1,b1,t1,p1,j1;
+        Word B,b,E,I,Ip,I1,J,Jp,L,M,Ps,S,s,T;
 
 Step0: /* Root cell. */
 	if (k == 0) { CONSTRUCT1(c,k,f,Ps_,As); goto Return; }
@@ -36,9 +35,7 @@ Step1: /* Extract the projection factors from their attribute lists. */
        for(Word Pt = CINV(Ps_); Pt != NIL; Pt = RED(Pt))
        {
          Word Pt1 = FIRST(Pt);
-	 if (LELTI(Pt1,PO_TYPE) == PO_POINT)
-	   junk = 1;
-	 else
+	 if (LELTI(Pt1,PO_TYPE) != PO_POINT)
 	   Ps = COMP(LELTI(Pt1,PO_POLY),Ps);
        }
 
@@ -242,9 +239,8 @@ BDigit C1COMP(Word A, Word B)
 /* Root cell. */
 void QepcadCls::CONSTRUCT1(Word c, Word k, Word f, Word Ps_, Word As)
 {
-        BDigit p,t,Ths;
-        Word B,b,E,I,Ip,I1,J,Jp,L,M,Ps,P1,Ps1,S,s,T,Q,Pp;
-	Word junk,a1,b1,t1,p1,j1;
+        BDigit Ths;
+        Word I,Ps,Pp;
 
 Step1: /* Extract the projection factors from their attribute lists. */
 	Ps = NIL; /* Basis for real-root isolation - i.e. the polynomials */
@@ -390,7 +386,7 @@ Word IUPSBRRIIR(Word t_B, BDigit p, BDigit k)
     if (Li == 0) { fail = true; goto Return; }
 
     for(BDigit t = (n%2==1 ? 1 : -1); Li != NIL; t *= -1, Li = RED(Li)) {
-      Word I = FIRST(Li), i1, i2;
+      Word I = FIRST(Li);
       Word J = SIPIR(C[i],I,t,k);
       L = COMP(LIST3(i,J,t),L);
     }

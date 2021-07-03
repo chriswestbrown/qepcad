@@ -23,7 +23,7 @@ Outputs
 
 Word modHIPRRISD(BDigit n, interval *A, Word a, Word b)
 {
-	BDigit s,s2,t,u,v,Th,T0,sh;
+	BDigit s,s2,t,v,Th,T0,sh;
 	Word c,L,L1,L2;
 	interval *B,*C,J;
 
